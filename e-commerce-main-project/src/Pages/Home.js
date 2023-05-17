@@ -1,35 +1,66 @@
 import { Carousel } from "../Components/Carousel";
-import bathAndBody from "../Images/bath-category1.jpg";
-import oliveCandle from "../Images/oliveCandle.jpg";
-import skinCare from "../Images/3.jpg";
-import a4 from "../Images/4.jpg";
-import hair from "../Images/hairCategory.jpg";
+
+import Nature from "../Images/nature.png";
+import love from "../Images/love.png";
+
+import { Categories } from "../Components/Categories";
+import { BestSellers } from "../Components/BestSellers";
+import { PreFooter } from "../Components/PreFooter";
 export const Home = () => {
+  const data = async () => {
+    try {
+      const creds = {
+        email: "adarshbalika@gmail.com",
+        password: "adarshbalika",
+      };
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        body: JSON.stringify(creds),
+      });
+      const { encodedToken } = await res.json();
+      localStorage.setItem("encodedToken", encodedToken);
+      console.log(localStorage.getItem("encodedToken"));
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
-      <Carousel />
-      <section className="categories">
-        <h1 className="heading">Categories</h1>
-        <div className="category-photos">
-          <div className="photos">
-            <img alt="Bath and Body" src={bathAndBody} />
-            <p className="name">Bath & Body</p>
+      <div className="flex">
+        <Carousel />
+        {/* <button onClick={() => data()}>Click</button> */}
+        <Categories />
+        <section className="naturally-made">
+          <div className="nature-para">
+            <h1>Natural Products</h1>
+            <p>
+              Our skin care range includes skincare infused with botanical
+              extracts, nourishing oils, and plant-based ingredients for gentle
+              and effective care. We also offer handcrafted pottery made with
+              natural clay, showcasing earthy aesthetics. Choose our naturally
+              made products to take care of yourself and contribute to a greener
+              world.
+            </p>
           </div>
-          <div className="photos">
-            <img alt="Skin Care" src={skinCare} />
-            <p className="name">Skin Care</p>
+          <img className="nature" src={Nature} alt="Naturally Made Products" />
+        </section>
+        <BestSellers />
+        <section className="naturally-made">
+          <img className="nature" src={love} alt="Love Yourself" />
+          <div className="nature-para second">
+            <h1>Love Yourself</h1>
+            <p>
+              Love yourself fiercely, with compassion and kindness. Embrace
+              self-care, prioritize your well-being, and choose actions that
+              nourish your mind, body, and spirit. Let your home too be a
+              reflection of your inner beauty, a place where you can find solace
+              and inspiration. Cherish yourself and curate a space that speaks
+              to your soul.
+            </p>
           </div>
-          <div className="photos">
-            <img alt="Hair Care" src={hair} />
-            <p className="name">Hair Care</p>
-          </div>
-          {/* <img alt="Hair Care"  src={a4} /> */}
-          <div className="photos">
-            <img alt="Home Decor" src={oliveCandle} />
-            <p className="name">Home</p>
-          </div>
-        </div>
-      </section>
+        </section>
+        <PreFooter />
+      </div>
     </>
   );
 };

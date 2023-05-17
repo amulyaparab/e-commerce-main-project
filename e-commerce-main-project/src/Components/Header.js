@@ -7,9 +7,15 @@ export const Header = () => {
         <h1>Ascend.</h1>
       </NavLink>
       <div>
-        <NavLink to="/products">Products</NavLink>
-        <NavLink to="/wishlist">Wishlist</NavLink>
-        <NavLink to="/cart">Cart</NavLink>
+        <NavLink to="/products">
+          <i class="fa-solid fa-shop"></i>
+        </NavLink>
+        <NavLink to="/wishlist">
+          <i class="fa-solid fa-heart"></i>
+        </NavLink>
+        <NavLink to="/cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+        </NavLink>
       </div>
     </nav>
   );

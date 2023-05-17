@@ -21,7 +21,7 @@ function App() {
         <Route path="/products/:prodId" element={<SingleProduct />} />
         <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
