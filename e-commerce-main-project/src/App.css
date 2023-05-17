@@ -5,7 +5,7 @@ body {
   margin: 0;
 }
 
-/* nav */
+/* Nav */
 
 .navbar {
   align-items: center;
@@ -29,6 +29,7 @@ body {
 /* carousel */
 .carousel {
   position: relative;
+  margin-top: 2rem;
 }
 .carousel-slide {
   display: flex;
@@ -37,7 +38,7 @@ body {
 }
 .carousel-slide img {
   width: 100%;
-  height: auto;
+  /* height: 50vh; */
   /* margin-top: 0.5rem; */
 }
 .carousel-btn {
@@ -63,7 +64,8 @@ body {
 @media screen and (min-width: 1324px) {
   .carousel-slide img {
     width: auto;
-    height: 87vh;
+    /* height: 87vh; */
+    height: 85vh;
     margin: auto;
     margin-top: 0.5rem;
   }
@@ -71,11 +73,11 @@ body {
     margin: 2rem;
   }
 }
-/* Categories */
+/* Categories + Bestsellers */
 .categories {
   background-color: #ffffff;
-  margin-top: 2.5rem;
-  margin-bottom: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 1.5rem 0 1.5rem 0;
   text-align: center;
 }
@@ -98,7 +100,7 @@ body {
 .photos {
   display: flex;
   width: 23%;
-  height: auto;
+  height: 18%;
   position: relative;
   cursor: pointer;
 }
@@ -123,6 +125,7 @@ body {
   height: fit-content;
   letter-spacing: 1px;
 }
+
 @media screen and (max-width: 1024px) {
   .category-photos {
     flex-wrap: wrap;
@@ -134,4 +137,176 @@ body {
   .heading {
     font-size: 2rem;
   }
+}
+
+@media screen and (max-width: 1024px) {
+  .name {
+    font-size: 1.3rem;
+  }
+}
+
+/* Posters: Nature & Love */
+.naturally-made {
+  display: flex;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  height: 50vh;
+}
+.nature {
+  width: 60%;
+  height: auto;
+}
+.nature-para {
+  border-right: 2px solid #2f2e41;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 2rem 1rem 2rem 2rem;
+  margin: 0 1rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+}
+.second {
+  border-right: none;
+  border-left: #2f2e41 2px solid;
+}
+@media screen and (max-width: 1000px) {
+  .naturally-made {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .nature {
+    width: 95%;
+    margin: 1rem;
+  }
+  .nature-para {
+    border-right: none;
+    border-bottom: 2px #2f2e41 solid;
+    width: 95%;
+    font-size: 1rem;
+  }
+  .second {
+    border: none;
+    border-top: #2f2e41 2px solid;
+  }
+}
+/* Pre footer */
+.pre-footer {
+  background-image: url("https://images.unsplash.com/photo-1564352969906-8b7f46ba4b8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80");
+  border-radius: 10px;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  width: 98%;
+  height: 30vh;
+  margin: auto;
+  margin-bottom: 2rem;
+}
+.pre-footer-links {
+  display: flex;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+.pre-footer-links li {
+  list-style: none;
+  letter-spacing: 1px;
+}
+
+.pre-footer-heading {
+  font-size: 50px;
+  margin-left: 3rem;
+}
+@media screen and (max-width: 768px) {
+  .pre-footer {
+    flex-wrap: wrap;
+    width: 95%;
+    height: max-content;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+  .pre-footer-links {
+    width: 80%;
+  }
+  .pre-footer-heading {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+/* Footer */
+.footer {
+  /* background-color: #ffffff; */
+  background-color: #2f2e41;
+  color: #ffffff;
+  text-align: center;
+  padding: 2rem 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.footer-desc {
+  color: #999999;
+  letter-spacing: 0.5px;
+}
+.footer-list {
+  display: flex;
+  justify-content: space-around;
+  width: 40%;
+  margin: auto;
+}
+.footer-list li {
+  list-style: none;
+  margin: 1rem 0 0.5rem -2rem;
+}
+.grid-products {
+  display: grid;
+  grid-template-columns: 300px auto;
+}
+.filters {
+  height: 100vh;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  line-height: 0.3rem;
+}
+.productCard {
+  background-color: #ffffff;
+  position: relative;
+  width: 250px;
+  height: 500px;
+  margin: 1rem 0;
+}
+.description {
+  padding: 0.3rem 1rem 1rem;
+}
+.wishlist-heart {
+  position: absolute;
+  font-size: 1.4rem;
+  /* right: 0; */
+  right: 8px;
+  top: 11px;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.wishlist-heart:hover {
+  color: rgba(214, 2, 2, 0.877);
+  font-size: 1.5rem;
+}
+.add-to-cart {
+  background-image: url();
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px 1px #d3d3d3;
+  font-size: medium;
+  padding: 0.5rem 4rem;
+  cursor: pointer;
 }
