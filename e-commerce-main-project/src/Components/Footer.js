@@ -6,13 +6,31 @@ export const Footer = () => {
       </p>
       <ul className="footer-list">
         <li>
-          <i class="fa-brands fa-linkedin"></i>
+          <a
+            href="https://www.linkedin.com/in/amulyaparab/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
         </li>
         <li>
-          <i class="fa-brands fa-twitter"></i>
+          <a
+            href="https://twitter.com/AmulyaParab"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="fa-brands fa-twitter"></i>
+          </a>
         </li>
         <li>
-          <i class="fa-brands fa-github"></i>
+          <a
+            href="https://github.com/amulyaparab"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
         </li>
       </ul>
     </footer>

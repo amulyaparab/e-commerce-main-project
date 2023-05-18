@@ -11,7 +11,7 @@ export const products = [
   //   title: "You Can WIN",
   //   author: "Shiv Khera",
   //   price: "5000",
-  //   categoryName : "Home",
+  //   categoryName : "Home Decor",
   // },
   // {
   //   _id: uuid(),
@@ -41,12 +41,12 @@ export const products = [
       "https://images.unsplash.com/photo-1605204768985-81bad5fd9d79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
-    _id: uuid(),
+    _id: "best-seller-1",
     name: "Brightening Serum",
     description:
       "A potent serum infused with vitamin C to brighten the complexion and reduce dark spots.",
     price: 390,
-    rating: 4.8,
+    rating: 5.0,
     category: "Skin Care",
     brand: "The Ordinary",
     image:
@@ -56,7 +56,7 @@ export const products = [
     _id: uuid(),
     name: "Rose Water Toner",
     description:
-      "A refreshing toner enriched with rose water to balance the skin's pH and provide a boost of hydration.",
+      "A refreshing toner enriched with rose water tos balance the skin's pH and provide a boost of hydration.",
     price: 120,
     rating: 4.6,
     category: "Skin Care",
@@ -192,7 +192,7 @@ export const products = [
       "A luxurious body oil that deeply nourishes and hydrates the skin. Infused with botanical extracts and essential oils.",
     price: 450,
     rating: 4.6,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Jo Malone",
     image:
       "https://plus.unsplash.com/premium_photo-1679750866972-9bfa3cb5ba38?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -204,7 +204,7 @@ export const products = [
       "A hydrating body wash that gently cleanses and moisturizes the skin. Leaves the skin feeling soft and refreshed.",
     price: 500,
     rating: 4.4,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Dove",
     image:
       "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -216,7 +216,7 @@ export const products = [
       "An exfoliating loofah sponge that helps to remove dead skin cells and promote smoother, healthier-looking skin.",
     price: 170,
     rating: 4.2,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "The Body Shop",
     image:
       "https://images.pexels.com/photos/5420517/pexels-photo-5420517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -276,7 +276,7 @@ export const products = [
       "A set of colorful and fragrant bath bombs that fizz and dissolve in the bathwater, creating a relaxing and aromatic experience.",
     price: 550,
     rating: 4.4,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Lush",
     image:
       "https://images.pexels.com/photos/6620947/pexels-photo-6620947.jpeg?auto=compress&cs=tinysrgb&w=600",
@@ -288,7 +288,7 @@ export const products = [
       "A blend of mineral-rich bath salts infused with essential oils to provide relaxation and promote muscle relaxation.",
     price: 560,
     rating: 4.3,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Dr. Teal's",
     image:
       "https://images.pexels.com/photos/11635430/pexels-photo-11635430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -300,7 +300,7 @@ export const products = [
       "A soft bristle body brush that gently exfoliates the skin, removes impurities, and promotes smoother, healthier-looking skin.",
     price: 300,
     rating: 4.2,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Cetaphil",
     image:
       "https://images.pexels.com/photos/13915919/pexels-photo-13915919.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -312,7 +312,7 @@ export const products = [
       "A set of essential oils in various scents to create a soothing and relaxing atmosphere. Can be used in diffusers or diluted for massage.",
     price: 700,
     rating: 4.6,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Radha Beauty",
     image:
       "https://images.pexels.com/photos/5682715/pexels-photo-5682715.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -324,7 +324,7 @@ export const products = [
       "A hydrating body wash that cleanses the skin while leaving it feeling soft, smooth, and moisturized. Enriched with nourishing ingredients.",
     price: 800,
     rating: 4.5,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Aveeno",
     image:
       "https://images.unsplash.com/photo-1655368829116-e04c2942d9a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -336,7 +336,7 @@ export const products = [
       "A gentle and hygienic silicone body scrubber that exfoliates and cleanses the skin. Helps to remove dead skin cells and improve circulation.",
     price: 799,
     rating: 4.3,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "EcoTools",
     image:
       "https://images.pexels.com/photos/5241040/pexels-photo-5241040.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -348,7 +348,7 @@ export const products = [
       "A luxurious bath oil infused with lavender essential oil to help relax the mind and body. Leaves the skin feeling nourished and hydrated.",
     price: 250,
     rating: 4.7,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Bath & Body Works",
     image:
       "https://images.pexels.com/photos/3865676/pexels-photo-3865676.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -360,7 +360,7 @@ export const products = [
       "A purifying body clay that helps to detoxify the skin by drawing out impurities and excess oil. Leaves the skin feeling refreshed and revitalized.",
     price: 650,
     rating: 4.5,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Herbivore Botanicals",
     image:
       "https://images.pexels.com/photos/6978043/pexels-photo-6978043.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -372,19 +372,19 @@ export const products = [
       "A colorful and fragrant bath bomb infused with fruity scents. Creates a vibrant and aromatic bathing experience.",
     price: 899,
     rating: 4.6,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Bath Fizz Co.",
     image:
       "https://images.pexels.com/photos/7175332/pexels-photo-7175332.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
-    _id: uuid(),
+    _id: "best-seller-2",
     name: "Soothing Lemon Bath Bomb",
     description:
       "A calming and relaxing bath bomb infused with the soothing scent of lemon. Helps to unwind and promote a peaceful sleep.",
     price: 999,
-    rating: 4.9,
-    category: "Bath and Body",
+    rating: 5.0,
+    category: "Bath & Body",
     brand: "Relaxation Spa",
     image:
       "https://images.pexels.com/photos/6620946/pexels-photo-6620946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -396,7 +396,7 @@ export const products = [
       "An invigorating bath bomb infused with the refreshing scents of eucalyptus and mint. Provides a revitalizing and uplifting bathing experience.",
     price: 799,
     rating: 4.5,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Fresh Breeze",
     image:
       "https://images.pexels.com/photos/6683020/pexels-photo-6683020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -408,7 +408,7 @@ export const products = [
       "Transport yourself to a tropical getaway with this bath bomb featuring exotic scents of coconut, pineapple, and mango. Creates a blissful bathing experience.",
     price: 899,
     rating: 4.8,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Island Escape",
     image:
       "https://images.pexels.com/photos/11270386/pexels-photo-11270386.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -420,7 +420,7 @@ export const products = [
       "A calming and relaxing bath bomb infused with the soothing scent of lavender. Helps to unwind and promote a peaceful sleep.",
     price: 999,
     rating: 4.7,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Relaxation Spa",
     image:
       "https://images.pexels.com/photos/6724360/pexels-photo-6724360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -432,7 +432,7 @@ export const products = [
       "Indulge in a relaxing bath experience with these lavender-infused bath salts. Helps to calm the mind and soothe tired muscles.",
     price: 1299,
     rating: 4.6,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Serenity Spa",
     image:
       "https://images.pexels.com/photos/6621452/pexels-photo-6621452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -444,7 +444,7 @@ export const products = [
       "Revitalize your senses with these citrus-scented bath salts. Provides an invigorating and refreshing bathing experience.",
     price: 1199,
     rating: 4.5,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Zest & Zing",
     image:
       "https://images.pexels.com/photos/7263026/pexels-photo-7263026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -456,7 +456,7 @@ export const products = [
       "Experience tranquility with these chamomile-infused bath salts. Relieves stress and promotes relaxation.",
     price: 1399,
     rating: 4.7,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Calm Waters",
     image:
       "https://images.pexels.com/photos/7418925/pexels-photo-7418925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -468,7 +468,7 @@ export const products = [
       "Detoxify your body with these flower-infused bath salts. Draws out impurities and leaves the skin feeling refreshed.",
     price: 1499,
     rating: 4.8,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Pure Detox",
     image:
       "https://images.pexels.com/photos/5566050/pexels-photo-5566050.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -480,7 +480,7 @@ export const products = [
       "Love your body with these flower-infused bath salts. Draws out impurities and leaves the skin feeling refreshed.",
     price: 1499,
     rating: 4.8,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Pure Detox",
     image:
       "https://images.unsplash.com/photo-1550623685-2227f7bbef18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -492,7 +492,7 @@ export const products = [
       "Nourish your skin with this moisturizing shea butter soap. Leaves the skin feeling soft, smooth, and hydrated.",
     price: 699,
     rating: 4.5,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Nature's Essence",
     image:
       "https://images.pexels.com/photos/6621282/pexels-photo-6621282.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -504,7 +504,7 @@ export const products = [
       "Awaken your senses with this invigorating coffee scrub soap. Gently exfoliates the skin, leaving it refreshed and revitalized.",
     price: 599,
     rating: 4.7,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Java Glow",
     image:
       "https://images.pexels.com/photos/6621323/pexels-photo-6621323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -516,7 +516,7 @@ export const products = [
       "Soothe and hydrate your skin with these soaps. Helps to calm irritation and promote a healthy complexion.",
     price: 5000,
     rating: 4.6,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Fresh Mess",
     image:
       "https://images.pexels.com/photos/7500291/pexels-photo-7500291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -528,7 +528,7 @@ export const products = [
       "Infused with the invigorating scent of citrus, this soap energizes and rejuvenates the skin.",
     price: 649,
     rating: 4.4,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Citrus Burst",
     image:
       "https://images.unsplash.com/photo-1614806687792-7fcec07dcbbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mjd8fGhhbmRtYWRlJTIwc29hcHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60",
@@ -540,7 +540,7 @@ export const products = [
       "Unwind and relax with this calming lavender soap. Delivers a soothing and aromatic bathing experience.",
     price: 699,
     rating: 4.8,
-    category: "Bath and Body",
+    category: "Bath & Body",
     brand: "Lavender Dreams",
     image:
       "https://images.unsplash.com/photo-1607006344878-f7eef45446f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -555,7 +555,7 @@ export const products = [
     category: "Hair Care",
     brand: "Silk & Shine",
     image:
-      "https://images.pexels.com/photos/12998424/pexels-photo-12998424.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.unsplash.com/photo-1564742191034-961da6c0e088?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
   },
   {
     _id: uuid(),
@@ -737,12 +737,12 @@ export const products = [
       "https://images.unsplash.com/photo-1567433517180-d3e56cf7f81e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
   },
   {
-    _id: uuid(),
+    _id: "best-seller-3",
     name: "Love Shampoo Combo",
     description:
       "Adds volume and body to fine and limp hair. Cleanses without weighing down the hair.",
     price: 1099,
-    rating: 4.9,
+    rating: 5.0,
     category: "Hair Care",
     brand: "Full & Fabulous",
     image:
@@ -767,7 +767,7 @@ export const products = [
       "Beautifully hand-painted ceramic vase for floral arrangements.",
     price: 45,
     rating: 4.8,
-    category: "Home",
+    category: "Home Decor",
     brand: "Artisan Home",
     image:
       "https://images.unsplash.com/photo-1578913685467-e5bd9fe17fb1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -778,7 +778,7 @@ export const products = [
     description: "Eco-friendly soy wax candle with a soothing lavender scent.",
     price: 18,
     rating: 4.5,
-    category: "Home",
+    category: "Home Decor",
     brand: "Natura Aromas",
     image:
       "https://images.pexels.com/photos/15172848/pexels-photo-15172848.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -790,7 +790,7 @@ export const products = [
       "String of warm white LED lights for creating a magical ambiance.",
     price: 29,
     rating: 4.2,
-    category: "Home",
+    category: "Home Decor",
     brand: "Twinkle Glow",
     image:
       "https://images.unsplash.com/photo-1544515137-646173abc5b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -802,7 +802,7 @@ export const products = [
       "Handcrafted wooden shelf for displaying photos and decor items.",
     price: 75,
     rating: 4.7,
-    category: "Home",
+    category: "Home Decor",
     brand: "Rustic Charm",
     image:
       "https://images.unsplash.com/photo-1471476730017-8169d050fa19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=710&q=80",
@@ -813,7 +813,7 @@ export const products = [
     description: "Minimalist ceramic pot for indoor plants.",
     price: 32,
     rating: 4.6,
-    category: "Home",
+    category: "Home Decor",
     brand: "Green Thumb",
     image:
       "https://images.unsplash.com/photo-1677761640321-b80251be00ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
@@ -825,18 +825,18 @@ export const products = [
       "Elegant reed diffuser with a refreshing ocean breeze fragrance.",
     price: 22,
     rating: 4.3,
-    category: "Home",
+    category: "Home Decor",
     brand: "Aroma Haven",
     image:
       "https://images.pexels.com/photos/8484055/pexels-photo-8484055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
-    _id: uuid(),
+    _id: "best-seller-4",
     name: "Glass Terrarium",
     description: "Glass terrarium for creating your own mini plant ecosystem.",
     price: 28,
-    rating: 4.9,
-    category: "Home",
+    rating: 5.0,
+    category: "Home Decor",
     brand: "Nature's Haven",
     image:
       "https://images.pexels.com/photos/4650144/pexels-photo-4650144.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -848,7 +848,7 @@ export const products = [
       "Set of marble candle holders in varying heights for a stylish look.",
     price: 54,
     rating: 4.4,
-    category: "Home",
+    category: "Home Decor",
     brand: "Luxury Decor",
     image:
       "https://images.pexels.com/photos/10789371/pexels-photo-10789371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -860,7 +860,7 @@ export const products = [
       "Realistic artificial succulents in a set of 3, perfect for low-maintenance decor.",
     price: 19,
     rating: 4.1,
-    category: "Home",
+    category: "Home Decor",
     brand: "Greenery Delight",
     image:
       "https://images.pexels.com/photos/3952027/pexels-photo-3952027.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -872,7 +872,7 @@ export const products = [
       "Sleek and modern aesthetic pot for small plants or succulents.",
     price: 25,
     rating: 4.7,
-    category: "Home",
+    category: "Home Decor",
     brand: "Urban Oasis",
     image:
       "https://plus.unsplash.com/premium_photo-1668704252687-173716305688?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
@@ -884,7 +884,7 @@ export const products = [
       "Set of handcrafted mud pots in various sizes for a rustic touch.",
     price: 42,
     rating: 4.5,
-    category: "Home",
+    category: "Home Decor",
     brand: "Earthly Delights",
     image:
       "https://images.unsplash.com/photo-1613989999710-4d305027df02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
@@ -896,7 +896,7 @@ export const products = [
       "Decorative plate with compartments for organizing and displaying jewelry.",
     price: 32,
     rating: 4.6,
-    category: "Home",
+    category: "Home Decor",
     brand: "Glamourous Gems",
     image:
       "https://images.unsplash.com/photo-1613989999658-0075d1359836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
@@ -908,7 +908,7 @@ export const products = [
       "Set of traditional Japanese candles with a calming and aromatic experience.",
     price: 28,
     rating: 4.3,
-    category: "Home",
+    category: "Home Decor",
     brand: "Zen Harmony",
     image:
       "https://images.unsplash.com/photo-1603905179139-db12ab535ca9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80",
@@ -919,7 +919,7 @@ export const products = [
     description: "Beautiful glass terrarium for creating a mini indoor garden.",
     price: 48,
     rating: 4.8,
-    category: "Home",
+    category: "Home Decor",
     brand: "Enchanted Gardens",
     image:
       "https://images.pexels.com/photos/4650141/pexels-photo-4650141.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -931,7 +931,7 @@ export const products = [
       "Set of handcrafted wooden candle holders for a natural and cozy ambiance.",
     price: 39,
     rating: 4.4,
-    category: "Home",
+    category: "Home Decor",
     brand: "Rustic Retreat",
     image:
       "https://images.pexels.com/photos/2950326/pexels-photo-2950326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -942,8 +942,8 @@ export const products = [
     description:
       "Wall-mounted mirror with LED backlighting for an enchanting glow.",
     price: 85,
-    rating: 4.9,
-    category: "Home",
+    rating: 5.0,
+    category: "Home Decor",
     brand: "Luminous Reflections",
     image:
       "https://images.pexels.com/photos/2207894/pexels-photo-2207894.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -955,7 +955,7 @@ export const products = [
       "Rich and musky scented candle for a warm and inviting atmosphere.",
     price: 22,
     rating: 4.2,
-    category: "Home",
+    category: "Home Decor",
     brand: "Sensual Scents",
     image: "https://images.pexels.com/photos/9869351/pexels-photo-9869351.jpeg",
   },
@@ -966,7 +966,7 @@ export const products = [
       "Beautifully designed scented candle with a delicate and captivating fragrance.",
     price: 36,
     rating: 4.7,
-    category: "Home",
+    category: "Home Decor",
     brand: "Artisan Aromas",
     image:
       "https://images.pexels.com/photos/14558361/pexels-photo-14558361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -978,7 +978,7 @@ export const products = [
       "Comfortable and stylish hammock for ultimate relaxation in your outdoor space.",
     price: 75,
     rating: 4.5,
-    category: "Home",
+    category: "Home Decor",
     brand: "Lazy Days",
     image: "https://images.pexels.com/photos/4577681/pexels-photo-4577681.jpeg",
   },
@@ -989,7 +989,7 @@ export const products = [
       "Simple and elegant pot designed to hold feathers or dried flowers.",
     price: 18,
     rating: 4.5,
-    category: "Home",
+    category: "Home Decor",
     brand: "Feather Delights",
     image:
       "https://plus.unsplash.com/premium_photo-1681412205320-c4d8d51dc7eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
@@ -1001,7 +1001,7 @@ export const products = [
       "Handcrafted candles made from 100% cotton, creating a soft and cozy glow.",
     price: 28,
     rating: 4.7,
-    category: "Home",
+    category: "Home Decor",
     brand: "Cotton Bliss",
     image:
       "https://images.pexels.com/photos/6311798/pexels-photo-6311798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -1013,7 +1013,7 @@ export const products = [
       "Set of decorative wall hangings to add a touch of artistry to your space.",
     price: 42,
     rating: 4.6,
-    category: "Home",
+    category: "Home Decor",
     brand: "Artful Accents",
     image:
       "https://images.pexels.com/photos/11379706/pexels-photo-11379706.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -1025,7 +1025,7 @@ export const products = [
       "Sleek and modern black vase to showcase your favorite flowers or plants.",
     price: 32,
     rating: 4.4,
-    category: "Home",
+    category: "Home Decor",
     brand: "Modern Elegance",
     image:
       "https://images.pexels.com/photos/4218618/pexels-photo-4218618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -1037,7 +1037,7 @@ export const products = [
       "Candle shaped like a crescent moon, providing a soothing and mystical ambiance.",
     price: 24,
     rating: 4.8,
-    category: "Home",
+    category: "Home Decor",
     brand: "Celestial Glow",
     image:
       "https://images.pexels.com/photos/12488181/pexels-photo-12488181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
