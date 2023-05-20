@@ -10,6 +10,9 @@ export const SingleProduct = () => {
   //   singleProduct;
   console.log(prodId);
   const isItemInCart = state?.cart?.includes(singleProduct);
+  const isItemInWishlist = state?.wishlist?.includes(
+    state?.wishlist?.find((prod) => prod._id === singleProduct._id)
+  );
   return (
     <div className="background">
       {/* <h1 className="header-heading">About</h1> */}
@@ -24,6 +27,7 @@ export const SingleProduct = () => {
 
           <i
             class="fa-solid fa-heart single-prod-heart"
+            style={{ color: isItemInWishlist ? "#BA3C3C" : "#2f2e41" }}
             onClick={() =>
               dispatch({ type: "ADD_TO_WISHLIST", payload: singleProduct })
             }

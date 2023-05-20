@@ -59,6 +59,16 @@ export const ProductsProvider = ({ children }) => {
             ? state.cart
             : [...state.cart, action.payload],
         };
+      case "REMOVE_FROM_CART":
+        return {
+          ...state,
+          cart: state.cart.filter((item) => item._id !== action.payload),
+        };
+      case "APPLY_COUPON":
+        return {
+          ...state,
+          couponApplied: !state.couponApplied,
+        };
       case "ADD_TO_WISHLIST":
         return {
           ...state,
@@ -73,6 +83,7 @@ export const ProductsProvider = ({ children }) => {
             (product) => product.category === action.payload
           ),
         };
+
       default:
         return state;
     }
@@ -84,10 +95,14 @@ export const ProductsProvider = ({ children }) => {
     wishlist: [],
     categories: [],
     filteredData: [],
+    couponApplied: false,
   });
-  console.log(state?.cart);
+  const totalAmount = state.cart.reduce(
+    (total, curr) => (total += curr?.price),
+    0
+  );
   return (
-    <ProductsContext.Provider value={{ state, dispatch }}>
+    <ProductsContext.Provider value={{ state, dispatch, totalAmount }}>
       {children}
     </ProductsContext.Provider>
   );

@@ -44,9 +44,20 @@ export const Products = () => {
               return prod._id === item._id;
             });
             const isItemInCart = state?.cart?.includes(prod);
-
+            const isItemInWishlist = state?.wishlist?.includes(
+              state?.wishlist?.find((prod) => prod._id === item._id)
+            );
             return (
               <div className="productCard">
+                <i
+                  class="fa-solid fa-heart wishlist-heart "
+                  style={{
+                    color: isItemInWishlist ? "#BA3C3C" : "#2f2e41",
+                  }}
+                  onClick={() =>
+                    dispatch({ type: "ADD_TO_WISHLIST", payload: item })
+                  }
+                ></i>
                 <ProductCard item={item} />
 
                 {isItemInCart ? (

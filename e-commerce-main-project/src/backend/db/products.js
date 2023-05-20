@@ -231,7 +231,7 @@ export const products = [
     category: "Skin Care",
     brand: "Foreo",
     image:
-      "https://images.unsplash.com/photo-1592136957897-b2b6ca21e10d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+      "https://images.unsplash.com/photo-1600428853876-fb5a850b444f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
   },
   {
     _id: uuid(),
@@ -317,18 +317,7 @@ export const products = [
     image:
       "https://images.pexels.com/photos/5682715/pexels-photo-5682715.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
-  // {
-  //   _id: uuid(),
-  //   name: "Moisturizing Body Wash",
-  //   description:
-  //     "A hydrating body wash that cleanses the skin while leaving it feeling soft, smooth, and moisturized. Enriched with nourishing ingredients.",
-  //   price: 800,
-  //   rating: 4.5,
-  //   category: "Bath & Body",
-  //   brand: "Aveeno",
-  //   image:
-  //     "https://images.unsplash.com/photo-1655368829116-e04c2942d9a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  // },
+
   {
     _id: uuid(),
     name: "Silicone Body Scrubber",
@@ -725,18 +714,7 @@ export const products = [
     image:
       "https://images.unsplash.com/photo-1615041359204-45a4dff5ec92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
-  {
-    _id: uuid(),
-    name: "Volumizing Shampoo Combo",
-    description:
-      "Adds volume and body to fine and limp hair. Cleanses without weighing down the hair.",
-    price: 1099,
-    rating: 4.3,
-    category: "Hair Care",
-    brand: "Full & Fabulous",
-    image:
-      "https://images.unsplash.com/photo-1567433517180-d3e56cf7f81e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-  },
+
   {
     _id: "best-seller-3",
     name: "Love Shampoo Combo",
@@ -766,7 +744,7 @@ export const products = [
     name: "Handcrafted Ceramic Vase",
     description:
       "Beautifully hand-painted ceramic vase for floral arrangements.",
-    price: 45,
+    price: 450,
     rating: 4.8,
     category: "Home Decor",
     brand: "Artisan Home",
@@ -777,7 +755,7 @@ export const products = [
     _id: uuid(),
     name: "Scented Soy Wax Candle",
     description: "Eco-friendly soy wax candle with a soothing lavender scent.",
-    price: 18,
+    price: 180,
     rating: 4.5,
     category: "Home Decor",
     brand: "Natura Aromas",
@@ -789,7 +767,7 @@ export const products = [
     name: "LED Fairy Lights",
     description:
       "String of warm white LED lights for creating a magical ambiance.",
-    price: 29,
+    price: 290,
     rating: 4.2,
     category: "Home Decor",
     brand: "Twinkle Glow",
@@ -801,7 +779,7 @@ export const products = [
     name: "Rustic Wooden Wall Shelf",
     description:
       "Handcrafted wooden shelf for displaying photos and decor items.",
-    price: 75,
+    price: 750,
     rating: 4.7,
     category: "Home Decor",
     brand: "Rustic Charm",
@@ -812,7 +790,7 @@ export const products = [
     _id: uuid(),
     name: "Ceramic Plant Pot",
     description: "Minimalist ceramic pot for indoor plants.",
-    price: 32,
+    price: 320,
     rating: 4.6,
     category: "Home Decor",
     brand: "Green Thumb",
@@ -824,7 +802,7 @@ export const products = [
     name: "Scented Reed Diffuser",
     description:
       "Elegant reed diffuser with a refreshing ocean breeze fragrance.",
-    price: 22,
+    price: 220,
     rating: 4.3,
     category: "Home Decor",
     brand: "Aroma Haven",
@@ -835,7 +813,7 @@ export const products = [
     _id: "best-seller-4",
     name: "Glass Terrarium",
     description: "Glass terrarium for creating your own mini plant ecosystem.",
-    price: 28,
+    price: 280,
     rating: 5.0,
     category: "Home Decor",
     brand: "Nature's Haven",
@@ -847,7 +825,7 @@ export const products = [
     name: "Marble Candle Set",
     description:
       "Set of marble candle holders in varying heights for a stylish look.",
-    price: 54,
+    price: 540,
     rating: 4.4,
     category: "Home Decor",
     brand: "Luxury Decor",
@@ -859,7 +837,7 @@ export const products = [
     name: "Artificial Succulent Set",
     description:
       "Realistic artificial succulents in a set of 3, perfect for low-maintenance decor.",
-    price: 19,
+    price: 190,
     rating: 4.1,
     category: "Home Decor",
     brand: "Greenery Delight",
@@ -871,7 +849,7 @@ export const products = [
     name: "Minimalist Aesthetic Pot",
     description:
       "Sleek and modern aesthetic pot for small plants or succulents.",
-    price: 25,
+    price: 250,
     rating: 4.7,
     category: "Home Decor",
     brand: "Urban Oasis",
@@ -883,7 +861,7 @@ export const products = [
     name: "Handmade Mud Pot Set",
     description:
       "Set of handcrafted mud pots in various sizes for a rustic touch.",
-    price: 42,
+    price: 420,
     rating: 4.5,
     category: "Home Decor",
     brand: "Earthly Delights",
@@ -895,7 +873,7 @@ export const products = [
     name: "Mud Jewelry Plate",
     description:
       "Decorative plate with compartments for organizing and displaying jewelry.",
-    price: 32,
+    price: 320,
     rating: 4.6,
     category: "Home Decor",
     brand: "Glamourous Gems",
@@ -907,7 +885,7 @@ export const products = [
     name: "Japanese Candle Set",
     description:
       "Set of traditional Japanese candles with a calming and aromatic experience.",
-    price: 28,
+    price: 1280,
     rating: 4.3,
     category: "Home Decor",
     brand: "Zen Harmony",
@@ -918,7 +896,7 @@ export const products = [
     _id: uuid(),
     name: "Glass Terrarium With Deer",
     description: "Beautiful glass terrarium for creating a mini indoor garden.",
-    price: 48,
+    price: 480,
     rating: 4.8,
     category: "Home Decor",
     brand: "Enchanted Gardens",
@@ -930,7 +908,7 @@ export const products = [
     name: "Wooden Candle Holders",
     description:
       "Set of handcrafted wooden candle holders for a natural and cozy ambiance.",
-    price: 39,
+    price: 90,
     rating: 4.4,
     category: "Home Decor",
     brand: "Rustic Retreat",
@@ -942,7 +920,7 @@ export const products = [
     name: "Glowing Mirror",
     description:
       "Wall-mounted mirror with LED backlighting for an enchanting glow.",
-    price: 85,
+    price: 850,
     rating: 5.0,
     category: "Home Decor",
     brand: "Luminous Reflections",
@@ -954,7 +932,7 @@ export const products = [
     name: "Musk Candle",
     description:
       "Rich and musky scented candle for a warm and inviting atmosphere.",
-    price: 22,
+    price: 220,
     rating: 4.2,
     category: "Home Decor",
     brand: "Sensual Scents",
@@ -965,7 +943,7 @@ export const products = [
     name: "Aesthetic Scented Candle",
     description:
       "Beautifully designed scented candle with a delicate and captivating fragrance.",
-    price: 36,
+    price: 360,
     rating: 4.7,
     category: "Home Decor",
     brand: "Artisan Aromas",
@@ -977,7 +955,7 @@ export const products = [
     name: "Cozy Hammock",
     description:
       "Comfortable and stylish hammock for ultimate relaxation in your outdoor space.",
-    price: 75,
+    price: 750,
     rating: 4.5,
     category: "Home Decor",
     brand: "Lazy Days",
@@ -988,7 +966,7 @@ export const products = [
     name: "Minimal Feather Holder Pot",
     description:
       "Simple and elegant pot designed to hold feathers or dried flowers.",
-    price: 18,
+    price: 1180,
     rating: 4.5,
     category: "Home Decor",
     brand: "Feather Delights",
@@ -1000,7 +978,7 @@ export const products = [
     name: "Cotton Candles",
     description:
       "Handcrafted candles made from 100% cotton, creating a soft and cozy glow.",
-    price: 28,
+    price: 280,
     rating: 4.7,
     category: "Home Decor",
     brand: "Cotton Bliss",
@@ -1012,7 +990,7 @@ export const products = [
     name: "Wall Hanging Decor Set",
     description:
       "Set of decorative wall hangings to add a touch of artistry to your space.",
-    price: 42,
+    price: 420,
     rating: 4.6,
     category: "Home Decor",
     brand: "Artful Accents",
@@ -1024,7 +1002,7 @@ export const products = [
     name: "Black Vase with minimalistic frame",
     description:
       "Sleek and modern black vase to showcase your favorite flowers or plants.",
-    price: 32,
+    price: 320,
     rating: 4.4,
     category: "Home Decor",
     brand: "Modern Elegance",
@@ -1036,12 +1014,96 @@ export const products = [
     name: "Moon Candle",
     description:
       "Candle shaped like a crescent moon, providing a soothing and mystical ambiance.",
-    price: 24,
+    price: 440,
     rating: 4.8,
     category: "Home Decor",
     brand: "Celestial Glow",
     image:
       "https://images.pexels.com/photos/12488181/pexels-photo-12488181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    _id: uuid(),
+    name: "Long and Strong Shampoo",
+    description:
+      "A shampoo formulated to strengthen and nourish hair, promoting length and vitality.",
+    price: 150,
+    rating: 4.2,
+    category: "Hair Care",
+    brand: "Hair Revive",
+    image:
+      "https://images.unsplash.com/photo-1633381521050-26bb467d9d5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Fairy-like Hair Shampoo",
+    description:
+      "Magical shampoo that adds volume and shine to your hair, making it feel light and enchanting.",
+    price: 200,
+    rating: 4.5,
+    category: "Hair Care",
+    brand: "Enchanted Locks",
+    image:
+      "https://images.unsplash.com/photo-1596143357129-7d373d3658e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=695&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Milk Tea Hair Therapy",
+    description:
+      "A nourishing hair therapy infused with milk tea extracts to hydrate and revitalize your hair.",
+    price: 280,
+    rating: 4.7,
+    category: "Hair Care",
+    brand: "Tea Infusions",
+    image:
+      "https://images.unsplash.com/photo-1615041316088-37ad52e8c938?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Skin Serum",
+    description:
+      "A luxurious serum that moisturizes and rejuvenates the skin, reducing the appearance of fine lines and wrinkles.",
+    price: 450,
+    rating: 4.8,
+    category: "Skin Care",
+    brand: "Glowing Complexion",
+    image:
+      "https://images.unsplash.com/photo-1555820585-c5ae44394b79?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=725&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Rose Crystal Toner",
+    description:
+      "A refreshing toner infused with rose extracts and crystal essences, promoting a balanced and radiant complexion.",
+    price: 320,
+    rating: 4.6,
+    category: "Skin Care",
+    brand: "Crystal Beauty",
+    image:
+      "https://images.unsplash.com/photo-1571965251146-d5c7e73f1f8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Natural Face Wash",
+    description:
+      "A gentle and effective face wash made with natural ingredients, leaving your skin clean and refreshed.",
+    price: 180,
+    rating: 4.3,
+    category: "Skin Care",
+    brand: "Pure Harmony",
+    image:
+      "https://images.unsplash.com/photo-1509384473936-2d36ab6e198d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Home Decor Vase And Frames",
+    description:
+      "A stylish vase to showcase your favorite flowers and add a touch of elegance to your home decor.",
+    price: 220,
+    rating: 4.4,
+    category: "Home Decor",
+    brand: "Modern Accents",
+    image:
+      "https://images.unsplash.com/photo-1513161455079-7dc1de15ef3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
   },
 ];
 // {

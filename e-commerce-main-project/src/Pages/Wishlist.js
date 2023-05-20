@@ -3,7 +3,7 @@ import { ProductsContext } from "../Contexts/ProductsProvider";
 import { ProductCard } from "../Components/ProductCard";
 import wishlistImage from "../Images/wishlist.svg";
 export const Wishlist = () => {
-  const { state } = useContext(ProductsContext);
+  const { state, dispatch } = useContext(ProductsContext);
   console.log(state.wishlist);
   return (
     <>
