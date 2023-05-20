@@ -9,6 +9,7 @@ import { SingleProduct } from "./Pages/SingleProduct";
 import { Wishlist } from "./Pages/Wishlist";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
+
 function App() {
   return (
     <div className="App">
@@ -21,6 +22,7 @@ function App() {
         <Route path="/api/products/:prodId" element={<SingleProduct />} />
         <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
+
       <Footer />
     </div>
   );

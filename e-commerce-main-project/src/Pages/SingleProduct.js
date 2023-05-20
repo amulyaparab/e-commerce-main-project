@@ -1,17 +1,18 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { ProductsContext } from "../Contexts/ProductsProvider";
 
 export const SingleProduct = () => {
   const { prodId } = useParams();
-  const { state } = useContext(ProductsContext);
+  const { state, dispatch } = useContext(ProductsContext);
   const singleProduct = state?.prodData?.find((prod) => prod._id === prodId);
   // const { _id, name, description, price, rating, category, brand, image } =
   //   singleProduct;
   console.log(prodId);
+  const isItemInCart = state?.cart?.includes(singleProduct);
   return (
-    <>
-      <h1 className="header-heading">About</h1>
+    <div className="background">
+      {/* <h1 className="header-heading">About</h1> */}
       <div className="single-product">
         <img
           className="image"
@@ -20,14 +21,41 @@ export const SingleProduct = () => {
         />
         <div className="single-product-info">
           <h1>{singleProduct?.name}</h1>
-          <i class="fa-solid fa-heart single-prod-heart"></i>
+
+          <i
+            class="fa-solid fa-heart single-prod-heart"
+            onClick={() =>
+              dispatch({ type: "ADD_TO_WISHLIST", payload: singleProduct })
+            }
+          ></i>
           <small className="brand">{singleProduct?.brand}</small>
+          <h1 className="single-price">₹{singleProduct?.price}</h1>
           <p className="desc">{singleProduct?.description}</p>
-          <p>Price: {singleProduct?.price}</p>
-          <p>Rating: {singleProduct?.rating}</p>
-          <button className="add-to-cart">Add To Cart</button>
+
+          {/* <p className="single-rating">Rating: {singleProduct?.rating}</p> */}
+          {isItemInCart ? (
+            <NavLink to="/cart">
+              <button
+                className="add-to-cart go-to-cart"
+                onClick={() =>
+                  dispatch({ type: "ADD_TO_CART", payload: singleProduct })
+                }
+              >
+                Go To Cart
+              </button>
+            </NavLink>
+          ) : (
+            <button
+              className="add-to-cart"
+              onClick={() =>
+                dispatch({ type: "ADD_TO_CART", payload: singleProduct })
+              }
+            >
+              Add To Cart
+            </button>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };

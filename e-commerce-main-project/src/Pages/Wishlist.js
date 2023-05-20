@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ProductsContext } from "../Contexts/ProductsProvider";
 import { ProductCard } from "../Components/ProductCard";
-
+import wishlistImage from "../Images/wishlist.svg";
 export const Wishlist = () => {
   const { state } = useContext(ProductsContext);
   console.log(state.wishlist);
@@ -10,7 +10,15 @@ export const Wishlist = () => {
       <h1 className="header-heading">Wishlist</h1>
       <section className="products">
         {state?.wishlist?.length === 0 ? (
-          <h1>No products in wishlist</h1>
+          <div className="empty">
+            <img
+              className="empty-img"
+              src={wishlistImage}
+              alt="Empty Wishlist"
+            />
+            <h2>Make a wish.</h2>
+            <p> Gain the power to make it come true.</p>
+          </div>
         ) : (
           state?.wishlist?.map((item) => {
             return (

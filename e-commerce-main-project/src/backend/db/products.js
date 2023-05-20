@@ -317,18 +317,18 @@ export const products = [
     image:
       "https://images.pexels.com/photos/5682715/pexels-photo-5682715.jpeg?auto=compress&cs=tinysrgb&w=400",
   },
-  {
-    _id: uuid(),
-    name: "Moisturizing Body Wash",
-    description:
-      "A hydrating body wash that cleanses the skin while leaving it feeling soft, smooth, and moisturized. Enriched with nourishing ingredients.",
-    price: 800,
-    rating: 4.5,
-    category: "Bath & Body",
-    brand: "Aveeno",
-    image:
-      "https://images.unsplash.com/photo-1655368829116-e04c2942d9a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  },
+  // {
+  //   _id: uuid(),
+  //   name: "Moisturizing Body Wash",
+  //   description:
+  //     "A hydrating body wash that cleanses the skin while leaving it feeling soft, smooth, and moisturized. Enriched with nourishing ingredients.",
+  //   price: 800,
+  //   rating: 4.5,
+  //   category: "Bath & Body",
+  //   brand: "Aveeno",
+  //   image:
+  //     "https://images.unsplash.com/photo-1655368829116-e04c2942d9a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  // },
   {
     _id: uuid(),
     name: "Silicone Body Scrubber",
@@ -691,14 +691,15 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Hydrating Shampoo",
+    name: "Soothing Shampoo",
     description:
       "Gently cleanses and moisturizes dry and damaged hair. Leaves hair soft, smooth, and manageable.",
     price: 1299,
     rating: 4.5,
     category: "Hair Care",
     brand: "Silk & Shine",
-    image: "https://via.placeholder.com/150",
+    image:
+      "https://images.unsplash.com/photo-1535927853242-fa2bde74fb7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
   },
   {
     _id: uuid(),
@@ -1043,3 +1044,21 @@ export const products = [
       "https://images.pexels.com/photos/12488181/pexels-photo-12488181.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
 ];
+// {
+//     _id: uuid(),
+//     title: "The Cunning Fox",
+//     author: "Saksham",
+//     price: 299,
+//     discount: 269,
+//     categoryName: "Product Cart",
+//     imgSrc: "../../images/fox1.jpg",
+//     type: "ORIGAMI",
+//     inStock: true,
+//     fastDelivery: false,
+//     onSale: false,
+//     starRatings: 4,
+//     mountType: "Table Top",
+//     color: "biege",
+//     qty: 1,
+//     wishlist: false
+//   },

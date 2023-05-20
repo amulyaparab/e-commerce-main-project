@@ -12,7 +12,7 @@ export const ProductCard = ({ item }) => {
     <div key={item?._id}>
       <i
         class="fa-solid fa-heart wishlist-heart"
-        className={isItemInWishlist ? "red" : "not-red"}
+        // className={isItemInWishlist ? "red" : "not-red"}
         onClick={() => dispatch({ type: "ADD_TO_WISHLIST", payload: item })}
       ></i>
       <NavLink to={`/api/products/${item?._id}`}>
