@@ -25,6 +25,12 @@ export const ProductsProvider = ({ children }) => {
       const postCategories = await fetch("/api/categories");
       const { categories } = await postCategories.json();
       console.log(categories);
+      const options3 = (method, headers, data) => ({
+        method,
+        headers: { headers },
+        body: JSON.stringify({ data }),
+      });
+
       dispatch({
         type: "INITIAL_DATA",
         payloadProd: products,
@@ -60,6 +66,25 @@ export const ProductsProvider = ({ children }) => {
             : [...state.cart, action.payload],
         };
       case "REMOVE_FROM_CART":
+        // const deleteFromCart = async () => {
+        //   const res = await fetch(`/api/user/cart/${action.payload}`, {
+        //     method: "DELETE",
+        //     headers: {
+        //       authorization:
+        //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJjY2ZiNWYyNi05MWYyLTQ3YjQtYjg2MS04MDg5MzAyYTE5N2YiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.5fqmQPuWztCeSR8GAmJ7-3rbiLSV8CmCRkO3Bh3bmVg",
+        //     },
+        //   });
+        //   const { cart } = await res.json();
+        //   // console.log(await res.json());
+        //   return cart;
+        // };
+
+        // deleteFromCart().then((data) => console.log(data));
+        // return {
+        //   ...state,
+        //   // cart2: data,
+        // };
+        // console.log(state.cart);
         return {
           ...state,
           cart: state.cart.filter((item) => item._id !== action.payload),
@@ -73,7 +98,7 @@ export const ProductsProvider = ({ children }) => {
         return {
           ...state,
           wishlist: state.wishlist.includes(action.payload)
-            ? state.wishlist
+            ? state.wishlist.filter((item) => item._id !== action.payload._id)
             : [...state.wishlist, action.payload],
         };
       case "CATEGORY":
@@ -83,7 +108,24 @@ export const ProductsProvider = ({ children }) => {
             (product) => product.category === action.payload
           ),
         };
-
+      case "PRODUCT_CATEGORY":
+        return {
+          ...state,
+          category: state.category.includes(action.payload)
+            ? state.category.filter((cat) => cat !== action.payload)
+            : [...state.category, action.payload],
+        };
+      case "SORT_BY_PRICE":
+        return {
+          ...state,
+          sort: action.payload,
+        };
+      case "RATING-RANGE":
+        console.log(action.payload);
+        return {
+          ...state,
+          rating: action.payload,
+        };
       default:
         return state;
     }
@@ -94,15 +136,35 @@ export const ProductsProvider = ({ children }) => {
     cart: [],
     wishlist: [],
     categories: [],
+    category: [],
     filteredData: [],
     couponApplied: false,
+    sort: null,
+    rating: 0,
   });
-  const totalAmount = state.cart.reduce(
+  console.log(state?.categories);
+  const totalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price),
     0
   );
+  const ratingData =
+    state.rating === 0
+      ? state.filteredData
+      : state.filteredData.filter((item) => item.rating >= state.rating);
+  const categoryData =
+    state.category.length === 0
+      ? ratingData
+      : ratingData.filter((item) => state.category.includes(item.category));
+  const filteredData = state.sort
+    ? [...categoryData].sort((a, b) =>
+        state.sort === "Low To High" ? a.price - b.price : b.price - a.price
+      )
+    : categoryData;
+
   return (
-    <ProductsContext.Provider value={{ state, dispatch, totalAmount }}>
+    <ProductsContext.Provider
+      value={{ state, dispatch, totalAmount, filteredData }}
+    >
       {children}
     </ProductsContext.Provider>
   );

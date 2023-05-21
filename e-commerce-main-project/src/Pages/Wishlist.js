@@ -7,7 +7,10 @@ export const Wishlist = () => {
   console.log(state.wishlist);
   return (
     <>
-      <h1 className="header-heading">Wishlist</h1>
+      <h1 className="header-heading">
+        Wishlist{" "}
+        {state?.wishlist?.length === 0 ? null : `(${state?.wishlist?.length})`}
+      </h1>
       <section className="products">
         {state?.wishlist?.length === 0 ? (
           <div className="empty">

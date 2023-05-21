@@ -4,7 +4,7 @@ import { ProductCard } from "../Components/ProductCard";
 import { NavLink } from "react-router-dom";
 
 export const Products = () => {
-  const { state, dispatch } = useContext(ProductsContext);
+  const { state, dispatch, filteredData } = useContext(ProductsContext);
   // console.log(state);
 
   return (
@@ -19,27 +19,53 @@ export const Products = () => {
             <h3>Price</h3>
             {["High To Low", "Low To High"].map((sort) => (
               <label>
-                <input type="radio" name="sort" />
+                <input
+                  type="radio"
+                  name="sort"
+                  value={sort}
+                  onChange={(event) =>
+                    dispatch({
+                      type: "SORT_BY_PRICE",
+                      payload: event.target.value,
+                    })
+                  }
+                />
                 {sort}
               </label>
             ))}
 
             <h3>Category</h3>
-            {["Bath & Body", "Skin Care", "Hair Care", "Home Decor"].map(
-              (category) => (
-                <label>
-                  <input type="checkbox" />
-                  {category}
-                </label>
-              )
-            )}
+            {state?.categories?.map((category) => (
+              <label>
+                <input
+                  type="checkbox"
+                  value={category.category}
+                  checked={state?.category?.includes(category.category)}
+                  onChange={(event) => {
+                    dispatch({
+                      type: "PRODUCT_CATEGORY",
+                      payload: event.target.value,
+                    });
+                  }}
+                />
+                {category.category}
+              </label>
+            ))}
 
             <h3>Ratings</h3>
-            <input type="range" className="range-filter" />
+            <input
+              type="range"
+              className="range-filter"
+              min={0}
+              max={5}
+              onChange={(event) =>
+                dispatch({ type: "RATING_RANGE", payload: event.target.value })
+              }
+            />
           </div>
         </section>
         <section className="products">
-          {state?.filteredData?.map((item) => {
+          {filteredData?.map((item) => {
             const prod = state?.cart?.find((prod) => {
               return prod._id === item._id;
             });

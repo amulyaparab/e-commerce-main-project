@@ -9,6 +9,10 @@ import { SingleProduct } from "./Pages/SingleProduct";
 import { Wishlist } from "./Pages/Wishlist";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
+import { Login } from "./Pages/Login";
+import { RequiresAuth } from "./Components/RequiresAuth";
+import { Profile } from "./Pages/Profile";
+import { Checkout } from "./Pages/Checkout";
 
 function App() {
   return (
@@ -18,9 +22,26 @@ function App() {
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/cart"
+          element={
+            <RequiresAuth>
+              <Cart />
+            </RequiresAuth>
+          }
+        />
         <Route path="/api/products/:prodId" element={<SingleProduct />} />
-        <Route path="/wishlist" element={<Wishlist />} />
+        <Route
+          path="/wishlist"
+          element={
+            <RequiresAuth>
+              <Wishlist />
+            </RequiresAuth>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
 
       <Footer />

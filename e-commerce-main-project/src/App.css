@@ -479,10 +479,11 @@ body {
 }
 .cartCard .cartSlide img {
   height: 200px;
-  width: auto;
+  width: 150px;
 }
 .cartCard .cartSlide .product-brand {
   font-size: x-large;
+  line-height: 1.5rem;
 }
 .cartCard .cartSlide .price {
   color: #11611a;
@@ -567,6 +568,55 @@ body {
   .totalCard {
     width: 300px;
     margin: auto;
+    margin-top: 3rem;
     margin-bottom: 3rem;
   }
+}
+
+.login-page {
+  /* border: 2px solid; */
+  position: relative;
+  margin-bottom: 39rem;
+  background-color: black;
+}
+.login {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 1px #d3d3d3;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  inset: 0;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.overlay {
+  background-color: black;
+}
+.login .login-btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  margin-left: 0px;
+}
+.login input {
+  border: #d3d3d3 solid 2px;
+  border-radius: 5px;
+  display: block;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  width: 264px;
+}
+.login label {
+  font-size: 14px;
+}
+.login h1 {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px;
 }

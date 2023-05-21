@@ -7,6 +7,9 @@ export const Header = () => {
         <h1>Ascend.</h1>
       </NavLink>
       <div>
+        <input placeholder="Search" />
+        <i class="fa-solid fa-magnifying-glass"></i>
+
         <NavLink to="/products">
           <i class="fa-solid fa-shop"></i>
         </NavLink>
