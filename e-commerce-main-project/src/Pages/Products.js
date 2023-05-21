@@ -5,8 +5,23 @@ import { NavLink } from "react-router-dom";
 
 export const Products = () => {
   const { state, dispatch, filteredData } = useContext(ProductsContext);
-  // console.log(state);
-
+  // //console.log(state);
+  // const addToCart = async (product) => {
+  //   try {
+  //     console.log("hello");
+  //     const options = {
+  //       method: "POST",
+  //       headers: {
+  //         authorization: localStorage.getItem("encodedTokenTest"),
+  //       },
+  //       body: JSON.stringify({ product }),
+  //     };
+  //     const res = await fetch("/api/user/cart", options);
+  //     console.log(await res.json());
+  //   } catch (err) {
+  //     //console.log(err);
+  //   }
+  // };
   return (
     <>
       <h1 className="header-heading">Products</h1>
@@ -53,15 +68,22 @@ export const Products = () => {
             ))}
 
             <h3>Ratings</h3>
-            <input
-              type="range"
-              className="range-filter"
-              min={0}
-              max={5}
-              onChange={(event) =>
-                dispatch({ type: "RATING_RANGE", payload: event.target.value })
-              }
-            />
+            <div className="range-container">
+              <input
+                type="range"
+                className="range-input"
+                min={4}
+                max={5}
+                step={0.1}
+                onChange={(event) =>
+                  dispatch({
+                    type: "RATING_RANGE",
+                    payload: event.target.value,
+                  })
+                }
+              />
+              <div className="range-value">{state?.rating}</div>
+            </div>
           </div>
         </section>
         <section className="products">
@@ -73,6 +95,23 @@ export const Products = () => {
             const isItemInWishlist = state?.wishlist?.includes(
               state?.wishlist?.find((prod) => prod._id === item._id)
             );
+            const addToCart = async (product) => {
+              try {
+                console.log("hello");
+                const options = {
+                  method: "POST",
+                  headers: {
+                    authorization: localStorage.getItem("encodedTokenTest"),
+                  },
+                  body: JSON.stringify({ product }),
+                };
+                const res = await fetch("/api/user/cart", options);
+                console.log(await res.json());
+                dispatch({ type: "ADD_TO_CART", payload: item });
+              } catch (err) {
+                console.log(err);
+              }
+            };
             return (
               <div className="productCard">
                 <i
@@ -90,9 +129,7 @@ export const Products = () => {
                   <NavLink to="/cart">
                     <button
                       className="add-to-cart"
-                      onClick={() =>
-                        dispatch({ type: "ADD_TO_CART", payload: item })
-                      }
+                      onClick={() => addToCart(item)}
                     >
                       Go To Cart
                     </button>
@@ -100,9 +137,7 @@ export const Products = () => {
                 ) : (
                   <button
                     className="add-to-cart"
-                    onClick={() =>
-                      dispatch({ type: "ADD_TO_CART", payload: item })
-                    }
+                    onClick={() => addToCart(item)}
                   >
                     Add To Cart
                   </button>

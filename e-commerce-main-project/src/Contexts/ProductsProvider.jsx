@@ -11,11 +11,11 @@ export const ProductsProvider = ({ children }) => {
       const options = {
         method: "POST",
         headers: {
-          authorization:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJjY2ZiNWYyNi05MWYyLTQ3YjQtYjg2MS04MDg5MzAyYTE5N2YiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.5fqmQPuWztCeSR8GAmJ7-3rbiLSV8CmCRkO3Bh3bmVg",
+          authorization: localStorage.getItem("encodedTokenTest"),
         },
         body: JSON.stringify({ product }),
       };
+
       const postCart = await fetch("/api/user/cart", options);
       const { cart } = await postCart.json();
       const cartNew = cart.shift();
@@ -24,7 +24,7 @@ export const ProductsProvider = ({ children }) => {
       const wishlistNew = wishlist.shift();
       const postCategories = await fetch("/api/categories");
       const { categories } = await postCategories.json();
-      console.log(categories);
+      //console.log(categories);
       const options3 = (method, headers, data) => ({
         method,
         headers: { headers },
@@ -39,7 +39,7 @@ export const ProductsProvider = ({ children }) => {
         payloadCategory: categories,
       });
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -66,25 +66,25 @@ export const ProductsProvider = ({ children }) => {
             : [...state.cart, action.payload],
         };
       case "REMOVE_FROM_CART":
-        // const deleteFromCart = async () => {
-        //   const res = await fetch(`/api/user/cart/${action.payload}`, {
-        //     method: "DELETE",
-        //     headers: {
-        //       authorization:
-        //         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJjY2ZiNWYyNi05MWYyLTQ3YjQtYjg2MS04MDg5MzAyYTE5N2YiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.5fqmQPuWztCeSR8GAmJ7-3rbiLSV8CmCRkO3Bh3bmVg",
-        //     },
-        //   });
-        //   const { cart } = await res.json();
-        //   // console.log(await res.json());
-        //   return cart;
-        // };
+        const deleteFromCart = async () => {
+          const res = await fetch(`/api/user/cart/${action.payload}`, {
+            method: "DELETE",
+            headers: {
+              authorization: localStorage.getItem("encodedTokenTest"),
+            },
+          });
+          // const { cart } = await res.json();
+          //console.log(await res, "hello");
+          //console.log(action.payload);
+          // return cart;
+        };
 
-        // deleteFromCart().then((data) => console.log(data));
-        // return {
-        //   ...state,
-        //   // cart2: data,
-        // };
-        // console.log(state.cart);
+        // deleteFromCart().then((data) => //console.log(data));
+        return {
+          ...state,
+          // cart2: data,
+        };
+        //console.log(state.cart);
         return {
           ...state,
           cart: state.cart.filter((item) => item._id !== action.payload),
@@ -120,11 +120,21 @@ export const ProductsProvider = ({ children }) => {
           ...state,
           sort: action.payload,
         };
-      case "RATING-RANGE":
-        console.log(action.payload);
+      case "RATING_RANGE":
+        //console.log(action.payload);
         return {
           ...state,
           rating: action.payload,
+        };
+      case "SEARCH_BAR":
+        const search = state.prodData.filter(
+          (item) =>
+            item.name.toLowerCase().includes(action.payload.toLowerCase()) ||
+            item.brand.toLowerCase().includes(action.payload.toLowerCase())
+        );
+        return {
+          ...state,
+          filteredData: search,
         };
       default:
         return state;
@@ -141,8 +151,9 @@ export const ProductsProvider = ({ children }) => {
     couponApplied: false,
     sort: null,
     rating: 0,
+    search: "",
   });
-  console.log(state?.categories);
+  //console.log(state?.categories);
   const totalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price),
     0
@@ -160,7 +171,7 @@ export const ProductsProvider = ({ children }) => {
         state.sort === "Low To High" ? a.price - b.price : b.price - a.price
       )
     : categoryData;
-
+  //console.log(state.search);
   return (
     <ProductsContext.Provider
       value={{ state, dispatch, totalAmount, filteredData }}

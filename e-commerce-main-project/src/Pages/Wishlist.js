@@ -4,7 +4,7 @@ import { ProductCard } from "../Components/ProductCard";
 import wishlistImage from "../Images/wishlist.svg";
 export const Wishlist = () => {
   const { state, dispatch } = useContext(ProductsContext);
-  console.log(state.wishlist);
+  //console.log(state.wishlist);
   return (
     <>
       <h1 className="header-heading">

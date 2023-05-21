@@ -8,7 +8,7 @@ export const SingleProduct = () => {
   const singleProduct = state?.prodData?.find((prod) => prod._id === prodId);
   // const { _id, name, description, price, rating, category, brand, image } =
   //   singleProduct;
-  console.log(prodId);
+  //console.log(prodId);
   const isItemInCart = state?.cart?.includes(singleProduct);
   const isItemInWishlist = state?.wishlist?.includes(
     state?.wishlist?.find((prod) => prod._id === singleProduct._id)

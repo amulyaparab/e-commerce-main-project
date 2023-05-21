@@ -620,3 +620,50 @@ body {
   margin-top: 10px;
   font-size: 24px;
 }
+.checkout-card {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px 1px #d3d3d3;
+  width: 600px;
+  padding: 2rem;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.search-parent {
+  position: relative;
+  display: flex;
+}
+.search {
+  background-color: #2f2e41;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: medium;
+}
+.search::placeholder {
+  color: #ffffff;
+  font-size: medium;
+}
+.magnify {
+  position: absolute;
+  color: #ffffff;
+  right: 10px;
+  top: 10px;
+}
+.nav-icons {
+  display: flex;
+}
+.range-container {
+  position: relative;
+  display: inline-block;
+}
+.range-input {
+  width: 150px;
+}
+.range-value {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

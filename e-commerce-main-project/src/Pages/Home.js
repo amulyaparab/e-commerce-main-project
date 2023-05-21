@@ -7,23 +7,6 @@ import { Categories } from "../Components/Categories";
 import { BestSellers } from "../Components/BestSellers";
 import { PreFooter } from "../Components/PreFooter";
 export const Home = () => {
-  const data = async () => {
-    try {
-      const creds = {
-        email: "adarshbalika@gmail.com",
-        password: "adarshbalika",
-      };
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        body: JSON.stringify(creds),
-      });
-      const { encodedToken } = await res.json();
-      localStorage.setItem("encodedToken", encodedToken);
-      console.log(localStorage.getItem("encodedToken"));
-    } catch (err) {
-      console.log(err);
-    }
-  };
   return (
     <>
       <div className="flex">

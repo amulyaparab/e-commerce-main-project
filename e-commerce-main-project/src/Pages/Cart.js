@@ -7,6 +7,17 @@ import { useNavigate } from "react-router-dom";
 export const Cart = () => {
   const { state, dispatch, totalAmount } = useContext(ProductsContext);
   const navigate = useNavigate();
+  const deleteFromCart = async (id) => {
+    //console.log(id);
+    const res = await fetch(`/api/user/cart/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: localStorage.getItem("encodedTokenTest"),
+      },
+    });
+    console.log(await res.json(), "cart");
+  };
+
   return (
     <>
       <h1 className="header-heading">
@@ -26,9 +37,7 @@ export const Cart = () => {
               <div className="productCard cartCard">
                 <i
                   class="fa-solid fa-xmark wishlist-heart remove"
-                  onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_CART", payload: item._id })
-                  }
+                  onClick={() => deleteFromCart(item._id)}
                 ></i>
                 <ProductCard item={item} />{" "}
               </div>
