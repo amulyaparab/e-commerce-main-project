@@ -1,7 +1,7 @@
-import Bath from "../Images/bath.png";
-import Skin from "../Images/skin.png";
-import HomeDecor from "../Images/homeDecor.png";
-import Hair from "../Images/hair.png";
+import Bath from "../../../Images/bath.png";
+import Skin from "../../../Images/skin.png";
+import HomeDecor from "../../../Images/homeDecor.png";
+import Hair from "../../../Images/hair.png";
 import { useState } from "react";
 
 export const Carousel = () => {

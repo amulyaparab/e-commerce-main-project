@@ -7,6 +7,7 @@ export const ProductsProvider = ({ children }) => {
     try {
       const productRes = await fetch("/api/products");
       const { products } = await productRes.json();
+      console.log(products);
       let product;
       const options = {
         method: "POST",
@@ -17,11 +18,11 @@ export const ProductsProvider = ({ children }) => {
       };
 
       const postCart = await fetch("/api/user/cart", options);
-      const { cart } = await postCart.json();
-      const cartNew = cart.shift();
+      const { cart = [] } = await postCart.json();
+      // const cartNew = cart.shift();
       const postWishlist = await fetch("/api/user/wishlist", options);
       const { wishlist } = await postWishlist.json();
-      const wishlistNew = wishlist.shift();
+      // const wishlistNew = wishlist.shift();
       const postCategories = await fetch("/api/categories");
       const { categories } = await postCategories.json();
       //console.log(categories);
@@ -39,7 +40,7 @@ export const ProductsProvider = ({ children }) => {
         payloadCategory: categories,
       });
     } catch (err) {
-      //console.log(err);
+      console.log(err);
     }
   };
 

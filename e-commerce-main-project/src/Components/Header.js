@@ -5,10 +5,10 @@ import { ProductsContext } from "../Contexts/ProductsProvider";
 export const Header = () => {
   const { dispatch } = useContext(ProductsContext);
   const navigate = useNavigate();
-  const logoutHandler = () => {
-    localStorage.removeItem("encodedTokenTest");
-    navigate("/login");
-  };
+  // const logoutHandler = () => {
+  //   localStorage.removeItem("encodedTokenTest");
+  //   navigate("/login");
+  // };
   return (
     <nav className="navbar">
       <NavLink to="/">
@@ -26,7 +26,6 @@ export const Header = () => {
               }}
             />
             <i class="fa-solid fa-magnifying-glass magnify"></i>
-            <button onClick={logoutHandler}>Logout</button>
           </div>
           <div>
             <NavLink to="/products">

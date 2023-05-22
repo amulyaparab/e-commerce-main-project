@@ -1,17 +1,15 @@
-import { Carousel } from "../Components/Carousel";
+import Nature from "../../Images/nature.png";
+import love from "../../Images/love.png";
 
-import Nature from "../Images/nature.png";
-import love from "../Images/love.png";
-
-import { Categories } from "../Components/Categories";
-import { BestSellers } from "../Components/BestSellers";
-import { PreFooter } from "../Components/PreFooter";
+import { Carousel } from "./Components/Carousel";
+import { Categories } from "./Components/Categories";
+import { BestSellers } from "./Components/BestSellers";
+import { PreFooter } from "./Components/PreFooter";
 export const Home = () => {
   return (
     <>
       <div className="flex">
         <Carousel />
-        {/* <button onClick={() => data()}>Click</button> */}
         <Categories />
         <section className="naturally-made">
           <div className="nature-para">

@@ -1,10 +1,10 @@
-import bathAndBody from "../Images/bath-category1.jpg";
-import oliveCandle from "../Images/oliveCandle.jpg";
-import skinCare from "../Images/3.jpg";
-import a4 from "../Images/4.jpg";
-import hair from "../Images/hairCategory.jpg";
+import bathAndBody from "../../../Images/bath-category1.jpg";
+import oliveCandle from "../../../Images/oliveCandle.jpg";
+import skinCare from "../../../Images/3.jpg";
+import a4 from "../../../Images/4.jpg";
+import hair from "../../../Images/hairCategory.jpg";
 import { useContext } from "react";
-import { ProductsContext } from "../Contexts/ProductsProvider";
+import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { NavLink } from "react-router-dom";
 export const Categories = () => {
   const { dispatch } = useContext(ProductsContext);
@@ -39,7 +39,7 @@ export const Categories = () => {
             <p className="name">Hair Care</p>
           </div>
         </NavLink>
-        {/* <img alt="Hair Care"  src={a4} /> */}
+        {/* <img alt="Hair Care" src={a4} /> */}
         <NavLink to="/products" className="photos">
           <div
             onClick={() =>
