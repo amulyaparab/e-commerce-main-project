@@ -9,7 +9,7 @@ export const Filters = () => {
         <h1 className="filter-heading">Filters</h1>
         <button className="clear">Clear</button>
 
-        <h3>Price</h3>
+        <h3>Sort By Price</h3>
         {["High To Low", "Low To High"].map((sort) => (
           <label key={sort}>
             <input
@@ -44,7 +44,23 @@ export const Filters = () => {
             {category.category}
           </label>
         ))}
-
+        <h3>Price</h3>
+        <div className="range-container">
+          <input
+            type="range"
+            className="range-input"
+            min={100}
+            max={3000}
+            step={100}
+            onChange={(event) =>
+              dispatch({
+                type: "PRICE_RANGE",
+                payload: event.target.value,
+              })
+            }
+          />
+          <div className="range-value">{state?.price}</div>
+        </div>
         <h3>Ratings</h3>
         <div className="range-container">
           <input

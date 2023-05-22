@@ -5,9 +5,12 @@ import { ProductCard } from "./ProductCard";
 import { NavLink } from "react-router-dom";
 
 export const ProductListing = () => {
-  const { state, dispatch, filteredData } = useContext(ProductsContext);
+  const { state, dispatch, filteredData, setNotificationActive } =
+    useContext(ProductsContext);
 
-  const { postToCart, updateCartQuantity } = useContext(APIContext);
+  const { postToCart, updateCartQuantity, postToWishlist } =
+    useContext(APIContext);
+
   return (
     <section className="products">
       {filteredData?.map((item) => {
@@ -21,14 +24,26 @@ export const ProductListing = () => {
 
         const handleAddToCart = async () => {
           try {
+            setNotificationActive(true);
             state?.cart?.includes(item)
               ? await updateCartQuantity(item._id)
               : await postToCart(item);
           } catch (error) {
             console.log(error);
+          } finally {
+            setNotificationActive(false);
           }
         };
-
+        const addToWishlistHandler = async (item) => {
+          try {
+            setNotificationActive(true);
+            await postToWishlist(item);
+          } catch (err) {
+            console.log(err);
+          } finally {
+            setNotificationActive(false);
+          }
+        };
         return (
           <div className="productCard" key={item._id}>
             <i
@@ -36,9 +51,7 @@ export const ProductListing = () => {
               style={{
                 color: isItemInWishlist ? "#BA3C3C" : "#2f2e41",
               }}
-              onClick={() =>
-                dispatch({ type: "ADD_TO_WISHLIST", payload: item })
-              }
+              onClick={() => addToWishlistHandler()}
             ></i>
             <ProductCard item={item} />
 

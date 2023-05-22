@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { APIContext } from "./APIProvider";
 
 export const ProductsContext = createContext();
@@ -15,6 +21,8 @@ export const ProductsProvider = ({ children }) => {
     deleteFromWishlist,
     updateCartQuantity,
     fetchCart,
+    fetchCategories,
+    fetchWishlist,
   } = useContext(APIContext);
 
   const fetchData = async () => {
@@ -25,12 +33,15 @@ export const ProductsProvider = ({ children }) => {
       const cart = cartUnfiltered.cart.filter(
         (item) => item._id !== undefined || item._id !== null
       );
-      const wishlist = await postToWishlist(product);
+      const wishlist = await fetchWishlist();
+      const wishlistNew = wishlist.shift();
+      const categories = await fetchCategories();
       dispatch({
         type: "INITIAL_DATA",
         payloadProd: products,
         payloadCart: cart,
         payloadWishlist: wishlist,
+        payloadCategory: categories,
       });
     } catch (err) {
       console.log(err);
@@ -73,7 +84,8 @@ export const ProductsProvider = ({ children }) => {
       //     ...state,
       //     cart: state.cart.filter((item) => item._id !== action.payload),
       //   };
-
+      case "FETCH_WISHLIST":
+        return { ...state, wishlist: action.payload };
       case "APPLY_COUPON":
         return {
           ...state,
@@ -87,6 +99,7 @@ export const ProductsProvider = ({ children }) => {
             : [...state.wishlist, action.payload],
         };
       case "CATEGORY":
+        console.log(action.payload);
         return {
           ...state,
           filteredData: state.prodData.filter(
@@ -105,6 +118,8 @@ export const ProductsProvider = ({ children }) => {
           ...state,
           sort: action.payload,
         };
+      case "PRICE_RANGE":
+        return { ...state, price: action.payload };
       case "RATING_RANGE":
         return {
           ...state,
@@ -135,17 +150,22 @@ export const ProductsProvider = ({ children }) => {
     couponApplied: false,
     sort: null,
     rating: 0,
+    price: 0,
     search: "",
   });
-
+  const [notificationActive, setNotificationActive] = useState(false);
   const totalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price),
     0
   );
+  const priceData =
+    state.price === 0
+      ? state.filteredData
+      : state.filteredData.filter((item) => item.price >= state.price);
   const ratingData =
     state.rating === 0
-      ? state.filteredData
-      : state.filteredData.filter((item) => item.rating >= state.rating);
+      ? priceData
+      : priceData.filter((item) => item.rating >= state.rating);
   const categoryData =
     state.category.length === 0
       ? ratingData
@@ -158,7 +178,14 @@ export const ProductsProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ state, dispatch, totalAmount, filteredData }}
+      value={{
+        state,
+        dispatch,
+        totalAmount,
+        filteredData,
+        notificationActive,
+        setNotificationActive,
+      }}
     >
       {children}
     </ProductsContext.Provider>

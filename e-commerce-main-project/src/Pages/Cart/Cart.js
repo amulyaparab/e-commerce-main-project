@@ -4,9 +4,11 @@ import { ProductCard } from "../Products/Components/ProductCard";
 import cartImage from "../../Images/cart.svg";
 import { APIContext } from "../../Contexts/APIProvider";
 import { TotalCard } from "./Components/TotalCard";
+import { NotificationModal } from "../../Components/NotificationModal";
 
 export const Cart = () => {
-  const { state, dispatch } = useContext(ProductsContext);
+  const { state, dispatch, setNotificationActive } =
+    useContext(ProductsContext);
 
   const { fetchCart, deleteFromCart } = useContext(APIContext);
 
@@ -21,6 +23,7 @@ export const Cart = () => {
 
   const removefromCartHandler = async (id) => {
     try {
+      setNotificationActive(true);
       await deleteFromCart(id);
       const unfilteredCart = await fetchCart();
       const cart = unfilteredCart.cart.filter(
@@ -32,6 +35,8 @@ export const Cart = () => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setNotificationActive(false);
     }
   };
   useEffect(() => {
@@ -47,6 +52,12 @@ export const Cart = () => {
       <h1 className="header-heading">
         Cart {state?.cart?.length === 0 ? null : `(${state?.cart?.length})`}
       </h1>
+      <NotificationModal
+        text={"Item Removed"}
+        icon={
+          <i class="fa-solid fa-circle-xmark" style={{ color: "#BA3C3C" }}></i>
+        }
+      />
 
       {state?.cart?.length === 0 ? (
         <div className="empty">

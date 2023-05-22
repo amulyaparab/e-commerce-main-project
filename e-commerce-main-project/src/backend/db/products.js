@@ -503,7 +503,7 @@ export const products = [
     name: "Soothing Soap Combo",
     description:
       "Soothe and hydrate your skin with these soaps. Helps to calm irritation and promote a healthy complexion.",
-    price: 5000,
+    price: 3000,
     rating: 4.6,
     category: "Bath & Body",
     brand: "Fresh Mess",
@@ -635,7 +635,7 @@ export const products = [
     name: "Ultimate Hair Care Set",
     description:
       "A complete hair care set that includes shampoo, conditioner, hair mask, and hair oil. Provides nourishment, hydration, and shine.",
-    price: 3999,
+    price: 3000,
     rating: 4.8,
     category: "Hair Care",
     brand: "Luxury Locks",
@@ -908,7 +908,7 @@ export const products = [
     name: "Wooden Candle Holders",
     description:
       "Set of handcrafted wooden candle holders for a natural and cozy ambiance.",
-    price: 90,
+    price: 100,
     rating: 4.4,
     category: "Home Decor",
     brand: "Rustic Retreat",

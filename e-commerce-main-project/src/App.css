@@ -352,7 +352,7 @@ body {
   bottom: 135px;
   cursor: pointer;
   padding: 0.5rem;
-  z-index: 3;
+  z-index: 1;
 }
 
 .add-to-cart {
@@ -666,4 +666,49 @@ body {
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
+}
+.active {
+  overflow-y: hidden;
+}
+.modal-container {
+  position: relative;
+}
+.modal-container .modal-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  inset: 0;
+  z-index: 2;
+}
+.modal-overlay {
+  /* background-color: rgba(0, 0, 0, 0.3); */
+}
+.modal-content {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 1px #d3d3d3;
+  border-radius: 10px;
+  width: 200px;
+  position: fixed;
+  right: 20px;
+  bottom: 70px;
+  z-index: 10;
+  padding: 0.7rem 1rem;
+  font-weight: bold;
+  font-size: larger;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content .icon {
+  font-size: 30px;
+  margin-right: 1rem;
+}
+.sign-up-page {
+  height: 50vh;
+  bottom: 4.5rem;
 }

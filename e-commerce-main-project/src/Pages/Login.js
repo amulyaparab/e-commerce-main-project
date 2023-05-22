@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   // const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
@@ -24,7 +24,7 @@ export const Login = () => {
       {/* {localStorage.getItem("encodedTokenTest") && <Navigate to="/wishlist" />} */}
       <div className="overlay">
         <div className="login">
-          <h1>Please Login</h1>
+          <h1>Sign In</h1>
           <div className="login-input-div">
             <label>
               Email address:
@@ -41,8 +41,9 @@ export const Login = () => {
             </label>
           </div>
           <button className="add-to-cart login-btn" onClick={loginHandler}>
-            Login with Test Credentials
+            Login as a Guest
           </button>
+          <NavLink to="/signUp">Create a new account</NavLink>
         </div>
       </div>
     </div>

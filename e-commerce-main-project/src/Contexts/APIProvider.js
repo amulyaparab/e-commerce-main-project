@@ -94,7 +94,14 @@ export const APIProvider = ({ children }) => {
     const { cart } = await updateCartQuantityRes.json();
     return cart;
   };
-
+  const fetchWishlist = async () => {
+    const options = {
+      headers: { authorization: localStorage.getItem("encodedTokenTest") },
+    };
+    const wishlistRes = await fetch("/api/user/wishlist", options);
+    const { wishlist } = await wishlistRes.json();
+    return wishlist;
+  };
   const postToWishlist = async (product) => {
     const options = {
       method: "POST",
@@ -118,7 +125,11 @@ export const APIProvider = ({ children }) => {
     const { wishlist } = await deleteFromWishlistRes.json();
     return wishlist;
   };
-
+  const fetchCategories = async () => {
+    const categoriesRes = await fetch("/api/categories");
+    const { categories } = await categoriesRes.json();
+    return categories;
+  };
   useEffect(() => {}, []);
 
   return (
@@ -134,6 +145,8 @@ export const APIProvider = ({ children }) => {
         deleteFromWishlist,
         updateCartQuantity,
         fetchCart,
+        fetchCategories,
+        fetchWishlist,
       }}
     >
       {children}

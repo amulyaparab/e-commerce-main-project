@@ -37,6 +37,9 @@ export const Header = () => {
             <NavLink to="/cart">
               <i className="fa-solid fa-bag-shopping"></i>
             </NavLink>
+            <NavLink to="/profile">
+              <i class="fa-solid fa-user"></i>
+            </NavLink>
           </div>
         </div>
       </div>

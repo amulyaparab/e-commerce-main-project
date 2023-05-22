@@ -13,6 +13,7 @@ import { Login } from "./Pages/Login";
 import { RequiresAuth } from "./Components/RequiresAuth";
 import { Profile } from "./Pages/Profile";
 import { Checkout } from "./Pages/Checkout";
+import { SignUp } from "./Pages/SignUp";
 
 function App() {
   return (
@@ -40,8 +41,16 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/signUp" element={<SignUp />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/profile"
+          element={
+            <RequiresAuth>
+              <Profile />
+            </RequiresAuth>
+          }
+        />
       </Routes>
 
       <Footer />
