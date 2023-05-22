@@ -45,6 +45,15 @@ export const APIProvider = ({ children }) => {
     const { product } = await singleProdRes.json();
     return product;
   };
+  const fetchCart = async () => {
+    const options = {
+      headers: { authorization: localStorage.getItem("encodedTokenTest") },
+    };
+
+    const cartRes = await fetch("/api/user/cart", options);
+    const cart = await cartRes.json();
+    return cart;
+  };
 
   const postToCart = async (product) => {
     const options = {
@@ -124,6 +133,7 @@ export const APIProvider = ({ children }) => {
         postToWishlist,
         deleteFromWishlist,
         updateCartQuantity,
+        fetchCart,
       }}
     >
       {children}

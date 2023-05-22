@@ -25,17 +25,17 @@ export const Header = () => {
                 navigate("/products");
               }}
             />
-            <i class="fa-solid fa-magnifying-glass magnify"></i>
+            <i className="fa-solid fa-magnifying-glass magnify"></i>
           </div>
           <div>
             <NavLink to="/products">
-              <i class="fa-solid fa-shop"></i>
+              <i className="fa-solid fa-shop"></i>
             </NavLink>
             <NavLink to="/wishlist">
-              <i class="fa-solid fa-heart"></i>
+              <i className="fa-solid fa-heart"></i>
             </NavLink>
             <NavLink to="/cart">
-              <i class="fa-solid fa-bag-shopping"></i>
+              <i className="fa-solid fa-bag-shopping"></i>
             </NavLink>
           </div>
         </div>

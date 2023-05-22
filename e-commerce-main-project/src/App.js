@@ -3,10 +3,10 @@ import "./App.css";
 
 import Mockman from "mockman-js";
 import { Home } from "./Pages/Home/Home";
-import { Products } from "./Pages/Products";
-import { Cart } from "./Pages/Cart";
+import { Products } from "./Pages/Products/Products";
+import { Cart } from "./Pages/Cart/Cart";
 import { SingleProduct } from "./Pages/SingleProduct";
-import { Wishlist } from "./Pages/Wishlist";
+import { Wishlist } from "./Pages/Wishlist/Wishlist";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
 import { Login } from "./Pages/Login";

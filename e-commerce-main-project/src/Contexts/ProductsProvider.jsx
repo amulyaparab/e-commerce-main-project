@@ -1,43 +1,36 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { APIContext } from "./APIProvider";
 
 export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
+  const {
+    fetchLoginData,
+    fetchSignUpData,
+    fetchProducts,
+    fetchSingleProduct,
+    postToCart,
+    deleteFromCart,
+    postToWishlist,
+    deleteFromWishlist,
+    updateCartQuantity,
+    fetchCart,
+  } = useContext(APIContext);
+
   const fetchData = async () => {
     try {
-      const productRes = await fetch("/api/products");
-      const { products } = await productRes.json();
-      console.log(products);
       let product;
-      const options = {
-        method: "POST",
-        headers: {
-          authorization: localStorage.getItem("encodedTokenTest"),
-        },
-        body: JSON.stringify({ product }),
-      };
-
-      const postCart = await fetch("/api/user/cart", options);
-      const { cart = [] } = await postCart.json();
-      // const cartNew = cart.shift();
-      const postWishlist = await fetch("/api/user/wishlist", options);
-      const { wishlist } = await postWishlist.json();
-      // const wishlistNew = wishlist.shift();
-      const postCategories = await fetch("/api/categories");
-      const { categories } = await postCategories.json();
-      //console.log(categories);
-      const options3 = (method, headers, data) => ({
-        method,
-        headers: { headers },
-        body: JSON.stringify({ data }),
-      });
-
+      const products = await fetchProducts();
+      const cartUnfiltered = await fetchCart();
+      const cart = cartUnfiltered.cart.filter(
+        (item) => item._id !== undefined || item._id !== null
+      );
+      const wishlist = await postToWishlist(product);
       dispatch({
         type: "INITIAL_DATA",
         payloadProd: products,
         payloadCart: cart,
         payloadWishlist: wishlist,
-        payloadCategory: categories,
       });
     } catch (err) {
       console.log(err);
@@ -59,37 +52,28 @@ export const ProductsProvider = ({ children }) => {
           categories: action.payloadCategory,
           filteredData: action.payloadProd,
         };
-      case "ADD_TO_CART":
+      case "FETCH_CART":
         return {
           ...state,
-          cart: state.cart.includes(action.payload)
-            ? state.cart
-            : [...state.cart, action.payload],
+          cart: action.payload,
         };
-      case "REMOVE_FROM_CART":
-        const deleteFromCart = async () => {
-          const res = await fetch(`/api/user/cart/${action.payload}`, {
-            method: "DELETE",
-            headers: {
-              authorization: localStorage.getItem("encodedTokenTest"),
-            },
-          });
-          // const { cart } = await res.json();
-          //console.log(await res, "hello");
-          //console.log(action.payload);
-          // return cart;
-        };
+      // case "ADD_TO_CART":
 
-        // deleteFromCart().then((data) => //console.log(data));
-        return {
-          ...state,
-          // cart2: data,
-        };
-        //console.log(state.cart);
-        return {
-          ...state,
-          cart: state.cart.filter((item) => item._id !== action.payload),
-        };
+      //   return {
+      //     ...state,
+      //     cart: state.cart.includes(action.payload)
+      //       ? state.cart
+      //       : [...state.cart, action.payload],
+      //   };
+
+      // case "REMOVE_FROM_CART":
+      //   deleteFromCart(action.payload);
+      //   fetchCart().then((data) => console.log(data));
+      //   return {
+      //     ...state,
+      //     cart: state.cart.filter((item) => item._id !== action.payload),
+      //   };
+
       case "APPLY_COUPON":
         return {
           ...state,
@@ -122,7 +106,6 @@ export const ProductsProvider = ({ children }) => {
           sort: action.payload,
         };
       case "RATING_RANGE":
-        //console.log(action.payload);
         return {
           ...state,
           rating: action.payload,
@@ -154,7 +137,7 @@ export const ProductsProvider = ({ children }) => {
     rating: 0,
     search: "",
   });
-  //console.log(state?.categories);
+
   const totalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price),
     0
@@ -172,7 +155,7 @@ export const ProductsProvider = ({ children }) => {
         state.sort === "Low To High" ? a.price - b.price : b.price - a.price
       )
     : categoryData;
-  //console.log(state.search);
+
   return (
     <ProductsContext.Provider
       value={{ state, dispatch, totalAmount, filteredData }}

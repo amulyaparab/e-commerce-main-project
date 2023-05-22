@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 export const ProductCard = ({ item }) => {
   return (
-    <div key={item?._id} className="cartSlide">
+    <div className="cartSlide">
       <NavLink to={`/api/products/${item?._id}`}>
         <img src={item?.image} width="250px" height="350px" alt={item?.name} />
       </NavLink>
