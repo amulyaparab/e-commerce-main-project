@@ -11,27 +11,37 @@ export const APIProvider = ({ children }) => {
       method: "POST",
       body: JSON.stringify(creds),
     };
-    const loginRes = fetch("/api/auth/login", options);
-    const { foundUser, encodedToken } = await loginRes.json();
-    localStorage.setItem("encodedTokenTest", encodedToken);
-    return foundUser;
+    const loginRes = await fetch("/api/auth/login", options);
+    const loginResponse = await loginRes.json();
+    localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
+    return loginResponse;
   };
 
-  const fetchSignUpData = async (email, password, firstName, lastName) => {
+  const fetchSignUpData = async ({ email, password, firstName, lastName }) => {
     const creds = {
       email,
       password,
       firstName,
       lastName,
     };
+    console.log(
+      "email",
+      email,
+      "pas",
+      password,
+      "f",
+      firstName,
+      "lk",
+      lastName
+    );
     const options = {
       method: "POST",
       body: JSON.stringify(creds),
     };
     const signUpRes = await fetch("/api/auth/signup", options);
-    const { foundUser, encodedToken } = await signUpRes.json();
+    const { encodedToken } = await signUpRes.json();
     localStorage.setItem("userEncodedToken", encodedToken);
-    return foundUser;
+    return encodedToken;
   };
 
   const fetchProducts = async () => {

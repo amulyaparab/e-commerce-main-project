@@ -253,6 +253,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; */
 }
 .footer-desc {
   color: #999999;
@@ -449,7 +453,7 @@ body {
 }
 .empty-img {
   width: 75%;
-  height: 39.3vh;
+  height: 41vh;
 }
 .empty p {
   color: #a1a7b2;
@@ -576,13 +580,19 @@ body {
 .login-page {
   /* border: 2px solid; */
   position: relative;
-  margin-bottom: 39rem;
-  background-color: black;
+  /* margin-bottom: 45rem; */
+  /* background-color: black; */
+  height: 73vh;
+}
+.sign-up-page {
+  margin-top: 4rem;
+  height: 67vh;
 }
 .login {
   background-color: #ffffff;
   box-shadow: 0 0 10px 1px #d3d3d3;
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -708,7 +718,13 @@ body {
   font-size: 30px;
   margin-right: 1rem;
 }
-.sign-up-page {
+.sign-up {
   height: 50vh;
   bottom: 4.5rem;
+}
+.empty-wishlist img {
+  height: 45vh;
+}
+.profile {
+  height: 350px;
 }

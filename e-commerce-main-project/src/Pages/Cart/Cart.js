@@ -14,7 +14,10 @@ export const Cart = () => {
 
   const fetchUpdatedCart = async () => {
     const unfilteredCart = await fetchCart();
-    const cart = unfilteredCart.cart.filter((item) => item._id);
+    const cart = unfilteredCart.cart.filter(
+      (item) => item._id !== undefined || item._id !== null
+    );
+    console.log(cart);
     dispatch({
       type: "FETCH_CART",
       payload: cart,
@@ -41,10 +44,6 @@ export const Cart = () => {
   };
   useEffect(() => {
     fetchUpdatedCart();
-    console.log(
-      deleteFromCart("best-seller-1").then((data) => console.log(data)),
-      "nskf"
-    );
   }, []);
   console.log(state.cart);
   return (

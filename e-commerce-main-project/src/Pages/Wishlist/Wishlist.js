@@ -11,7 +11,9 @@ export const Wishlist = () => {
     <>
       <h1 className="header-heading">
         Wishlist{" "}
-        {state?.wishlist?.length ? null : `(${state?.wishlist?.length})`}
+        {(state?.wishlist?.length ?? null) === 0
+          ? null
+          : `(${state?.wishlist?.length})`}
       </h1>
       <section className="products">
         {state?.wishlist?.length === 0 ? (

@@ -33,6 +33,7 @@ export const ProductsProvider = ({ children }) => {
       const cart = cartUnfiltered.cart.filter(
         (item) => item._id !== undefined || item._id !== null
       );
+      // const cart = cartUnfiltered.shift();
       const wishlist = await fetchWishlist();
       const wishlistNew = wishlist.shift();
       const categories = await fetchCategories();
@@ -131,6 +132,7 @@ export const ProductsProvider = ({ children }) => {
             item.name.toLowerCase().includes(action.payload.toLowerCase()) ||
             item.brand.toLowerCase().includes(action.payload.toLowerCase())
         );
+
         return {
           ...state,
           filteredData: search,

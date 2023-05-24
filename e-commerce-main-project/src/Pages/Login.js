@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
-import { NavLink, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { APIContext } from "../Contexts/APIProvider";
 
 export const Login = () => {
   // const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const { testUser, setTestUser, fetchLoginData } = useContext(AuthContext);
+  const { testUser, setTestUser } = useContext(AuthContext);
+  const { fetchLoginData } = useContext(APIContext);
   const location = useLocation();
   const navigate = useNavigate();
   const loginHandler = async () => {
@@ -12,11 +14,13 @@ export const Login = () => {
       email: "adarshbalika@gmail.com",
       password: "adarshbalika",
     });
-    // fetchLoginData();
-    // //console.log(location);
-    // localStorage.getItem("encodedTokenTest") &&
+    const { foundUser, encodedToken } = await fetchLoginData();
+    console.log(
+      localStorage.getItem("encodedTokenTest") === encodedToken,
+      location
+    );
+    // localStorage.getItem("encodedTokenTest") === encodedToken &&
     navigate(location?.state?.from?.pathname);
-    // : navigate("/login");
   };
 
   return (
@@ -37,7 +41,10 @@ export const Login = () => {
           <div className="login-input-div">
             <label>
               Password:{" "}
-              <input placeholder={testUser ? testUser?.password : "*******"} />
+              <input
+                type="password"
+                placeholder={testUser ? testUser?.password : "*******"}
+              />
             </label>
           </div>
           <button className="add-to-cart login-btn" onClick={loginHandler}>
