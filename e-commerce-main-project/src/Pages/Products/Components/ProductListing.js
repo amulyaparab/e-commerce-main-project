@@ -62,7 +62,12 @@ export const ProductListing = () => {
               setNotificationActive(false);
             }
           };
+          {
+            /* useEffect(() => {
 
+            fetchCart()
+          }, []); */
+          }
           return (
             <div className="productCard" key={item._id}>
               <i

@@ -14,10 +14,12 @@ import { RequiresAuth } from "./Components/RequiresAuth";
 import { Profile } from "./Pages/Profile";
 import { Checkout } from "./Pages/Checkout";
 import { SignUp } from "./Pages/SignUp";
+import { Loading } from "./Pages/Home/Components/Loading";
 
 function App() {
   return (
     <div className="App">
+      <Loading />
       <Header />
       <Routes>
         <Route path="/mockman" element={<Mockman />} />

@@ -6,6 +6,7 @@ import hair from "../../../Images/hairCategory.jpg";
 import { useContext } from "react";
 import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { NavLink } from "react-router-dom";
+
 export const Categories = () => {
   const { state, dispatch } = useContext(ProductsContext);
 

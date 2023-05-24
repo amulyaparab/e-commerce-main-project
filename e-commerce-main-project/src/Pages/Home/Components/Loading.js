@@ -1,10 +1,16 @@
 import { useContext } from "react";
-import { ProductsContext } from "../../Contexts/ProductsProvider";
+import { ProductsContext } from "../../../Contexts/ProductsProvider";
 export const Loading = () => {
-  const { isLoading, setIsLoading } = useContext(ProductsContext);
+  const { isLoading } = useContext(ProductsContext);
   return (
     <>
-      <div className="loader"></div>
+      {isLoading && (
+        <div className="loader-overlay">
+          <div className="loader-layout">
+            <div className="loader"></div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

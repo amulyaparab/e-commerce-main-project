@@ -24,9 +24,10 @@ export const ProductsProvider = ({ children }) => {
     fetchCategories,
     fetchWishlist,
   } = useContext(APIContext);
-
+  const [isLoading, setIsLoading] = useState(true);
   const fetchData = async () => {
     try {
+      setIsLoading(true);
       let product;
       const products = await fetchProducts();
       const cartUnfiltered = await fetchCart();
@@ -46,6 +47,8 @@ export const ProductsProvider = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -187,6 +190,8 @@ export const ProductsProvider = ({ children }) => {
         filteredData,
         notificationActive,
         setNotificationActive,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
