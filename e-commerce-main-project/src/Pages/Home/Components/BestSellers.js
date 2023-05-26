@@ -2,11 +2,15 @@ import bestHome from "../../../Images/best-home.jpg";
 import bestBath from "../../../Images/best-bath.jpg";
 import bestHair from "../../../Images/best-hair.jpg";
 import bestSkin from "../../../Images/best-skin.jpg";
+import logo from "../../../Images/logo.png";
 import { NavLink } from "react-router-dom";
 export const BestSellers = () => {
   return (
     <section className="categories">
-      <h1 className="heading">Best Sellers</h1>
+      <div className="heading">
+        <h1>Best Sellers</h1>
+        {/* <img src={logo} /> */}
+      </div>
       <div className="category-photos">
         <NavLink to="/api/products/best-seller-2" className="photos">
           <img src={bestBath} alt="bestseller bath bomb " />

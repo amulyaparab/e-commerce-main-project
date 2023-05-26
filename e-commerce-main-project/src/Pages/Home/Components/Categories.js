@@ -14,7 +14,10 @@ export const Categories = () => {
 
   return (
     <section className="categories">
-      <h1 className="heading">Categories</h1>
+      <div className="heading">
+        <h1>Categories</h1>
+      </div>
+
       <div className="category-photos">
         {state?.categories?.map((category, index) => {
           return (
@@ -22,10 +25,11 @@ export const Categories = () => {
               <div
                 value={category.category}
                 onClick={(event) => {
-                  console.log(event.target);
+                  console.log(event.target.alt);
                   dispatch({
-                    type: "CATEGORY",
-                    payload: event.target.value,
+                    type: "PRODUCT_CATEGORY",
+                    payload: event.target.alt,
+                    categoryType: "Main-Categories",
                   });
                 }}
               >

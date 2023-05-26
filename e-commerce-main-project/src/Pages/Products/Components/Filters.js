@@ -38,6 +38,7 @@ export const Filters = () => {
                 dispatch({
                   type: "PRODUCT_CATEGORY",
                   payload: event.target.value,
+                  categoryType: "Product-Categories",
                 });
               }}
             />
@@ -59,7 +60,9 @@ export const Filters = () => {
               })
             }
           />
-          <div className="range-value">{state?.price}</div>
+          <div className="range-value-1">100</div>
+          <div className="range-value-2">1500</div>
+          <div className="range-value-3">3000</div>
         </div>
         <h3>Ratings</h3>
         <div className="range-container">
@@ -69,6 +72,7 @@ export const Filters = () => {
             min={4}
             max={5}
             step={0.1}
+            defaultValue={4}
             onChange={(event) =>
               dispatch({
                 type: "RATING_RANGE",
@@ -76,7 +80,9 @@ export const Filters = () => {
               })
             }
           />
-          <div className="range-value">{state?.rating}</div>
+          <div className="range-value-1">4.0</div>
+          <div className="range-value-2">4.5</div>
+          <div className="range-value-3">5.0</div>
         </div>
       </div>
     </section>

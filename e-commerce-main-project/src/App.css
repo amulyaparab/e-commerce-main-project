@@ -144,12 +144,19 @@ body {
   text-align: center;
 }
 .heading {
-  border: 2px solid #2f2e41;
-  border-radius: 10px;
-  font-size: 2.5rem;
-  width: fit-content;
+  /* border: 2px solid #2f2e41; */
+  /* border-radius: 10px; */
+  font-size: 2rem;
+  /* width: fit-content;
   margin: auto;
-  padding: 0.5rem 1rem;
+  padding: 1rem 3rem;
+  position: relative;
+  background-image: url(../src/Images/logo.png);
+  background-size: 250px;
+  background-position: 20px;
+  background-repeat: no-repeat; */
+}
+.heading h1 {
 }
 
 .category-photos {
@@ -343,18 +350,19 @@ body {
   grid-template-columns: 300px auto;
 }
 .filters {
-  background-color: #ffffff;
   height: max-content;
-  border: 2px solid #2f2e41;
+  /* background-color: #b9d4ad75; */
+  background-color: #ffffff;
   border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   line-height: 1.8rem;
-  padding: 4rem 1.5rem;
+  padding: 3rem 1.5rem;
   margin: 1rem;
-  position: relative;
+  position: sticky;
+  top: 50px;
 }
 .filters input {
   cursor: pointer;
@@ -367,10 +375,51 @@ body {
 .range-filter {
   margin-bottom: 2rem;
 }
+input[type="range"] {
+  accent-color: #486a4c;
+}
+input[type="radio"] {
+  accent-color: #486a4c;
+}
+input[type="checkbox"] {
+  accent-color: #486a4c;
+}
+.range-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.range-input {
+  width: 210px;
+  margin-bottom: 0.7rem;
+}
+.range-value-1,
+.range-value-2,
+.range-value-3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #486a4c;
+  position: absolute;
+}
+.range-value-1 {
+  bottom: -21px;
+  left: 0;
+}
+.range-value-2 {
+  bottom: -20px;
+  left: 48.5%;
+  transform: translateX(-50%);
+}
+
+.range-value-3 {
+  bottom: -20px;
+  right: 0;
+}
+
 .clear {
   border: none;
   border-radius: 5px;
-  background-color: #2f2e41;
+  background-color: #486a4c;
   color: #ffffff;
   padding: 0.3rem 0.8rem;
   cursor: pointer;
@@ -703,19 +752,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.range-container {
-  position: relative;
-  display: inline-block;
-}
-.range-input {
-  width: 150px;
-}
-.range-value {
-  position: absolute;
-  bottom: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
 .active {
   overflow-y: hidden;
 }
