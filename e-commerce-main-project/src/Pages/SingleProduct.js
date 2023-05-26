@@ -5,17 +5,17 @@ import { ProductsContext } from "../Contexts/ProductsProvider";
 export const SingleProduct = () => {
   const { prodId } = useParams();
   const { state, dispatch } = useContext(ProductsContext);
+
   const singleProduct = state?.prodData?.find((prod) => prod._id === prodId);
-  // const { _id, name, description, price, rating, category, brand, image } =
-  //   singleProduct;
-  //console.log(prodId);
+
   const isItemInCart = state?.cart?.includes(singleProduct);
+
   const isItemInWishlist = state?.wishlist?.includes(
     state?.wishlist?.find((prod) => prod._id === singleProduct._id)
   );
+
   return (
     <div className="background">
-      {/* <h1 className="header-heading">About</h1> */}
       <div className="single-product">
         <img
           className="image"
@@ -23,6 +23,9 @@ export const SingleProduct = () => {
           alt={singleProduct?.name}
         />
         <div className="single-product-info">
+          <p className="single-prod-rating">
+            {singleProduct?.rating} <i class="fa-solid fa-star"></i>
+          </p>
           <h1>{singleProduct?.name}</h1>
 
           <i
@@ -33,6 +36,7 @@ export const SingleProduct = () => {
             }
           ></i>
           <small className="brand">{singleProduct?.brand}</small>
+
           <h1 className="single-price">₹{singleProduct?.price}</h1>
           <p className="desc">{singleProduct?.description}</p>
 

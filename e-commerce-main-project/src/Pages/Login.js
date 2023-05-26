@@ -50,7 +50,9 @@ export const Login = () => {
           <button className="add-to-cart login-btn" onClick={loginHandler}>
             Login as a Guest
           </button>
-          <NavLink to="/signUp">Create a new account</NavLink>
+          <NavLink className="form-navigator" to="/signUp">
+            Create a new account <span>&#8250;</span>
+          </NavLink>
         </div>
       </div>
     </div>

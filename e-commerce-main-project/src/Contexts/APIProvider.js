@@ -59,7 +59,6 @@ export const APIProvider = ({ children }) => {
     const options = {
       headers: { authorization: localStorage.getItem("encodedTokenTest") },
     };
-
     const cartRes = await fetch("/api/user/cart", options);
     const cart = await cartRes.json();
     return cart;

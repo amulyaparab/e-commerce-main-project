@@ -71,11 +71,12 @@ export const ProductsProvider = ({ children }) => {
     search: "",
     fullName: "",
     email: "",
+    clear: false,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   // ["Bath & Body", "Skin Care", "Hair Care", "Home Decor"]
   const [notificationActive, setNotificationActive] = useState(false);
-
+  const [showFilters, setShowFilters] = useState(true);
   const totalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price),
     0
@@ -115,6 +116,8 @@ export const ProductsProvider = ({ children }) => {
         setNotificationActive,
         isLoading,
         setIsLoading,
+        showFilters,
+        setShowFilters,
       }}
     >
       {children}

@@ -27,7 +27,7 @@ export const ProductListing = () => {
   }, []);
   return (
     <section className="products">
-      {filteredData.length === 0 ? (
+      {filteredData?.length === 0 ? (
         <h3>Products not Found.</h3>
       ) : (
         filteredData?.map((item) => {

@@ -80,11 +80,12 @@ export const reducer = (state, action) => {
           item.name.toLowerCase().includes(action.payload.toLowerCase()) ||
           item.brand.toLowerCase().includes(action.payload.toLowerCase())
       );
-
       return {
         ...state,
         filteredData: search,
       };
+    case "CLEAR":
+      return { ...state, clear: true };
     default:
       return state;
   }

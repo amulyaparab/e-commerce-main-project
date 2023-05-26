@@ -7,8 +7,14 @@ export const SignUp = () => {
   const [newUser, setNewUser] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
     firstName: "",
     lastName: "",
+  });
+
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    confirmPassword: false,
   });
 
   const signUpHandler = async () => {
@@ -67,11 +73,64 @@ export const SignUp = () => {
                   }
                 />
               </label>
+              {newUser.password.length > 0 && showPassword.password ? (
+                <i
+                  onClick={() =>
+                    setShowPassword({ ...showPassword, password: false })
+                  }
+                  class="fa-solid fa-eye"
+                ></i>
+              ) : (
+                <i
+                  onClick={() =>
+                    setShowPassword({ ...showPassword, password: true })
+                  }
+                  class="fa-solid fa-eye-slash"
+                ></i>
+              )}
+            </div>
+            <div className="login-input-div">
+              <label type="password">
+                Confirm Password
+                <input
+                  placeholder="********"
+                  onChange={(event) =>
+                    setNewUser({
+                      ...newUser,
+                      confirmPassword: event.target.value,
+                    })
+                  }
+                />
+                {newUser.confirmPassword.length > 0 &&
+                showPassword.confirmPassword ? (
+                  <i
+                    onClick={() =>
+                      setShowPassword({
+                        ...showPassword,
+                        confirmPassword: false,
+                      })
+                    }
+                    class="fa-solid fa-eye"
+                  ></i>
+                ) : (
+                  <i
+                    onClick={() =>
+                      setShowPassword({
+                        ...showPassword,
+                        confirmPassword: true,
+                      })
+                    }
+                    class="fa-solid fa-eye-slash"
+                  ></i>
+                )}
+              </label>
             </div>
             <button className="add-to-cart login-btn" onClick={signUpHandler}>
               Create New Account
             </button>
-            <NavLink to="/login">Already have an account</NavLink>
+            <NavLink to="/login" className="form-navigator">
+              Already have an account <span>&#8250;</span>
+            </NavLink>
           </div>
         </div>
       </div>

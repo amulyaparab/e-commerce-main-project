@@ -1,11 +1,27 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { APIContext } from "../../../Contexts/APIProvider";
 
 export const ProductCard = ({ item }) => {
+  const { fetchSingleProduct } = useContext(APIContext);
+  const navigate = useNavigate();
+  const singleProductHandler = async (itemId) => {
+    const item = await fetchSingleProduct(itemId);
+    navigate(`/api/products/${item._id}`);
+  };
   return (
     <div className="cartSlide">
-      <NavLink to={`/api/products/${item?._id}`}>
-        <img src={item?.image} width="250px" height="350px" alt={item?.name} />
-      </NavLink>
+      <div className="product-image">
+        <img
+          src={item?.image}
+          alt={item?.name}
+          onClick={() => singleProductHandler(item?._id)}
+        />
+        <div className="product-rating">
+          <i class="fa-solid fa-star"></i>
+          <p>{item?.rating}</p>
+        </div>
+      </div>
       <div className="description">
         <h4 className="product-brand">{item?.brand}</h4>
         <p className="product-name">{item?.name}</p>
