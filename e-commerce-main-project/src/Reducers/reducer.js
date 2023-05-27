@@ -14,6 +14,17 @@ export const reducer = (state, action) => {
         ...state,
         cart: action.payload,
       };
+
+    case "CLEAR_FILTERS":
+      return {
+        ...state,
+        category: [],
+        filteredData: state.prodData,
+        sort: null,
+        rating: 0,
+        price: "0",
+        search: "",
+      };
     // case "ADD_TO_CART":
 
     //   return {

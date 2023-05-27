@@ -995,3 +995,16 @@ input[type="checkbox"] {
     display: none;
   }
 }
+.addreses-map {
+  position: relative;
+}
+.address-edit {
+  position: absolute;
+  right: 0;
+  font-size: small;
+}
+.address-delete {
+  position: absolute;
+  right: 30px;
+  font-size: small;
+}

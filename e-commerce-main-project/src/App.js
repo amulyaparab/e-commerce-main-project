@@ -25,14 +25,7 @@ function App() {
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
-        <Route
-          path="/cart"
-          element={
-            <RequiresAuth>
-              <Cart />
-            </RequiresAuth>
-          }
-        />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/api/products/:prodId" element={<SingleProduct />} />
         <Route
           path="/wishlist"

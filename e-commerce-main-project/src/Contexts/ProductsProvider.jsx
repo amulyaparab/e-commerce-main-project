@@ -53,10 +53,6 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const initialState = {
     prodData: [],
     cart: [],
@@ -100,11 +96,36 @@ export const ProductsProvider = ({ children }) => {
       : ratingData.filter((item) => state.category.includes(item.category));
 
   const filteredData = state.sort
-    ? [...categoryData].sort((a, b) =>
-        state.sort === "Low To High" ? a.price - b.price : b.price - a.price
+    ? [...categoryData].sort(
+        (a, b) =>
+          (state.sort === "Low To High" && a.price - b.price) ||
+          (state.sort === "High To Low" && b.price - a.price) ||
+          state.sort === "Reset"
       )
     : categoryData;
 
+  // console.log({ state });
+
+  // const fetchUpdatedCart = async () => {
+  //   const unfilteredCart = await fetchCart();
+  //   const cart = unfilteredCart.cart.filter(
+  //     (item) => item._id !== undefined || item._id !== null
+  //   );
+  //   console.log(cart);
+  //   dispatch({
+  //     type: "FETCH_CART",
+  //     payload: cart,
+  //   });
+  // };
+  // useEffect(() => {
+  //   fetchUpdatedCart();
+  // }, []);
+
+  useEffect(() => {
+    fetchData();
+
+    // fetchCart();
+  }, []);
   return (
     <ProductsContext.Provider
       value={{

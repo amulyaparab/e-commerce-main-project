@@ -26,7 +26,7 @@ export const Checkout = () => {
   };
   const AddressesMapped = () => {
     return arrOfAddresses.map(({ name, address, mobileNumber }) => (
-      <div>
+      <div className="addreses-map">
         <label>
           <input
             type="radio"
@@ -39,6 +39,8 @@ export const Checkout = () => {
           />
           {name}
         </label>
+        <i class="fa-solid fa-pen address-edit"></i>
+        <i class="fa-solid fa-trash address-delete"></i>
         <p>{address}</p>
         <p>Mobile Number: {mobileNumber}</p>
         <hr />

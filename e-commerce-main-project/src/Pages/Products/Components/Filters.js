@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../../Contexts/ProductsProvider";
+import { APIContext } from "../../../Contexts/APIProvider";
 
 export const Filters = () => {
   const { state, dispatch, setShowFilters, showFilters } =
@@ -18,15 +19,20 @@ export const Filters = () => {
   //     window.removeEventListener("resize", handleWindowResize);
   //   };
   // }, []);
+  const { fetchProducts } = useContext(APIContext);
+
+  const handleClearFilters = () => {
+    dispatch({ type: "CLEAR_FILTERS" });
+  };
   return (
     <>
       <section>
         <div className={`${showFilters ? "filters" : "block-filters"}`}>
           <h1 className="filter-heading">Filters</h1>
-          <button className="clear" onClick={() => dispatch({ type: "CLEAR" })}>
+          <button className="clear" onClick={handleClearFilters}>
             Clear
           </button>
-
+          {console.log(state.sort)}
           <h3>Sort By Price</h3>
           {["High To Low", "Low To High"].map((sort) => (
             <label key={sort}>
@@ -34,6 +40,7 @@ export const Filters = () => {
                 type="radio"
                 name="sort"
                 value={sort}
+                checked={state.sort === sort}
                 onChange={(event) =>
                   dispatch({
                     type: "SORT_BY_PRICE",
@@ -70,6 +77,7 @@ export const Filters = () => {
               className="range-input"
               min={100}
               max={3000}
+              value={state.price}
               step={100}
               onChange={(event) =>
                 dispatch({
@@ -89,6 +97,7 @@ export const Filters = () => {
               className="range-input"
               min={4}
               max={5}
+              value={state.rating}
               step={0.1}
               defaultValue={4}
               onChange={(event) =>
