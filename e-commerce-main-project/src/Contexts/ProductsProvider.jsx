@@ -78,8 +78,6 @@ export const ProductsProvider = ({ children }) => {
     0
   );
 
-  console.log(state.categories);
-
   const priceData =
     state.price === 0
       ? state.filteredData

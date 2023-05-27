@@ -676,16 +676,44 @@ input[type="checkbox"] {
   width: 150px;
 }
 .cartCard .cartSlide .product-brand {
-  font-size: x-large;
-  line-height: 1.5rem;
+  font-size: 20px;
+  line-height: 1.2rem;
 }
 .cartCard .cartSlide .price {
   color: #11611a;
-  font-size: 18px;
+  font-size: 16px;
 }
 .cartCard .cartSlide .product-name {
   font-size: 15px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+.cartCard .cartSlide h4 {
+  font-size: 10px;
+}
+.cart-quantity {
+  position: absolute;
+  bottom: 2.6rem;
+  left: 165px;
+  font-size: 14px;
+  background-color: #e1ebdc;
+  padding: 0.4rem 0.5rem;
+  border-radius: 5px;
+}
+.cart-qty-buttons {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 165px;
+  font-size: 14px;
+}
+.cart-qty-buttons button {
+  margin-right: 0.5rem;
+  width: 23px;
+  height: 23px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0e5216d3;
+  color: #ffffff;
+  cursor: pointer;
 }
 .gridCart {
   display: grid;
@@ -1007,4 +1035,50 @@ input[type="checkbox"] {
   position: absolute;
   right: 30px;
   font-size: small;
+}
+.move {
+  width: 90%;
+  margin-left: 12px;
+}
+.options-modal-content {
+  background-color: #ffffff;
+  box-shadow: 0 0 5px 1px #d3d3d3;
+  position: absolute;
+  top: 38%;
+  left: 38%;
+  padding: 2rem;
+  margin: auto;
+  border-radius: 5px;
+  text-align: center;
+}
+.options-modal-content h2 {
+  /* margin-bottom: 5px; */
+}
+/* .options-modal-content small {
+  margin-bottom: 1rem;
+} */
+.options-modal-content button {
+  background-color: #89a17e;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.option-1-btn {
+  margin-right: 20px;
+  margin-left: 5px;
+}
+.options-overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 800px) {
+  .options-modal-content {
+    top: 40%;
+    left: 10%;
+    right: 10%;
+  }
 }

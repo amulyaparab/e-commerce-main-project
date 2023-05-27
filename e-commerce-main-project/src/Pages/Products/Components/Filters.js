@@ -32,7 +32,7 @@ export const Filters = () => {
           <button className="clear" onClick={handleClearFilters}>
             Clear
           </button>
-          {console.log(state.sort)}
+
           <h3>Sort By Price</h3>
           {["High To Low", "Low To High"].map((sort) => (
             <label key={sort}>

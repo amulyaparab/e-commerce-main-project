@@ -8,36 +8,17 @@ export const ProductListing = () => {
   const { state, dispatch, filteredData, setNotificationActive } =
     useContext(ProductsContext);
 
-  const { postToCart, updateCartQuantity, postToWishlist, fetchCart } =
-    useContext(APIContext);
-  console.log(state.cart);
-  const fetchUpdatedCart = async () => {
-    const unfilteredCart = await fetchCart();
-    const cart = unfilteredCart.cart.filter(
-      (item) => item._id !== undefined || item._id !== null
-    );
-    console.log(cart);
-    dispatch({
-      type: "FETCH_CART",
-      payload: cart,
-    });
-  };
-  // useEffect(() => {
-  //   fetchUpdatedCart();
-  // }, []);
-  useEffect(() => {
-    (async () => {
-      const unfilteredCart = await fetchCart();
-      const cart = unfilteredCart.cart.filter(
-        (item) => item._id !== undefined || item._id !== null
-      );
-      console.log(cart);
-      dispatch({
-        type: "FETCH_CART",
-        payload: cart,
-      });
-    })();
-  }, []);
+  const {
+    postToCart,
+    updateCartQuantity,
+    postToWishlist,
+    fetchCart,
+    fetchWishlist,
+    deleteFromWishlist,
+  } = useContext(APIContext);
+  // console.log(state?.wishlist, "wishlist");
+
+  useEffect(() => {}, []);
 
   return (
     <section className="products">
@@ -48,14 +29,14 @@ export const ProductListing = () => {
           const prod = state?.cart?.find((prod) => {
             return prod._id === item._id;
           });
+          const wishlistProd = state?.wishlist?.find((prod) => {
+            return prod._id === item._id;
+          });
           const isItemInCart = state?.cart?.includes(prod);
-          const isItemInWishlist = state?.wishlist?.includes(
-            state?.wishlist?.find((prod) => prod._id === item._id)
-          );
+          const isItemInWishlist = state?.wishlist?.includes(wishlistProd);
 
           const handleAddToCart = async () => {
             try {
-              console.log(state.cart);
               setNotificationActive(true);
               state?.cart?.includes(item)
                 ? await updateCartQuantity(item._id)
@@ -65,7 +46,7 @@ export const ProductListing = () => {
               const cart = unfilteredCart.cart.filter(
                 (item) => item._id !== undefined || item._id !== null
               );
-              console.log(cart);
+
               dispatch({
                 type: "FETCH_CART",
                 payload: cart,
@@ -78,13 +59,21 @@ export const ProductListing = () => {
           };
           const addToWishlistHandler = async () => {
             try {
-              const itemInWishlist = state.wishlist.find(
-                (prod) => item._id === prod._id
-              );
               setNotificationActive(true);
-              state.wishlist.includes(itemInWishlist)
-                ? state.wishlist.filter((prod) => prod._id !== item._id)
+              isItemInWishlist
+                ? await deleteFromWishlist(item._id)
                 : await postToWishlist(item);
+              {
+                /* state.wishlist.filter((prod) => prod._id !== item._id) */
+              }
+              const wishlist = await fetchWishlist();
+              {
+                /* console.log(wishlist, "wishlist"); */
+              }
+              dispatch({
+                type: "FETCH_WISHLIST",
+                payload: wishlist,
+              });
             } catch (err) {
               console.log(err);
             } finally {
@@ -92,11 +81,9 @@ export const ProductListing = () => {
             }
           };
           {
-            /* useEffect(() => {
-
-            fetchCart()
-          }, []); */
+            /* console.log(isItemInWishlist); */
           }
+
           return (
             <div className="productCard" key={item._id}>
               <i

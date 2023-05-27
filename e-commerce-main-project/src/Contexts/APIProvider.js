@@ -85,7 +85,7 @@ export const APIProvider = ({ children }) => {
     return cart;
   };
 
-  const updateCartQuantity = async (prodId) => {
+  const increaseCartQuantity = async (prodId) => {
     const bodyIncrementCount = {
       action: {
         type: "increment",
@@ -96,13 +96,32 @@ export const APIProvider = ({ children }) => {
       headers: { authorization: localStorage.getItem("encodedTokenTest") },
       body: JSON.stringify(bodyIncrementCount),
     };
-    const updateCartQuantityRes = await fetch(
+    const increaseCartQuantityRes = await fetch(
       `/api/user/cart/${prodId}`,
       options
     );
-    const { cart } = await updateCartQuantityRes.json();
+    const { cart } = await increaseCartQuantityRes.json();
     return cart;
   };
+  const decreaseCartQuantity = async (prodId) => {
+    const bodyDecrementCount = {
+      action: {
+        type: "decrement",
+      },
+    };
+    const options = {
+      method: "POST",
+      headers: { authorization: localStorage.getItem("encodedTokenTest") },
+      body: JSON.stringify(bodyDecrementCount),
+    };
+    const decreaseCartQuantityRes = await fetch(
+      `/api/user/cart/${prodId}`,
+      options
+    );
+    const { cart } = await decreaseCartQuantityRes.json();
+    return cart;
+  };
+
   const fetchWishlist = async () => {
     const options = {
       headers: { authorization: localStorage.getItem("encodedTokenTest") },
@@ -152,7 +171,8 @@ export const APIProvider = ({ children }) => {
         deleteFromCart,
         postToWishlist,
         deleteFromWishlist,
-        updateCartQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
         fetchCart,
         fetchCategories,
         fetchWishlist,
