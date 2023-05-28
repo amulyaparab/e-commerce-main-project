@@ -9,6 +9,7 @@ export const Checkout = () => {
     address: "",
     mobileNumber: "",
   });
+
   const [arrOfAddresses, setArrOfAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const addAddressHandler = () => {
@@ -24,29 +25,45 @@ export const Checkout = () => {
     conditions && setShowAddressForm(false);
     setAddress({ name: "", address: "", mobileNumber: "" });
   };
-  const AddressesMapped = () => {
-    return arrOfAddresses.map(({ name, address, mobileNumber }) => (
-      <div className="addreses-map">
-        <label>
-          <input
-            type="radio"
-            name="address"
-            // checked={(event) => event.target.value === "on"}
-            onChange={(event) => {
-              // console.log(event.target.value === "on");
-              setSelectedAddress(event.target.checked);
-            }}
-          />
-          {name}
-        </label>
-        <i class="fa-solid fa-pen address-edit"></i>
-        <i class="fa-solid fa-trash address-delete"></i>
-        <p>{address}</p>
-        <p>Mobile Number: {mobileNumber}</p>
-        <hr />
-      </div>
-    ));
+  const deleteAddress = (item) => {
+    setArrOfAddresses(
+      arrOfAddresses.filter((prod) => prod.address !== item.address)
+    );
   };
+  const editAddress = (item) => {};
+  const AddressesMapped = () => {
+    return arrOfAddresses.map((item) => {
+      const { name, address, mobileNumber } = item;
+      return (
+        <div className="addreses-map">
+          <label>
+            <input
+              type="radio"
+              name="address"
+              // checked={(event) => event.target.value === "on"}
+              onChange={(event) => {
+                // console.log(event.target.value === "on");
+                setSelectedAddress(event.target.checked);
+              }}
+            />
+            {name}
+          </label>
+          <i
+            class="fa-solid fa-pen address-edit"
+            onClick={() => editAddress(item)}
+          ></i>
+          <i
+            class="fa-solid fa-trash address-delete"
+            onClick={() => deleteAddress(item)}
+          ></i>
+          <p>{address}</p>
+          <p>Mobile Number: {mobileNumber}</p>
+          <hr />
+        </div>
+      );
+    });
+  };
+  console.log(arrOfAddresses);
   const ExampleAddress = () => {
     return (
       <div>

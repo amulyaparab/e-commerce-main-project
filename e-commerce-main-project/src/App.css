@@ -1052,11 +1052,8 @@ input[type="checkbox"] {
   text-align: center;
 }
 .options-modal-content h2 {
-  /* margin-bottom: 5px; */
+  line-height: 1.6rem;
 }
-/* .options-modal-content small {
-  margin-bottom: 1rem;
-} */
 .options-modal-content button {
   background-color: #89a17e;
   color: #ffffff;
@@ -1080,5 +1077,18 @@ input[type="checkbox"] {
     top: 40%;
     left: 10%;
     right: 10%;
+  }
+}
+.coupon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.coupon-btn {
+  width: 200px;
+}
+@media screen and (max-width: 800px) {
+  .coupon-btn {
+    width: 70%;
   }
 }

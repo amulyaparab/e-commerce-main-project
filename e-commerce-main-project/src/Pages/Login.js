@@ -22,7 +22,7 @@ export const Login = () => {
     // localStorage.getItem("encodedTokenTest") === encodedToken &&
     navigate(location?.state?.from?.pathname);
   };
-
+  console.log(location);
   return (
     <div className="login-page">
       {/* {localStorage.getItem("encodedTokenTest") && <Navigate to="/wishlist" />} */}
@@ -50,7 +50,16 @@ export const Login = () => {
           <button className="add-to-cart login-btn" onClick={loginHandler}>
             Login as a Guest
           </button>
-          <NavLink className="form-navigator" to="/signUp">
+          <NavLink
+            className="form-navigator"
+            to="/signUp"
+            state={{
+              from: {
+                ...location,
+                pathname: location?.state?.from?.pathname,
+              },
+            }}
+          >
             Create a new account <span>&#8250;</span>
           </NavLink>
         </div>

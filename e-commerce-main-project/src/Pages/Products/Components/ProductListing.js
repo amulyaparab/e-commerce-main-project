@@ -10,7 +10,7 @@ export const ProductListing = () => {
 
   const {
     postToCart,
-    updateCartQuantity,
+    increaseCartQuantity,
     postToWishlist,
     fetchCart,
     fetchWishlist,
@@ -38,8 +38,8 @@ export const ProductListing = () => {
           const handleAddToCart = async () => {
             try {
               setNotificationActive(true);
-              state?.cart?.includes(item)
-                ? await updateCartQuantity(item._id)
+              isItemInCart
+                ? await increaseCartQuantity(item._id)
                 : await postToCart(item);
 
               const unfilteredCart = await fetchCart();

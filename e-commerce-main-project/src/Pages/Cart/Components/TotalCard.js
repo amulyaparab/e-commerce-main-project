@@ -3,7 +3,8 @@ import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { useNavigate } from "react-router-dom";
 
 export const TotalCard = () => {
-  const { state, dispatch, totalAmount } = useContext(ProductsContext);
+  const { state, dispatch, totalAmount, showCouponModal, setShowCouponModal } =
+    useContext(ProductsContext);
   const navigate = useNavigate();
   return (
     <section>
@@ -14,7 +15,7 @@ export const TotalCard = () => {
 
           <button
             className="apply"
-            onClick={() => dispatch({ type: "APPLY_COUPON" })}
+            onClick={() => setShowCouponModal(!showCouponModal)}
           >
             {state?.couponApplied ? "Applied!" : "Apply"}
           </button>

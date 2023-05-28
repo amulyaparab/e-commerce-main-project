@@ -15,8 +15,13 @@ import { Profile } from "./Pages/Profile";
 import { Checkout } from "./Pages/Checkout";
 import { SignUp } from "./Pages/SignUp";
 import { Loading } from "./Pages/Home/Components/Loading";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    localStorage.removeItem("userEncodedToken");
+  }, []);
+
   return (
     <div className="App">
       <Loading />

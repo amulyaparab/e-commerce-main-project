@@ -74,7 +74,7 @@ export const ProductsProvider = ({ children }) => {
   const [notificationActive, setNotificationActive] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
   const totalAmount = state?.cart?.reduce(
-    (total, curr) => (total += curr?.price),
+    (total, curr) => (total += curr?.price * curr?.qty),
     0
   );
 
@@ -118,7 +118,7 @@ export const ProductsProvider = ({ children }) => {
   // useEffect(() => {
   //   fetchUpdatedCart();
   // }, []);
-
+  const [showCouponModal, setShowCouponModal] = useState(false);
   useEffect(() => {
     fetchData();
 
@@ -137,6 +137,8 @@ export const ProductsProvider = ({ children }) => {
         setIsLoading,
         showFilters,
         setShowFilters,
+        showCouponModal,
+        setShowCouponModal,
       }}
     >
       {children}

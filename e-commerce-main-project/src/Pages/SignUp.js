@@ -1,30 +1,47 @@
 import { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { APIContext } from "../Contexts/APIProvider";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 export const SignUp = () => {
+  const { newUser = {}, setNewUser = () => {} } = useContext(AuthContext);
+
   const { fetchSignUpData } = useContext(APIContext);
-  const [newUser, setNewUser] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-  });
+  // const [newUser, setNewUser] = useState({
+  //   email: "",
+  //   password: "",
+  //   confirmPassword: "",
+  //   firstName: "",
+  //   lastName: "",
+  //   signedIn: false,
+  // });
 
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
-
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
   const signUpHandler = async () => {
-    console.log(newUser);
-    newUser?.email?.length !== 0 &&
+    if (
+      newUser?.email?.length !== 0 &&
       newUser?.password?.length !== 0 &&
+      newUser?.confirmPassword?.length !== 0 &&
       newUser?.firstName?.length !== 0 &&
       newUser?.lastName?.length !== 0 &&
-      (await fetchSignUpData({ ...newUser }));
+      newUser?.confirmPassword === newUser.password
+    ) {
+      const authToken = await fetchSignUpData({ ...newUser });
+      if (authToken) {
+        setNewUser({ ...newUser, signedIn: true });
+        navigate(location?.state?.from?.pathname);
+      }
+    }
   };
+
+  const token = localStorage.getItem("userEncodedToken");
+
   return (
     <>
       <div className="login-page sign-up-page">
@@ -64,16 +81,17 @@ export const SignUp = () => {
               </label>
             </div>
             <div className="login-input-div">
-              <label type="password">
+              <label>
                 Password
                 <input
+                  type={`${showPassword.password ? "text" : "password"}`}
                   placeholder="********"
                   onChange={(event) =>
                     setNewUser({ ...newUser, password: event.target.value })
                   }
                 />
               </label>
-              {newUser.password.length > 0 && showPassword.password ? (
+              {newUser.password?.length > 0 && showPassword.password ? (
                 <i
                   onClick={() =>
                     setShowPassword({ ...showPassword, password: false })
@@ -93,6 +111,7 @@ export const SignUp = () => {
               <label type="password">
                 Confirm Password
                 <input
+                  type={`${showPassword.confirmPassword ? "text" : "password"}`}
                   placeholder="********"
                   onChange={(event) =>
                     setNewUser({
@@ -101,7 +120,7 @@ export const SignUp = () => {
                     })
                   }
                 />
-                {newUser.confirmPassword.length > 0 &&
+                {newUser.confirmPassword?.length > 0 &&
                 showPassword.confirmPassword ? (
                   <i
                     onClick={() =>
@@ -128,7 +147,16 @@ export const SignUp = () => {
             <button className="add-to-cart login-btn" onClick={signUpHandler}>
               Create New Account
             </button>
-            <NavLink to="/login" className="form-navigator">
+            <NavLink
+              to="/login"
+              className="form-navigator"
+              // state={{
+              //   from: {
+              //     ...location,
+              //     pathname: location?.state?.from?.pathname,
+              //   },
+              // }}
+            >
               Already have an account <span>&#8250;</span>
             </NavLink>
           </div>
