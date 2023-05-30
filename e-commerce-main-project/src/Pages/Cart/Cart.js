@@ -7,7 +7,7 @@ import { TotalCard } from "./Components/TotalCard";
 import { NotificationModal } from "../../Components/NotificationModal";
 import { OptionsModal } from "../../Components/OptionsModal";
 import { CouponModal } from "../../Components/CouponModal";
-
+import { toast } from "react-toastify";
 export const Cart = () => {
   const {
     state,
@@ -25,6 +25,8 @@ export const Cart = () => {
     decreaseCartQuantity,
     postToWishlist,
     fetchWishlist,
+    notificationContent,
+    setNotificationContent,
   } = useContext(APIContext);
   // console.log(state.cart);
   const fetchUpdatedCart = async () => {
@@ -41,9 +43,12 @@ export const Cart = () => {
 
   const removefromCartHandler = async (item) => {
     try {
-      console.log(item, "abcabscgabsgvdbgsav");
       setModal(false);
       setNotificationActive(true);
+      toast.error("Removed From Cart", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+
       await deleteFromCart(item._id);
       const unfilteredCart = await fetchCart();
       const cart = unfilteredCart.cart.filter(
@@ -91,8 +96,11 @@ export const Cart = () => {
   };
   const moveToWishlistHandler = async (item) => {
     try {
-      console.log(item);
+      setNotificationActive(true);
       setModal(false);
+      toast.info("Moved To Wishlist", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       deleteFromCart(item._id);
       const isItemInWishlist = state.wishlist.includes(
         state.wishlist.find((prod) => prod._id === item._id)
@@ -116,6 +124,8 @@ export const Cart = () => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setNotificationActive(false);
     }
   };
   useEffect(() => {
@@ -127,10 +137,8 @@ export const Cart = () => {
         Cart {state?.cart?.length === 0 ? null : `(${state?.cart?.length})`}
       </h1>
       <NotificationModal
-        text={"Item Removed"}
-        icon={
-          <i class="fa-solid fa-circle-xmark" style={{ color: "#BA3C3C" }}></i>
-        }
+        text={notificationContent?.content}
+        icon={notificationContent?.icon}
       />
 
       {state?.cart?.length === 0 ? (
@@ -147,13 +155,37 @@ export const Cart = () => {
                 <div className="modal-overlay options-overlay">
                   <div className="options-modal-content coupon-content">
                     <i
-                      onClick={() => setShowCouponModal(!showCouponModal)}
+                      onClick={() => {
+                        setShowCouponModal(!showCouponModal);
+                      }}
                       class="fa-solid fa-xmark wishlist-heart remove"
                     ></i>
                     <h2>Apply Coupon</h2>
 
-                    <button className="coupon-btn">New User 10% Off</button>
-                    <button className="coupon-btn">Summer Sale 20% Off</button>
+                    <button
+                      className="coupon-btn"
+                      onClick={() => {
+                        dispatch({ type: "10%_OFF" });
+                        setShowCouponModal(false);
+                        toast.success("Coupon Applied!", {
+                          position: toast.POSITION.BOTTOM_RIGHT,
+                        });
+                      }}
+                    >
+                      New User 10% Off
+                    </button>
+                    <button
+                      className="coupon-btn"
+                      onClick={() => {
+                        dispatch({ type: "50%_OFF" });
+                        setShowCouponModal(false);
+                        toast.success("Coupon Applied!", {
+                          position: toast.POSITION.BOTTOM_RIGHT,
+                        });
+                      }}
+                    >
+                      Summer Sale 50% Off
+                    </button>
                   </div>
                 </div>
               </div>

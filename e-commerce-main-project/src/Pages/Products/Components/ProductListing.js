@@ -3,6 +3,7 @@ import { APIContext } from "../../../Contexts/APIProvider";
 import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { ProductCard } from "./ProductCard";
 import { NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const ProductListing = () => {
   const { state, dispatch, filteredData, setNotificationActive } =
@@ -37,6 +38,9 @@ export const ProductListing = () => {
 
           const handleAddToCart = async () => {
             try {
+              toast.success("Added To Cart", {
+                position: toast.POSITION.BOTTOM_RIGHT,
+              });
               setNotificationActive(true);
               isItemInCart
                 ? await increaseCartQuantity(item._id)
@@ -60,16 +64,20 @@ export const ProductListing = () => {
           const addToWishlistHandler = async () => {
             try {
               setNotificationActive(true);
-              isItemInWishlist
-                ? await deleteFromWishlist(item._id)
-                : await postToWishlist(item);
-              {
-                /* state.wishlist.filter((prod) => prod._id !== item._id) */
+              if (isItemInWishlist) {
+                await deleteFromWishlist(item._id);
+                toast.error("Removed From Wishlist", {
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                });
+              } else {
+                await postToWishlist(item);
+                toast.success("Added To Wishlist", {
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                });
               }
+
               const wishlist = await fetchWishlist();
-              {
-                /* console.log(wishlist, "wishlist"); */
-              }
+
               dispatch({
                 type: "FETCH_WISHLIST",
                 payload: wishlist,
@@ -80,9 +88,6 @@ export const ProductListing = () => {
               setNotificationActive(false);
             }
           };
-          {
-            /* console.log(isItemInWishlist); */
-          }
 
           return (
             <div className="productCard" key={item._id}>

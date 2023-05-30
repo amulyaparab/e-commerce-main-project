@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { APIContext } from "../Contexts/APIProvider";
 import { AuthContext } from "../Contexts/AuthProvider";
-
+import { toast } from "react-toastify";
 export const SignUp = () => {
   const { newUser = {}, setNewUser = () => {} } = useContext(AuthContext);
 
@@ -34,6 +34,9 @@ export const SignUp = () => {
     ) {
       const authToken = await fetchSignUpData({ ...newUser });
       if (authToken) {
+        toast.success("Signed In.", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
         setNewUser({ ...newUser, signedIn: true });
         navigate(location?.state?.from?.pathname);
       }

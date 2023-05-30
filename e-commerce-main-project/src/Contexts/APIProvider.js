@@ -34,12 +34,14 @@ export const APIProvider = ({ children }) => {
       "lk",
       lastName
     );
+
     const options = {
       method: "POST",
       body: JSON.stringify(creds),
     };
     const signUpRes = await fetch("/api/auth/signup", options);
     const { encodedToken } = await signUpRes.json();
+    // console.log(encodedToken);
     localStorage.setItem("userEncodedToken", encodedToken);
     return encodedToken;
   };

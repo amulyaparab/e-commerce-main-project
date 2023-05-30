@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { ProductCard } from "../../Products/Components/ProductCard";
 import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { APIContext } from "../../../Contexts/APIProvider";
-
+import { toast } from "react-toastify";
 export const WishlistListing = () => {
-  const { state, dispatch } = useContext(ProductsContext);
+  const { state, dispatch, filteredData, setNotificationActive } =
+    useContext(ProductsContext);
   const {
     deleteFromWishlist,
     fetchWishlist,
@@ -22,6 +23,10 @@ export const WishlistListing = () => {
   //  } = useContext(APIContext);
   const removefromWishlistHandler = async (itemId) => {
     try {
+      toast.error("Removed From Wishlist", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      setNotificationActive(true);
       await deleteFromWishlist(itemId);
       const wishlist = await fetchWishlist();
 
@@ -31,10 +36,16 @@ export const WishlistListing = () => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setNotificationActive(false);
     }
   };
   const moveToCartHandler = async (item) => {
     try {
+      toast.info("Moved To Cart", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+      setNotificationActive(true);
       const prod = state?.cart?.find((prod) => {
         return prod._id === item._id;
       });
@@ -58,6 +69,8 @@ export const WishlistListing = () => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      setNotificationActive(false);
     }
   };
   return (

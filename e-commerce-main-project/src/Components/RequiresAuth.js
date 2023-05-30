@@ -28,17 +28,17 @@ export const RequiresAuth = ({ children }) => {
   const { testUser, newUser } = useContext(AuthContext);
   const location = useLocation();
   console.log(newUser);
+  const isEncodedTokenPresent =
+    localStorage.getItem("encodedTokenTest") ||
+    localStorage.getItem("userEncodedToken");
   const renderingComponent = () => {
-    if (testUser) {
+    if (testUser && isEncodedTokenPresent) {
       return children;
-    } else if (newUser.signedIn) {
+    } else if (newUser.signedIn && isEncodedTokenPresent) {
       return children;
     } else if (testUser === null) {
       console.log("here", location);
       return <Navigate to="/login" state={{ from: location }} />;
-    } else if (!newUser.signedIn) {
-      // console.log("here", location);
-      return <Navigate to="/signUp" />;
     }
   };
   return (

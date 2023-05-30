@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { ProductsContext } from "../Contexts/ProductsProvider";
 import { APIContext } from "../Contexts/APIProvider";
 import { NotificationModal } from "../Components/NotificationModal";
-
+import { toast } from "react-toastify";
 export const SingleProduct = () => {
   const { prodId } = useParams();
   const { state, dispatch, setNotificationActive } =
@@ -31,6 +31,9 @@ export const SingleProduct = () => {
   const handleAddToCart = async (item) => {
     try {
       setNotificationActive(true);
+      toast.success("Added To Cart", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
       isItemInCart
         ? await increaseCartQuantity(item._id)
         : await postToCart(item);
@@ -53,9 +56,18 @@ export const SingleProduct = () => {
   const addToWishlistHandler = async (item) => {
     try {
       setNotificationActive(true);
-      isItemInWishlist
-        ? await deleteFromWishlist(item._id)
-        : await postToWishlist(item);
+
+      if (isItemInWishlist) {
+        await deleteFromWishlist(item._id);
+        toast.error("Removed From Wishlist", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      } else {
+        await postToWishlist(item);
+        toast.success("Added To Wishlist", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
 
       const wishlist = await fetchWishlist();
 

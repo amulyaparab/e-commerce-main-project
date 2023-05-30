@@ -2,14 +2,18 @@ import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { APIContext } from "../Contexts/APIProvider";
-
+import { toast } from "react-toastify";
 export const Login = () => {
   // const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { testUser, setTestUser } = useContext(AuthContext);
   const { fetchLoginData } = useContext(APIContext);
   const location = useLocation();
   const navigate = useNavigate();
+
   const loginHandler = async () => {
+    toast.success("Logged In", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
     setTestUser({
       email: "adarshbalika@gmail.com",
       password: "adarshbalika",
@@ -19,7 +23,7 @@ export const Login = () => {
       localStorage.getItem("encodedTokenTest") === encodedToken,
       location
     );
-    // localStorage.getItem("encodedTokenTest") === encodedToken &&
+
     navigate(location?.state?.from?.pathname);
   };
   console.log(location);

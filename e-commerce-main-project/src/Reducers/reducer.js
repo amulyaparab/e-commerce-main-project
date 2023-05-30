@@ -97,6 +97,12 @@ export const reducer = (state, action) => {
       };
     case "CLEAR":
       return { ...state, clear: true };
+    case "10%_OFF":
+      return { ...state, totalDiscount: 10, couponApplied: true };
+    case "50%_OFF":
+      return { ...state, totalDiscount: 50, couponApplied: true };
+    case "NO_COUPON":
+      return { ...state, totalDiscount: 1, couponApplied: false };
     default:
       return state;
   }

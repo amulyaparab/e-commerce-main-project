@@ -8,6 +8,20 @@ export const AuthProvider = ({ children }) => {
   const [newUser, setNewUser] = useState({
     signedIn: false,
   });
+  // const fetchLoginData = async () => {
+  //   const creds = {
+  //     email: "adarshbalika@gmail.com",
+  //     password: "adarshbalika",
+  //   };
+  //   const options = {
+  //     method: "POST",
+  //     body: JSON.stringify(creds),
+  //   };
+  //   const loginRes = await fetch("/api/auth/login", options);
+  //   const loginResponse = await loginRes.json();
+  //   localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
+  //   return loginResponse;
+  // };
   return (
     <AuthContext.Provider
       value={{ testUser, setTestUser, newUser, setNewUser }}

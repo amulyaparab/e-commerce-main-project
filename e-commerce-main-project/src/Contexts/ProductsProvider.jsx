@@ -68,16 +68,21 @@ export const ProductsProvider = ({ children }) => {
     fullName: "",
     email: "",
     clear: false,
+    totalDiscount: 1,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   // ["Bath & Body", "Skin Care", "Hair Care", "Home Decor"]
   const [notificationActive, setNotificationActive] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
-  const totalAmount = state?.cart?.reduce(
+  const originalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price * curr?.qty),
     0
   );
-
+  const totalAmount =
+    state?.totalDiscount === 1
+      ? originalAmount
+      : originalAmount - (state?.totalDiscount / 100) * originalAmount;
+  // 10÷100×680
   const priceData =
     state.price === 0
       ? state.filteredData
@@ -101,7 +106,10 @@ export const ProductsProvider = ({ children }) => {
           state.sort === "Reset"
       )
     : categoryData;
-
+  const [notificationContent, setNotificationContent] = useState({
+    content: "",
+    icon: "",
+  });
   // console.log({ state });
 
   // const fetchUpdatedCart = async () => {
@@ -139,6 +147,9 @@ export const ProductsProvider = ({ children }) => {
         setShowFilters,
         showCouponModal,
         setShowCouponModal,
+        originalAmount,
+        notificationContent,
+        setNotificationContent,
       }}
     >
       {children}

@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../Contexts/ProductsProvider";
-
+import { toast } from "react-toastify";
 export const Checkout = () => {
-  const { state, totalAmount } = useContext(ProductsContext);
+  const { state, totalAmount, originalAmount } = useContext(ProductsContext);
   const [showAddressForm, setShowAddressForm] = useState(false);
   const [address, setAddress] = useState({
     name: "",
@@ -18,6 +18,9 @@ export const Checkout = () => {
       address.mobileNumber.length !== 0 &&
       address.address.length !== 0;
     conditions &&
+      toast.info("Address Added", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      }) &&
       setArrOfAddresses([
         ...arrOfAddresses,
         arrOfAddresses.includes(address) ? null : address,
@@ -26,6 +29,9 @@ export const Checkout = () => {
     setAddress({ name: "", address: "", mobileNumber: "" });
   };
   const deleteAddress = (item) => {
+    toast.info("Address Removed", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
     setArrOfAddresses(
       arrOfAddresses.filter((prod) => prod.address !== item.address)
     );
@@ -85,7 +91,11 @@ export const Checkout = () => {
       </div>
     );
   };
-  const placeOrderHandler = (address) => {};
+  const placeOrderHandler = () => {
+    toast.success("Order Placed!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
   console.log(selectedAddress);
   return (
     <>
@@ -105,6 +115,10 @@ export const Checkout = () => {
         {showAddressForm && (
           <div className="address-overlay">
             <div className="login address-form">
+              <i
+                onClick={() => setShowAddressForm(false)}
+                class="fa-solid fa-xmark wishlist-heart remove"
+              ></i>
               <h1>Add Address</h1>
               <label>
                 Your Name
@@ -160,23 +174,20 @@ export const Checkout = () => {
           <h1 className="price-details">Price Details</h1>
           <div className="total-card-flex">
             <p>Price ({state?.cart?.length} items)</p>
-            <p>₹{totalAmount}</p>
+            <p>₹{originalAmount}</p>
           </div>
-          <div className="total-card-flex">
-            <p>Discount</p>
-            <p>{state?.couponApplied ? "-₹100" : "☹"}</p>
-          </div>
+
           <div className="total-card-flex">
             <p>Delivery Charges</p>
             <p> {totalAmount >= 500 ? "FREE" : "₹50"}</p>
           </div>
           <div className="total-card-flex">
             <p>Coupon Discount</p>
-            <p>₹4</p>
+            <p>-₹{(originalAmount - totalAmount).toFixed(2)}</p>
           </div>
           <div className="total-card-flex total-amount">
             <p>Total Amount</p>
-            <p>₹{totalAmount}</p>
+            <p>₹{totalAmount >= 500 ? totalAmount : totalAmount + 50}</p>
           </div>
         </div>
         <h1 className="price-details">Deliver To</h1>

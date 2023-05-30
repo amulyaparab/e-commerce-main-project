@@ -1,11 +1,18 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
 export const TotalCard = () => {
-  const { state, dispatch, totalAmount, showCouponModal, setShowCouponModal } =
-    useContext(ProductsContext);
+  const {
+    state,
+    totalAmount,
+    showCouponModal,
+    setShowCouponModal,
+    originalAmount,
+    dispatch,
+  } = useContext(ProductsContext);
   const navigate = useNavigate();
+
   return (
     <section>
       <div className="totalCard">
@@ -23,11 +30,7 @@ export const TotalCard = () => {
         <h1 className="price-details">Price Details</h1>
         <div className="total-card-flex">
           <p>Price ({state?.cart?.length} items)</p>
-          <p>₹{totalAmount}</p>
-        </div>
-        <div className="total-card-flex">
-          <p>Discount</p>
-          <p>{state?.couponApplied ? "-₹100" : "☹"}</p>
+          <p>₹{originalAmount}</p>
         </div>
         <div className="total-card-flex">
           <p>Delivery Charges</p>
@@ -35,13 +38,35 @@ export const TotalCard = () => {
         </div>
         <div className="total-card-flex">
           <p>Coupon Discount</p>
-          <p>₹4</p>
+          <p>-₹{(originalAmount - totalAmount).toFixed(2)}</p>
         </div>
+        {state?.couponApplied && (
+          <div className="total-card-flex">
+            <p>Coupon Applied</p>
+            <div className="total-card-flex">
+              <p style={{ marginRight: "5px" }}>
+                {state?.totalDiscount + "% OFF"}
+              </p>
+              <i
+                style={{ cursor: "pointer", color: "#BA3C3C" }}
+                class="fa-solid fa-xmark"
+                onClick={() => {
+                  dispatch({ type: "NO_COUPON" });
+                  toast.error("Coupon Removed", {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                  });
+                }}
+              ></i>
+            </div>
+          </div>
+        )}
         <div className="total-card-flex total-amount">
           <p>Total Amount</p>
-          <p>₹{totalAmount}</p>
+          <p>₹{totalAmount >= 500 ? totalAmount : totalAmount + 50}</p>
         </div>
-        <p className="saved">You saved ₹ 0.00 on this order</p>
+        <p className="saved">
+          You saved ₹{(originalAmount - totalAmount).toFixed(2)} on this order
+        </p>
         <button
           className="add-to-cart checkout"
           onClick={() => navigate("/checkout")}

@@ -16,16 +16,32 @@ import { Checkout } from "./Pages/Checkout";
 import { SignUp } from "./Pages/SignUp";
 import { Loading } from "./Pages/Home/Components/Loading";
 import { useEffect } from "react";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
+  const fetchLoginData = async () => {
+    const creds = {
+      email: "adarshbalika@gmail.com",
+      password: "adarshbalika",
+    };
+    const options = {
+      method: "POST",
+      body: JSON.stringify(creds),
+    };
+    const loginRes = await fetch("/api/auth/login", options);
+    const loginResponse = await loginRes.json();
+    localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
+    return loginResponse;
+  };
   useEffect(() => {
-    localStorage.removeItem("userEncodedToken");
+    fetchLoginData();
   }, []);
 
   return (
     <div className="App">
       <Loading />
       <Header />
+      <ToastContainer />
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
         <Route path="/" element={<Home />} />

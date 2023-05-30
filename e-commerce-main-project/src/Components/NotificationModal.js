@@ -8,12 +8,7 @@ export const NotificationModal = ({ text, icon }) => {
     <>
       {notificationActive && (
         <div className="modal-container">
-          <div className="modal-overlay">
-            <div className="modal-content">
-              <span className="icon">{icon}</span>
-              {text}
-            </div>
-          </div>
+          <div className="modal-overlay"></div>
         </div>
       )}
     </>
