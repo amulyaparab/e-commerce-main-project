@@ -77,9 +77,7 @@ export const Checkout = () => {
           <input
             type="radio"
             name="address"
-            // checked={(event) => event.target.value === "on"}
             onChange={(event) => {
-              // console.log(event.target.value === "on");
               setSelectedAddress(event.target.checked);
             }}
           />
@@ -145,7 +143,6 @@ export const Checkout = () => {
                   onChange={(event) =>
                     setAddress({ ...address, address: event.target.value })
                   }
-                  // placeholder="Add your address here"
                 ></textarea>
               </label>
               <button className="add-to-cart" onClick={addAddressHandler}>
