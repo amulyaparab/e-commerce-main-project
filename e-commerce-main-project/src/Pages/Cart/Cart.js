@@ -63,11 +63,13 @@ export const Cart = () => {
         </div>
       ) : (
         <div className="gridCart">
-          <section className="products cart ">
+          <section className="products cart">
             {state?.cart?.map((item) => (
               <div className="productCard cartCard">
                 <i class="fa-solid fa-xmark wishlist-heart remove"></i>
+
                 <ProductCard item={item} />
+
                 <p className="cart-quantity">
                   Qty: {item?.qty >= 1 && item?.qty}
                 </p>
@@ -77,7 +79,12 @@ export const Cart = () => {
                   </button>
                   <button onClick={() => decreaseQtyHandler(item)}>-</button>
                 </div>
-                <div>
+
+                <div className="cart-card-btns">
+                  <button className="add-to-cart cart-card-btn">
+                    Move To Wishlist
+                  </button>
+                  <button className="add-to-cart cart-card-btn">Remove</button>
                   {/* <div className="modal-container">
                       <div className="modal-overlay options-overlay">
                         <div className="options-modal-content">

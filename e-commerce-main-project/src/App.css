@@ -449,6 +449,7 @@ input[type="checkbox"] {
   padding: 0 0 2rem;
   margin: 1rem 0;
 }
+
 .product-image {
   position: relative;
 }
@@ -658,6 +659,9 @@ input[type="checkbox"] {
   justify-content: center;
   position: relative;
 }
+.product-card-flex {
+  display: flex;
+}
 .cartCard {
   width: 80%;
   height: 200px;
@@ -665,11 +669,24 @@ input[type="checkbox"] {
   margin-top: 1rem;
   padding: 0px;
   display: flex;
+
   box-shadow: 0 0 10px 1px #d3d3d3;
 }
 .cartCard .cartSlide {
   display: flex;
   height: 200px;
+}
+.cart-card-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 100px;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.cart-card-btn {
+  width: 170px;
+  padding: 0.5rem 0.5rem;
 }
 .cartCard .cartSlide img {
   height: 200px;
