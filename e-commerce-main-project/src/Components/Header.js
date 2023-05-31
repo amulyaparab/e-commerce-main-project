@@ -5,10 +5,6 @@ import { ProductsContext } from "../Contexts/ProductsProvider";
 export const Header = () => {
   const { dispatch } = useContext(ProductsContext);
   const navigate = useNavigate();
-  // const logoutHandler = () => {
-  //   localStorage.removeItem("encodedTokenTest");
-  //   navigate("/login");
-  // };
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   useEffect(() => {
@@ -17,9 +13,7 @@ export const Header = () => {
         setIsCollapsed(false);
       }
     };
-
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };

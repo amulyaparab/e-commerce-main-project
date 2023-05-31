@@ -1,146 +1,60 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { ProductsContext } from "../../Contexts/ProductsProvider";
 import { ProductCard } from "../Products/Components/ProductCard";
 import cartImage from "../../Images/cart.svg";
-import { APIContext } from "../../Contexts/APIProvider";
 import { TotalCard } from "./Components/TotalCard";
-import { NotificationModal } from "../../Components/NotificationModal";
-import { OptionsModal } from "../../Components/OptionsModal";
-import { CouponModal } from "../../Components/CouponModal";
-import { toast } from "react-toastify";
+import { Coupon } from "./Components/Coupon";
+import { UtilsContext } from "../../Contexts/UtilsProvider";
+
 export const Cart = () => {
-  const {
-    state,
-    dispatch,
-    setNotificationActive,
-    showCouponModal,
-    setShowCouponModal,
-  } = useContext(ProductsContext);
-  const [modal, setModal] = useState(false);
+  const { state } = useContext(ProductsContext);
 
   const {
-    fetchCart,
-    deleteFromCart,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    postToWishlist,
-    fetchWishlist,
-    notificationContent,
-    setNotificationContent,
-  } = useContext(APIContext);
-  // console.log(state.cart);
-  const fetchUpdatedCart = async () => {
-    const unfilteredCart = await fetchCart();
-    const cart = unfilteredCart.cart.filter(
-      (item) => item._id !== undefined || item._id !== null
+    moveToWishlistHandler,
+    removefromCartHandler,
+    increaseQtyHandler,
+    decreaseQtyHandler,
+    modal,
+    setModal,
+  } = useContext(UtilsContext);
+
+  const ModalForRemoving = ({ item }) => {
+    console.log(item);
+    return (
+      <div className="modal-container">
+        <div className="modal-overlay options-overlay">
+          <div className="options-modal-content">
+            <i
+              onClick={() => setModal(false)}
+              class="fa-solid fa-xmark wishlist-heart remove"
+            ></i>
+            <h2>Are you sure you want to delete it?</h2>
+            <small>Wishlist it instead and buy it later.</small>
+            <div className="options-buttons">
+              <button
+                className="option-1-btn"
+                onClick={() => {
+                  console.log(item, "lolololololol");
+                  removefromCartHandler(item);
+                }}
+              >
+                Remove
+              </button>
+              <button onClick={() => moveToWishlistHandler(item)}>
+                Add To Wishlist
+              </button>
+            </div>
+          </div>
+        </div>{" "}
+      </div>
     );
-    // console.log(cart);
-    dispatch({
-      type: "FETCH_CART",
-      payload: cart,
-    });
   };
-
-  const removefromCartHandler = async (item) => {
-    try {
-      setModal(false);
-      setNotificationActive(true);
-      toast.error("Removed From Cart", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-
-      await deleteFromCart(item._id);
-      const unfilteredCart = await fetchCart();
-      const cart = unfilteredCart.cart.filter(
-        (item) => item._id !== null || item._id !== undefined
-      );
-      dispatch({
-        type: "FETCH_CART",
-        payload: cart,
-      });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setNotificationActive(false);
-    }
-  };
-  const increaseQtyHandler = async (itemId) => {
-    try {
-      await increaseCartQuantity(itemId);
-      const unfilteredCart = await fetchCart();
-      const cart = unfilteredCart.cart.filter(
-        (item) => item._id !== null || item._id !== undefined
-      );
-      dispatch({
-        type: "FETCH_CART",
-        payload: cart,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const decreaseQtyHandler = async (item) => {
-    try {
-      item.qty > 1 ? await decreaseCartQuantity(item._id) : setModal(true);
-      const unfilteredCart = await fetchCart();
-      const cart = unfilteredCart.cart.filter(
-        (item) => item._id !== null || item._id !== undefined
-      );
-      dispatch({
-        type: "FETCH_CART",
-        payload: cart,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  const moveToWishlistHandler = async (item) => {
-    try {
-      setNotificationActive(true);
-      setModal(false);
-      toast.info("Moved To Wishlist", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-      deleteFromCart(item._id);
-      const isItemInWishlist = state.wishlist.includes(
-        state.wishlist.find((prod) => prod._id === item._id)
-      );
-      isItemInWishlist ? await fetchWishlist() : await postToWishlist(item);
-
-      const wishlist = await fetchWishlist();
-
-      dispatch({
-        type: "FETCH_WISHLIST",
-        payload: wishlist,
-      });
-
-      const unfilteredCart = await fetchCart();
-      const cart = unfilteredCart.cart.filter(
-        (item) => item._id !== null || item._id !== undefined
-      );
-      dispatch({
-        type: "FETCH_CART",
-        payload: cart,
-      });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setNotificationActive(false);
-    }
-  };
-  useEffect(() => {
-    fetchUpdatedCart();
-  }, []);
   return (
     <>
       <h1 className="header-heading">
         Cart {state?.cart?.length === 0 ? null : `(${state?.cart?.length})`}
       </h1>
-      <NotificationModal
-        text={notificationContent?.content}
-        icon={notificationContent?.icon}
-      />
-
+      <Coupon />
       {state?.cart?.length === 0 ? (
         <div className="empty">
           <img src={cartImage} className="empty-img" alt="Empty cart." />
@@ -150,49 +64,49 @@ export const Cart = () => {
       ) : (
         <div className="gridCart">
           <section className="products cart ">
-            {showCouponModal && (
-              <div className="modal-container">
-                <div className="modal-overlay options-overlay">
-                  <div className="options-modal-content coupon-content">
-                    <i
-                      onClick={() => {
-                        setShowCouponModal(!showCouponModal);
-                      }}
-                      class="fa-solid fa-xmark wishlist-heart remove"
-                    ></i>
-                    <h2>Apply Coupon</h2>
-
-                    <button
-                      className="coupon-btn"
-                      onClick={() => {
-                        dispatch({ type: "10%_OFF" });
-                        setShowCouponModal(false);
-                        toast.success("Coupon Applied!", {
-                          position: toast.POSITION.BOTTOM_RIGHT,
-                        });
-                      }}
-                    >
-                      New User 10% Off
-                    </button>
-                    <button
-                      className="coupon-btn"
-                      onClick={() => {
-                        dispatch({ type: "50%_OFF" });
-                        setShowCouponModal(false);
-                        toast.success("Coupon Applied!", {
-                          position: toast.POSITION.BOTTOM_RIGHT,
-                        });
-                      }}
-                    >
-                      Summer Sale 50% Off
-                    </button>
-                  </div>
+            {state?.cart?.map((item) => (
+              <div className="productCard cartCard">
+                <i class="fa-solid fa-xmark wishlist-heart remove"></i>
+                <ProductCard item={item} />
+                <p className="cart-quantity">
+                  Qty: {item?.qty >= 1 && item?.qty}
+                </p>
+                <div className="cart-qty-buttons">
+                  <button onClick={() => increaseQtyHandler(item._id)}>
+                    +
+                  </button>
+                  <button onClick={() => decreaseQtyHandler(item)}>-</button>
+                </div>
+                <div>
+                  {/* <div className="modal-container">
+                      <div className="modal-overlay options-overlay">
+                        <div className="options-modal-content">
+                          <i
+                            onClick={() => setModal(false)}
+                            class="fa-solid fa-xmark wishlist-heart remove"
+                          ></i>
+                          <h2>Are you sure you want to delete it?</h2>
+                          <small>Wishlist it instead and buy it later.</small>
+                          <div className="options-buttons">
+                            <button
+                              className="option-1-btn"
+                              onClick={() => {
+                                setModal(false);
+                                removefromCartHandler(item);
+                              }}
+                            >
+                              Remove
+                            </button>
+                            <button>Add To Wishlist</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div> */}
                 </div>
               </div>
-            )}
-            {state?.cart?.map((item) => (
+            ))}
+            {/* {state?.cart?.map((item) => (
               <div key={item._id} className="productCard cartCard">
-                {/* {console.log(item)} */}
                 <i
                   class="fa-solid fa-xmark wishlist-heart remove"
                   onClick={() => {
@@ -209,40 +123,18 @@ export const Cart = () => {
                     +
                   </button>
 
-                  <button onClick={() => decreaseQtyHandler(item)}>-</button>
+                  <button
+                    onClick={() => {
+                      decreaseQtyHandler(item);
+                      console.log(item, "decrease");
+                    }}
+                  >
+                    -
+                  </button>
                 </div>
-
-                <div
-                  className="modal-container"
-                  style={{ visibility: !modal && "hidden" }}
-                >
-                  <div className="modal-overlay options-overlay">
-                    <div className="options-modal-content">
-                      <i
-                        onClick={() => setModal(false)}
-                        class="fa-solid fa-xmark wishlist-heart remove"
-                      ></i>
-                      <h2>Are you sure you want to delete it?</h2>
-                      <small>Wishlist it instead and buy it later.</small>
-                      <div className="options-buttons">
-                        <button
-                          className="option-1-btn"
-                          onClick={() => {
-                            console.log(item, "lolololololol");
-                            removefromCartHandler(item);
-                          }}
-                        >
-                          Remove
-                        </button>
-                        <button onClick={() => moveToWishlistHandler(item)}>
-                          Add To Wishlist
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {modal ? <ModalForRemoving item={item} /> : null}
               </div>
-            ))}{" "}
+            ))}{" "} */}
           </section>
 
           <TotalCard />

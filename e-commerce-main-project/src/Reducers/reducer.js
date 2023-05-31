@@ -25,22 +25,7 @@ export const reducer = (state, action) => {
         price: "0",
         search: "",
       };
-    // case "ADD_TO_CART":
 
-    //   return {
-    //     ...state,
-    //     cart: state.cart.includes(action.payload)
-    //       ? state.cart
-    //       : [...state.cart, action.payload],
-    //   };
-
-    // case "REMOVE_FROM_CART":
-    //   deleteFromCart(action.payload);
-    //   fetchCart().then((data) => console.log(data));
-    //   return {
-    //     ...state,
-    //     cart: state.cart.filter((item) => item._id !== action.payload),
-    //   };
     case "FETCH_WISHLIST":
       return { ...state, wishlist: action.payload };
     case "APPLY_COUPON":
@@ -55,14 +40,7 @@ export const reducer = (state, action) => {
           ? state.wishlist.filter((item) => item._id !== action.payload._id)
           : [...state.wishlist, action.payload],
       };
-    // case "CATEGORY":
-    //   console.log(action.payload);
-    //   return {
-    //     ...state,
-    //     filteredData: state.prodData.filter(
-    //       (product) => product.category === action.payload
-    //     ),
-    //   };
+
     case "PRODUCT_CATEGORY":
       return {
         ...state,

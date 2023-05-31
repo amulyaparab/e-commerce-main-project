@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ProductsContext } from "../Contexts/ProductsProvider";
 
-export const NotificationModal = ({ text, icon }) => {
+export const NotificationModal = () => {
   const { notificationActive } = useContext(ProductsContext);
 
   return (
