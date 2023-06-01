@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ProductsContext } from "../Contexts/ProductsProvider";
+import { ProductsContext } from "../../Contexts/ProductsProvider";
 import { toast } from "react-toastify";
 export const Checkout = () => {
   const { state, totalAmount, originalAmount } = useContext(ProductsContext);
@@ -8,6 +8,10 @@ export const Checkout = () => {
     name: "",
     address: "",
     mobileNumber: "",
+    pincode: "",
+    city: "",
+    state: "",
+    country: "",
   });
 
   const [arrOfAddresses, setArrOfAddresses] = useState([]);
@@ -121,7 +125,7 @@ export const Checkout = () => {
               <label>
                 Your Name
                 <input
-                  placeholder="Type your name here"
+                  placeholder="Amulya Parab"
                   onChange={(event) =>
                     setAddress({ ...address, name: event.target.value })
                   }
@@ -131,7 +135,7 @@ export const Checkout = () => {
                 Your Mobile Number
                 <input
                   type="number"
-                  placeholder="Type your mobile number here"
+                  placeholder="1234567890"
                   onChange={(event) =>
                     setAddress({ ...address, mobileNumber: event.target.value })
                   }
@@ -145,6 +149,49 @@ export const Checkout = () => {
                   }
                 ></textarea>
               </label>
+              <div className="address-sections">
+                <div>
+                  <label>
+                    Pincode
+                    <input
+                      type="number"
+                      placeholder="411277"
+                      onChange={(event) =>
+                        setAddress({ ...address, pincode: event.target.value })
+                      }
+                    />
+                  </label>
+                  <label>
+                    City
+                    <input
+                      placeholder="Pune"
+                      onChange={(event) =>
+                        setAddress({ ...address, city: event.target.value })
+                      }
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    State
+                    <input
+                      placeholder="Maharashtra"
+                      onChange={(event) =>
+                        setAddress({ ...address, state: event.target.value })
+                      }
+                    />
+                  </label>
+                  <label>
+                    Country
+                    <input
+                      placeholder="India"
+                      onChange={(event) =>
+                        setAddress({ ...address, country: event.target.value })
+                      }
+                    />
+                  </label>
+                </div>
+              </div>
               <button className="add-to-cart" onClick={addAddressHandler}>
                 Submit
               </button>

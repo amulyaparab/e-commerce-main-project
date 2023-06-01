@@ -12,7 +12,7 @@ import { Footer } from "./Components/Footer";
 import { Login } from "./Pages/Login";
 import { RequiresAuth } from "./Components/RequiresAuth";
 import { Profile } from "./Pages/Profile";
-import { Checkout } from "./Pages/Checkout";
+import { Checkout } from "./Pages/Checkout/Checkout";
 import { SignUp } from "./Pages/SignUp";
 import { Loading } from "./Pages/Home/Components/Loading";
 import { useEffect } from "react";

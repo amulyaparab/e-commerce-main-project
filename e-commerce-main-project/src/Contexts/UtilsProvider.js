@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { APIContext } from "./APIProvider";
 import { ProductsContext } from "./ProductsProvider";
+import { AuthContext } from "./AuthProvider";
 export const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
@@ -32,6 +33,10 @@ export const UtilsProvider = ({ children }) => {
     );
     return isItemInWishlist;
   };
+  const isEncodedTokenPresent =
+    localStorage.getItem("encodedTokenTest") ||
+    localStorage.getItem("userEncodedToken");
+
   const updateCart = async () => {
     const unfilteredCart = await fetchCart();
     const cart = unfilteredCart.cart.filter(
@@ -50,18 +55,27 @@ export const UtilsProvider = ({ children }) => {
       payload: wishlist,
     });
   };
-
+  const { testUser, newUser } = useContext(AuthContext);
   const handleAddToCart = async (item) => {
     try {
-      toast.success("Added To Cart", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-      setNotificationActive(true);
+      if (
+        (isEncodedTokenPresent && testUser) ||
+        (newUser.signedIn && isEncodedTokenPresent)
+      ) {
+        toast.success("Added To Cart", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+        setNotificationActive(true);
 
-      isItemInCart(item)
-        ? await increaseCartQuantity(item._id)
-        : await postToCart(item);
-      updateCart();
+        isItemInCart(item)
+          ? await increaseCartQuantity(item._id)
+          : await postToCart(item);
+        updateCart();
+      } else {
+        toast.warn("Please Log In", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -71,20 +85,29 @@ export const UtilsProvider = ({ children }) => {
 
   const addToWishlistHandler = async (item) => {
     try {
-      setNotificationActive(true);
+      if (
+        (isEncodedTokenPresent && testUser) ||
+        (newUser.signedIn && isEncodedTokenPresent)
+      ) {
+        setNotificationActive(true);
 
-      if (isItemInWishlist(item)) {
-        await deleteFromWishlist(item._id);
-        toast.error("Removed From Wishlist", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
+        if (isItemInWishlist(item)) {
+          await deleteFromWishlist(item._id);
+          toast.error("Removed From Wishlist", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        } else {
+          await postToWishlist(item);
+          toast.success("Added To Wishlist", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
+        updateWishlist();
       } else {
-        await postToWishlist(item);
-        toast.success("Added To Wishlist", {
+        toast.warn("Please Log In", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
-      updateWishlist();
     } catch (err) {
       console.log(err);
     } finally {
