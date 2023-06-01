@@ -1,12 +1,15 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { ProductsContext } from "../Contexts/ProductsProvider";
+import { UtilsContext } from "../Contexts/UtilsProvider";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 export const Header = () => {
   const { state, dispatch } = useContext(ProductsContext);
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
-
+  const { isEncodedTokenPresent } = useContext(UtilsContext);
+  const { testUser, newUser } = useContext(AuthContext);
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth > 800) {
@@ -18,7 +21,12 @@ export const Header = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-
+  const conditionForWishlistIcons =
+    (state.wishlist?.length >= 1 && isEncodedTokenPresent && testUser) ||
+    (state.wishlist?.length >= 1 && isEncodedTokenPresent && newUser.signedIn);
+  const conditionForCartIcons =
+    (state.cart?.length >= 1 && isEncodedTokenPresent && testUser) ||
+    (state.cart?.length >= 1 && isEncodedTokenPresent && newUser.signedIn);
   return (
     <nav className="navbar">
       <NavLink to="/">
@@ -56,17 +64,17 @@ export const Header = () => {
             <NavLink className="wishlist-icon" to="/wishlist">
               <i className="fa-solid fa-heart"></i>
               <small
-                className={`${state.wishlist.length >= 1 ? "qty-on-icon" : ""}`}
+                className={`${conditionForWishlistIcons ? "qty-on-icon" : ""}`}
               >
-                {state.wishlist.length >= 1 ? state.wishlist.length : null}
+                {conditionForWishlistIcons ? state.wishlist?.length : null}
               </small>
             </NavLink>
             <NavLink className="cart-icon" to="/cart">
               <i className="fa-solid fa-bag-shopping"></i>
               <small
-                className={`${state.cart.length >= 1 ? "qty-on-icon" : ""}`}
+                className={`${conditionForCartIcons ? "qty-on-icon" : ""}`}
               >
-                {state.cart.length >= 1 ? state.cart.length : null}
+                {conditionForCartIcons ? state.cart?.length : null}
               </small>
             </NavLink>
             <NavLink to="/profile">

@@ -1184,3 +1184,11 @@ input[type="checkbox"] {
 .address-form textarea {
   height: 100px;
 }
+.address-btns {
+  display: flex;
+  gap: 1rem;
+}
+.address-btn {
+  width: 150px;
+  padding: 0.5rem 0.7rem;
+}

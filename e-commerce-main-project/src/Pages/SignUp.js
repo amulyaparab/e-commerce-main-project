@@ -153,12 +153,12 @@ export const SignUp = () => {
             <NavLink
               to="/login"
               className="form-navigator"
-              // state={{
-              //   from: {
-              //     ...location,
-              //     pathname: location?.state?.from?.pathname,
-              //   },
-              // }}
+              state={{
+                from: {
+                  ...location,
+                  pathname: location?.state?.from?.pathname,
+                },
+              }}
             >
               Already have an account <span>&#8250;</span>
             </NavLink>

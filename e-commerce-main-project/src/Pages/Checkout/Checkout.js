@@ -1,45 +1,22 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../Contexts/ProductsProvider";
 import { toast } from "react-toastify";
+import { AddressContext } from "../../Contexts/AddressProvider";
+import { AddressForm } from "./Components/AddressForm";
+import { SummaryCard } from "./Components/SummaryCard";
 export const Checkout = () => {
-  const { state, totalAmount, originalAmount } = useContext(ProductsContext);
-  const [showAddressForm, setShowAddressForm] = useState(false);
-  const [address, setAddress] = useState({
-    name: "",
-    address: "",
-    mobileNumber: "",
-    pincode: "",
-    city: "",
-    state: "",
-    country: "",
-  });
+  const {
+    selectedAddress,
+    setSelectedAddress,
+    arrOfAddresses,
+    setArrOfAddresses,
+    showAddressForm,
+    setShowAddressForm,
+    address,
+    setAddress,
+    deleteAddress,
+  } = useContext(AddressContext);
 
-  const [arrOfAddresses, setArrOfAddresses] = useState([]);
-  const [selectedAddress, setSelectedAddress] = useState(null);
-  const addAddressHandler = () => {
-    const conditions =
-      address.name.length !== 0 &&
-      address.mobileNumber.length !== 0 &&
-      address.address.length !== 0;
-    conditions &&
-      toast.info("Address Added", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      }) &&
-      setArrOfAddresses([
-        ...arrOfAddresses,
-        arrOfAddresses.includes(address) ? null : address,
-      ]);
-    conditions && setShowAddressForm(false);
-    setAddress({ name: "", address: "", mobileNumber: "" });
-  };
-  const deleteAddress = (item) => {
-    toast.info("Address Removed", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-    setArrOfAddresses(
-      arrOfAddresses.filter((prod) => prod.address !== item.address)
-    );
-  };
   const editAddress = (item) => {};
   const AddressesMapped = () => {
     return arrOfAddresses.map((item) => {
@@ -50,9 +27,7 @@ export const Checkout = () => {
             <input
               type="radio"
               name="address"
-              // checked={(event) => event.target.value === "on"}
               onChange={(event) => {
-                // console.log(event.target.value === "on");
                 setSelectedAddress(event.target.checked);
               }}
             />
@@ -93,11 +68,7 @@ export const Checkout = () => {
       </div>
     );
   };
-  const placeOrderHandler = () => {
-    toast.success("Order Placed!", {
-      position: toast.POSITION.BOTTOM_RIGHT,
-    });
-  };
+
   console.log(selectedAddress);
   return (
     <>
@@ -114,133 +85,9 @@ export const Checkout = () => {
           <i class="fa-solid fa-plus"></i>
           <span>Add Address</span>
         </button>
-        {showAddressForm && (
-          <div className="address-overlay">
-            <div className="login address-form">
-              <i
-                onClick={() => setShowAddressForm(false)}
-                class="fa-solid fa-xmark wishlist-heart remove"
-              ></i>
-              <h1>Add Address</h1>
-              <label>
-                Your Name
-                <input
-                  placeholder="Amulya Parab"
-                  onChange={(event) =>
-                    setAddress({ ...address, name: event.target.value })
-                  }
-                />
-              </label>
-              <label>
-                Your Mobile Number
-                <input
-                  type="number"
-                  placeholder="1234567890"
-                  onChange={(event) =>
-                    setAddress({ ...address, mobileNumber: event.target.value })
-                  }
-                />
-              </label>
-              <label>
-                Your Address
-                <textarea
-                  onChange={(event) =>
-                    setAddress({ ...address, address: event.target.value })
-                  }
-                ></textarea>
-              </label>
-              <div className="address-sections">
-                <div>
-                  <label>
-                    Pincode
-                    <input
-                      type="number"
-                      placeholder="411277"
-                      onChange={(event) =>
-                        setAddress({ ...address, pincode: event.target.value })
-                      }
-                    />
-                  </label>
-                  <label>
-                    City
-                    <input
-                      placeholder="Pune"
-                      onChange={(event) =>
-                        setAddress({ ...address, city: event.target.value })
-                      }
-                    />
-                  </label>
-                </div>
-                <div>
-                  <label>
-                    State
-                    <input
-                      placeholder="Maharashtra"
-                      onChange={(event) =>
-                        setAddress({ ...address, state: event.target.value })
-                      }
-                    />
-                  </label>
-                  <label>
-                    Country
-                    <input
-                      placeholder="India"
-                      onChange={(event) =>
-                        setAddress({ ...address, country: event.target.value })
-                      }
-                    />
-                  </label>
-                </div>
-              </div>
-              <button className="add-to-cart" onClick={addAddressHandler}>
-                Submit
-              </button>
-            </div>
-          </div>
-        )}
+        {showAddressForm && <AddressForm />}
       </div>
-      <h1 className="header-heading">Order Summary</h1>
-      <section className="checkout-card">
-        <div>
-          <h1 className="price-details">Order Details</h1>
-          <div className="total-card-flex">
-            <p>Item</p>
-            <p>Qty</p>
-          </div>
-          {state?.cart?.map((item) => (
-            <div className="total-card-flex">
-              <p>{item.name}</p>
-              <p>1</p>
-            </div>
-          ))}
-        </div>
-        <div>
-          <h1 className="price-details">Price Details</h1>
-          <div className="total-card-flex">
-            <p>Price ({state?.cart?.length} items)</p>
-            <p>₹{originalAmount}</p>
-          </div>
-
-          <div className="total-card-flex">
-            <p>Delivery Charges</p>
-            <p> {totalAmount >= 500 ? "FREE" : "₹50"}</p>
-          </div>
-          <div className="total-card-flex">
-            <p>Coupon Discount</p>
-            <p>-₹{(originalAmount - totalAmount).toFixed(2)}</p>
-          </div>
-          <div className="total-card-flex total-amount">
-            <p>Total Amount</p>
-            <p>₹{totalAmount >= 500 ? totalAmount : totalAmount + 50}</p>
-          </div>
-        </div>
-        <h1 className="price-details">Deliver To</h1>
-        <ExampleAddress />
-        <AddressesMapped />
-        <button className="add-to-cart place-order" onClick={placeOrderHandler}>
-          Place Order
-        </button>
-      </section>
+      <SummaryCard />
     </>
   );
 };

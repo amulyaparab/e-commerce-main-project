@@ -3,12 +3,14 @@ import { toast } from "react-toastify";
 import { APIContext } from "./APIProvider";
 import { ProductsContext } from "./ProductsProvider";
 import { AuthContext } from "./AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 export const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
   const { state, dispatch, setNotificationActive } =
     useContext(ProductsContext);
-
+  const navigate = useNavigate();
+  const location = useLocation();
   const {
     postToCart,
     increaseCartQuantity,
@@ -22,13 +24,13 @@ export const UtilsProvider = ({ children }) => {
   const [modal, setModal] = useState(false);
 
   const isItemInCart = (item) => {
-    const isItemInCart = state.cart.includes(
+    const isItemInCart = state.cart?.includes(
       state.cart.find((prod) => prod._id === item._id)
     );
     return isItemInCart;
   };
   const isItemInWishlist = (item) => {
-    const isItemInWishlist = state.wishlist.includes(
+    const isItemInWishlist = state.wishlist?.includes(
       state.wishlist.find((prod) => prod._id === item._id)
     );
     return isItemInWishlist;
@@ -39,7 +41,7 @@ export const UtilsProvider = ({ children }) => {
 
   const updateCart = async () => {
     const unfilteredCart = await fetchCart();
-    const cart = unfilteredCart.cart.filter(
+    const cart = unfilteredCart.cart?.filter(
       (item) => item._id !== undefined || item._id !== null
     );
     dispatch({
@@ -72,7 +74,8 @@ export const UtilsProvider = ({ children }) => {
           : await postToCart(item);
         updateCart();
       } else {
-        toast.warn("Please Log In", {
+        navigate("/login", { state: { from: location } });
+        toast.warn("Please Log In First", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
@@ -104,7 +107,8 @@ export const UtilsProvider = ({ children }) => {
         }
         updateWishlist();
       } else {
-        toast.warn("Please Log In", {
+        navigate("/login", { state: { from: location } });
+        toast.warn("Please Log In First", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
@@ -219,6 +223,7 @@ export const UtilsProvider = ({ children }) => {
         setModal,
         isItemInCart,
         isItemInWishlist,
+        isEncodedTokenPresent,
       }}
     >
       {children}
