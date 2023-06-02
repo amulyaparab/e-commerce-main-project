@@ -1,10 +1,63 @@
 import { useContext } from "react";
 import { ProductsContext } from "../../../Contexts/ProductsProvider";
 import { AddressContext } from "../../../Contexts/AddressProvider";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { APIContext } from "../../../Contexts/APIProvider";
+const loadScript = (url) => {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = url;
 
+    script.onload = () => {
+      resolve(true);
+    };
+
+    script.onerror = () => {
+      resolve(false);
+    };
+
+    document.body.appendChild(script);
+  });
+};
 export const SummaryCard = () => {
   const { state, totalAmount, originalAmount } = useContext(ProductsContext);
   const { placeOrderHandler } = useContext(AddressContext);
+  const { deleteFromCart } = useContext(APIContext);
+
+  const navigate = useNavigate();
+
+  const displayRazorpay = async () => {
+    const response = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    if (!response) {
+      alert("Razorpay SDK failed to load, check you internet connection");
+      return;
+    }
+    const options = {
+      key: "rzp_test_EPBilmCRDIX4I1",
+      amount: Number(totalAmount) * 100,
+      currency: "INR",
+      name: "Ascend",
+      description: "Thank you for shopping with us",
+      handler: function () {
+        toast.success(`Payment of Rs. ${totalAmount} is Succesful`);
+        navigate("/order-summary");
+        state.cart.map((item) => deleteFromCart(item._id));
+        setTimeout(() => {
+          console.log("Success");
+          navigate("/");
+        }, 4000);
+      },
+      theme: {
+        color: "#2f2e41",
+      },
+    };
+
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
   return (
     <>
       <h1 className="header-heading">Order Summary</h1>
@@ -43,9 +96,8 @@ export const SummaryCard = () => {
           </div>
         </div>
         <h1 className="price-details">Deliver To</h1>
-        {/* <ExampleAddress />
-          <AddressesMapped /> */}
-        <button className="add-to-cart place-order" onClick={placeOrderHandler}>
+
+        <button className="add-to-cart place-order" onClick={displayRazorpay}>
           Place Order
         </button>
       </section>

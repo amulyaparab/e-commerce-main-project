@@ -43,6 +43,7 @@ export const AddressProvider = ({ children }) => {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
+  const editAddress = (item) => {};
   return (
     <AddressContext.Provider
       value={{
@@ -57,6 +58,7 @@ export const AddressProvider = ({ children }) => {
         addAddressHandler,
         deleteAddress,
         placeOrderHandler,
+        editAddress,
       }}
     >
       {children}

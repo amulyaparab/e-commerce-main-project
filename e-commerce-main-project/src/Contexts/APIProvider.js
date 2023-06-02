@@ -161,6 +161,7 @@ export const APIProvider = ({ children }) => {
     const { categories } = await categoriesRes.json();
     return categories;
   };
+
   useEffect(() => {}, []);
 
   return (

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AddressContext } from "../../../Contexts/AddressProvider";
+import { AddressContext } from "../../Contexts/AddressProvider";
 
 export const AddressForm = () => {
   const { addAddressHandler, setShowAddressForm, address, setAddress } =
