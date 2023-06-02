@@ -1,14 +1,33 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AddressContext } from "../../Contexts/AddressProvider";
-
+import { v4 as uuid } from "uuid";
 export const AddressForm = () => {
-  const { addAddressHandler, setShowAddressForm, address, setAddress } =
-    useContext(AddressContext);
+  const {
+    addAddressHandler,
+    setShowAddressForm,
+    address,
+    setAddress,
+    showAddressForm,
+    randomAddressAdder,
+  } = useContext(AddressContext);
+
+  useEffect(() => {
+    if (address.id) {
+      return;
+    } else {
+      setAddress({ ...address, id: uuid() });
+    }
+  }, []);
+
+  console.log(address, "address");
+
   return (
     <div className="address-overlay">
       <div className="login address-form">
         <i
-          onClick={() => setShowAddressForm(false)}
+          onClick={() =>
+            setShowAddressForm({ ...showAddressForm, show: false })
+          }
           class="fa-solid fa-xmark wishlist-heart remove"
         ></i>
         <h1>Add Address</h1>
@@ -16,6 +35,7 @@ export const AddressForm = () => {
           Your Name
           <input
             placeholder="Amulya Parab"
+            value={address.name ?? ""}
             onChange={(event) =>
               setAddress({ ...address, name: event.target.value })
             }
@@ -24,6 +44,7 @@ export const AddressForm = () => {
         <label>
           Your Mobile Number
           <input
+            value={address.mobileNumber ?? ""}
             type="number"
             placeholder="1234567890"
             onChange={(event) =>
@@ -34,6 +55,7 @@ export const AddressForm = () => {
         <label>
           Your Address
           <textarea
+            value={address.address ?? ""}
             onChange={(event) =>
               setAddress({ ...address, address: event.target.value })
             }
@@ -44,6 +66,7 @@ export const AddressForm = () => {
             <label>
               Pincode
               <input
+                value={address.pincode ?? ""}
                 type="number"
                 placeholder="411277"
                 onChange={(event) =>
@@ -54,6 +77,7 @@ export const AddressForm = () => {
             <label>
               City
               <input
+                value={address.city ?? ""}
                 placeholder="Pune"
                 onChange={(event) =>
                   setAddress({ ...address, city: event.target.value })
@@ -65,6 +89,7 @@ export const AddressForm = () => {
             <label>
               State
               <input
+                value={address.state ?? ""}
                 placeholder="Maharashtra"
                 onChange={(event) =>
                   setAddress({ ...address, state: event.target.value })
@@ -74,6 +99,7 @@ export const AddressForm = () => {
             <label>
               Country
               <input
+                value={address.country ?? ""}
                 placeholder="India"
                 onChange={(event) =>
                   setAddress({ ...address, country: event.target.value })
@@ -86,7 +112,7 @@ export const AddressForm = () => {
           <div>
             <button
               className="add-to-cart address-btn"
-              onClick={addAddressHandler}
+              onClick={randomAddressAdder}
             >
               Dummy Values
             </button>

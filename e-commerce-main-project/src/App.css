@@ -972,7 +972,16 @@ input[type="checkbox"] {
   height: 45vh;
 }
 .profile {
-  height: 350px;
+  height: max-content;
+  padding: 3rem;
+  width: 500px;
+  margin: auto;
+  background-color: #ffffff;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.bottom-space {
+  margin-bottom: 35vh;
 }
 .loader-overlay {
   position: fixed;
@@ -1142,24 +1151,26 @@ input[type="checkbox"] {
   display: flex;
   align-items: center;
   text-align: center;
-  width: 364px;
+  width: 597px;
   margin-bottom: 1rem;
+  margin: auto;
 }
 .profile-tab div {
   font-size: larger;
   font-weight: bold;
   width: 50%;
   cursor: pointer;
+
   /* background-color: #89a17e; */
   padding: 1rem 0rem;
-  margin-top: -2rem;
+  margin-top: -3rem;
 }
 .first-tab {
-  margin-left: -2rem;
+  /* margin-left: -2rem; */
+  margin-left: -3rem;
 }
 .tab {
-  margin-top: -2rem;
-  /* margin-left: -2rem; */
+  /* margin-top: -2rem; */
 }
 .active-profile {
   background-color: #89a17e;
@@ -1191,4 +1202,17 @@ input[type="checkbox"] {
 .address-btn {
   width: 150px;
   padding: 0.5rem 0.7rem;
+}
+.address-icon {
+  font-size: 16px;
+  cursor: pointer;
+}
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.userProfile h1 {
+  text-align: center;
 }

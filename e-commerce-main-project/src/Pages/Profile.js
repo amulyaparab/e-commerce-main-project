@@ -3,8 +3,11 @@ import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
+import { AddressesMapped } from "../Components/AddressComponents/AddressMapped";
+import { AddressContext } from "../Contexts/AddressProvider";
 export const Profile = () => {
   const { setTestUser } = useContext(AuthContext);
+  const { arrOfAddresses } = useContext(AddressContext);
   const navigate = useNavigate();
   const location = useLocation();
   const logoutHandler = () => {
@@ -19,8 +22,12 @@ export const Profile = () => {
   const [showProfile, setShowProfile] = useState(true);
   return (
     <>
-      <div className="login-page">
-        <div className="login profile">
+      <div>
+        <div
+          className={`profile ${
+            showProfile || arrOfAddresses.length < 3 ? "bottom-space" : ""
+          }`}
+        >
           <div className="profile-tab">
             <div
               onClick={() => setShowProfile(!showProfile)}
@@ -36,7 +43,7 @@ export const Profile = () => {
             </div>
           </div>
           {showProfile ? (
-            <div>
+            <div className="userProfile">
               <h1>Profile</h1>
               <h3>Profile Details</h3>
               <p>Full Name </p>
@@ -49,6 +56,7 @@ export const Profile = () => {
           ) : (
             <div>
               <h1>Addresses</h1>
+              <AddressesMapped />
             </div>
           )}{" "}
         </div>

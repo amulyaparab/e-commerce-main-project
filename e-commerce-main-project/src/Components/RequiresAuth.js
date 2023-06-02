@@ -8,12 +8,19 @@ export const RequiresAuth = ({ children }) => {
   const isEncodedTokenPresent =
     localStorage.getItem("encodedTokenTest") ||
     localStorage.getItem("userEncodedToken");
+  // const renderingComponent = () => {
+  //   if (testUser && isEncodedTokenPresent) {
+  //     return children;
+  //   } else if (newUser.signedIn && isEncodedTokenPresent) {
+  //     return children;
+  //   } else if (testUser === null) {
+  //     return <Navigate to="/login" state={{ from: location }} />;
+  //   }
+  // };
   const renderingComponent = () => {
-    if (testUser && isEncodedTokenPresent) {
+    if (isEncodedTokenPresent) {
       return children;
-    } else if (newUser.signedIn && isEncodedTokenPresent) {
-      return children;
-    } else if (testUser === null) {
+    } else {
       return <Navigate to="/login" state={{ from: location }} />;
     }
   };

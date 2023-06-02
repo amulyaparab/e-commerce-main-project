@@ -15,6 +15,7 @@ export const AddressesMapped = () => {
     deleteAddress,
     editAddress,
   } = useContext(AddressContext);
+  // console.log(address, "meow");
   return (
     <>
       {" "}
@@ -33,8 +34,17 @@ export const AddressesMapped = () => {
         <p>Mobile Number: 123456789</p>
         <hr />
       </div>
-      {arrOfAddresses.map((item) => {
-        const { name, address, mobileNumber } = item;
+      {arrOfAddresses?.map((item) => {
+        const {
+          id,
+          name,
+          address,
+          mobileNumber,
+          pincode,
+          city,
+          state,
+          country,
+        } = item;
         return (
           <div className="addreses-map">
             <label>
@@ -48,14 +58,14 @@ export const AddressesMapped = () => {
               {name}
             </label>
             <i
-              class="fa-solid fa-pen address-edit"
+              class="fa-solid fa-pen address-edit address-icon"
               onClick={() => editAddress(item)}
             ></i>
             <i
-              class="fa-solid fa-trash address-delete"
+              class="fa-solid fa-trash address-delete address-icon"
               onClick={() => deleteAddress(item)}
             ></i>
-            <p>{address}</p>
+            <p>{`${address}, ${city}, ${state}, ${pincode}`}</p>
             <p>Mobile Number: {mobileNumber}</p>
             <hr />
           </div>
@@ -63,13 +73,25 @@ export const AddressesMapped = () => {
       })}
       <button
         className="add-to-cart add-address"
-        onClick={() => setShowAddressForm(true)}
+        onClick={() => {
+          setAddress({
+            name: "",
+            id: "",
+            address: "",
+            mobileNumber: "",
+            pincode: "",
+            city: "",
+            state: "",
+            country: "",
+          });
+          setShowAddressForm({ ...showAddressForm, show: true });
+        }}
       >
         {" "}
         <i class="fa-solid fa-plus"></i>
         <span>Add Address</span>
       </button>
-      {showAddressForm && <AddressForm />}
+      {showAddressForm?.show && <AddressForm />}
     </>
   );
 };
