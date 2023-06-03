@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <p className="footer-desc">
-        Copyright © 2023 | Ascend. | All Rights Reserved
+        Copyright © 2023 | Ascend. | Rights Reserved | Amulya Parab.
       </p>
       <ul className="footer-list">
         <li>

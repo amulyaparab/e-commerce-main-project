@@ -14,7 +14,7 @@ export const APIProvider = ({ children }) => {
     };
     const loginRes = await fetch("/api/auth/login", options);
     const loginResponse = await loginRes.json();
-    localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
+    localStorage.setItem("encodedTokenTestUser", loginResponse.encodedToken);
     return loginResponse;
   };
 

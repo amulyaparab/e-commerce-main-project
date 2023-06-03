@@ -69,6 +69,7 @@ export const ProductsProvider = ({ children }) => {
     email: "",
     clear: false,
     totalDiscount: 1,
+    loading: false,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   // ["Bath & Body", "Skin Care", "Hair Care", "Home Decor"]

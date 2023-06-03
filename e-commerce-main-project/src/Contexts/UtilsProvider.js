@@ -64,14 +64,19 @@ export const UtilsProvider = ({ children }) => {
         (isEncodedTokenPresent && testUser) ||
         (newUser.signedIn && isEncodedTokenPresent)
       ) {
+        setNotificationActive(true);
         toast.success("Added To Cart", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
-        setNotificationActive(true);
 
-        isItemInCart(item)
-          ? await increaseCartQuantity(item._id)
-          : await postToCart(item);
+        if (isItemInCart(item)) {
+          console.log("cart");
+          return state.cart;
+        } else {
+          console.log(" not in cart");
+          await postToCart(item);
+        }
+
         updateCart();
       } else {
         navigate("/login", { state: { from: location } });

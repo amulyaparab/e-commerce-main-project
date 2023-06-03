@@ -18,6 +18,7 @@ import { Loading } from "./Pages/Home/Components/Loading";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Success } from "./Pages/Success";
 function App() {
   const fetchLoginData = async () => {
     const creds = {
@@ -65,12 +66,27 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signUp" element={<SignUp />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequiresAuth>
+              <Checkout />
+            </RequiresAuth>
+          }
+        />
         <Route
           path="/profile"
           element={
             <RequiresAuth>
               <Profile />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/success"
+          element={
+            <RequiresAuth>
+              <Success />
             </RequiresAuth>
           }
         />

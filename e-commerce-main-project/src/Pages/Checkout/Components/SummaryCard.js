@@ -43,12 +43,12 @@ export const SummaryCard = () => {
       description: "Thank you for shopping with us",
       handler: function () {
         toast.success(`Payment of Rs. ${totalAmount} is Succesful`);
-        navigate("/order-summary");
+        navigate("/success");
         state.cart.map((item) => deleteFromCart(item._id));
         setTimeout(() => {
-          console.log("Success");
           navigate("/");
-        }, 4000);
+          console.log("Success");
+        }, 5000);
       },
       theme: {
         color: "#2f2e41",
