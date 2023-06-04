@@ -392,19 +392,23 @@ body {
   flex-direction: column;
   align-items: flex-start;
   line-height: 1.8rem;
-  padding: 3rem 1.5rem;
+  padding: 2rem 1.5rem;
   margin: 1rem;
   position: sticky;
   top: 50px;
-  margin-top: 4rem;
+  margin-top: 1rem;
 }
 .filters input {
   cursor: pointer;
 }
-
+.filters h3 {
+  /* font-size: large; */
+  color: #89a17e;
+}
 .filter-heading {
   margin-top: 2rem;
-  font-size: 35px;
+  font-size: 30px;
+  margin-bottom: 1rem;
 }
 .range-filter {
   margin-bottom: 2rem;
@@ -474,7 +478,7 @@ input[type="checkbox"] {
   justify-content: space-evenly;
   line-height: 0.5rem;
   position: relative;
-  margin-top: 3rem;
+  margin-top: 0.2rem;
 }
 .productCard {
   background-color: #ffffff;
@@ -483,6 +487,7 @@ input[type="checkbox"] {
   height: 500px;
   padding: 0 0 2rem;
   margin: 1rem 0;
+  border-radius: 5px;
 }
 
 .product-image {
@@ -492,6 +497,7 @@ input[type="checkbox"] {
   width: 250px;
   height: 350px;
   cursor: pointer;
+  border-radius: 5px 5px 0 0;
 }
 .product-rating {
   background-color: #ffffff;
@@ -552,14 +558,14 @@ input[type="checkbox"] {
   color: #89a17e;
 }
 .header-heading {
-  font-size: 50px;
+  font-size: 45px;
   text-align: center;
-  margin: 2rem 0;
+  margin: 3rem 0 2rem;
 }
 .filter-btn {
   width: fit-content;
   position: absolute;
-  top: 210px;
+  top: 190px;
   right: 70px;
   background-color: #89a17e;
   border: none;
@@ -1315,4 +1321,20 @@ input[type="checkbox"] {
   text-align: center;
   margin-top: 5rem;
   margin-bottom: 41vh;
+}
+.products-not-found {
+  position: relative;
+}
+.products-not-found h1 {
+  text-align: center;
+  /* position: absolute; */
+  font-size: 40px;
+  color: #999999;
+  opacity: 0.8;
+}
+.products-not-found img {
+  width: 1000px;
+  height: 550px;
+  margin-top: 3rem;
+  opacity: 0.8;
 }

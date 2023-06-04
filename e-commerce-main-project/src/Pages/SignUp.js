@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 export const SignUp = () => {
   const { newUser, setNewUser, setEncodedToken } = useAuth();
 
-  const { fetchSignUpData } = useAPI();
+  const { fetchSignUpData, setIsLoading } = useAPI();
 
   const [showPassword, setShowPassword] = useState({
     password: false,
@@ -17,33 +17,40 @@ export const SignUp = () => {
   const location = useLocation();
 
   const signUpHandler = async () => {
-    if (
-      newUser.email.length &&
-      newUser.password.length &&
-      newUser.confirmPassword.length &&
-      newUser.firstName.length &&
-      newUser.lastName.length &&
-      newUser.confirmPassword === newUser.password
-    ) {
-      const authToken = await fetchSignUpData({ ...newUser });
-      console.log("authToken", authToken);
-      if (authToken) {
-        toast.success("Signed In.", {
+    try {
+      setIsLoading(true);
+      if (
+        newUser.email.length &&
+        newUser.password.length &&
+        newUser.confirmPassword.length &&
+        newUser.firstName.length &&
+        newUser.lastName.length &&
+        newUser.confirmPassword === newUser.password
+      ) {
+        const authToken = await fetchSignUpData({ ...newUser });
+        console.log("authToken", authToken);
+        if (authToken) {
+          toast.success("Signed In.", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+
+          setNewUser({ ...newUser, signedIn: true });
+          setEncodedToken(authToken);
+          navigate(location?.state?.from?.pathname);
+        }
+      } else if (newUser.confirmPassword !== newUser.password) {
+        toast.warn("The passwords do not match.", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
-
-        setNewUser({ ...newUser, signedIn: true });
-        setEncodedToken(authToken);
-        navigate(location?.state?.from?.pathname);
+      } else {
+        toast.warn("Please Fill All Fields", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
-    } else if (newUser.confirmPassword !== newUser.password) {
-      toast.warn("The passwords do not match.", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-    } else {
-      toast.warn("Please Fill All Fields", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 

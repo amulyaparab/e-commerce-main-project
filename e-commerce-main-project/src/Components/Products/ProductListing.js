@@ -1,8 +1,9 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { ProductCard } from "../ProductCard";
 import { NavLink } from "react-router-dom";
-
+import notFound from "../../Images/notFound.svg";
 import { useUtils } from "../../Contexts/UtilsProvider";
+import { useAPI } from "../../Contexts/APIProvider";
 
 export const ProductListing = () => {
   const { filteredData } = useProducts();
@@ -14,11 +15,14 @@ export const ProductListing = () => {
     isItemInWishlist,
     isEncodedTokenPresent,
   } = useUtils();
-
+  const { isLoading } = useAPI();
   return (
     <section className="products">
-      {filteredData?.length === 0 ? (
-        <h3>Products not Found.</h3>
+      {filteredData?.length === 0 && !isLoading ? (
+        <div className="products-not-found">
+          <img src={notFound} alt="Products Not Found" />
+          <h1>Products not Found.</h1>
+        </div>
       ) : (
         filteredData?.map((item) => {
           return (

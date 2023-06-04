@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { useUtils } from "../Contexts/UtilsProvider";
 export const Login = () => {
-  const { setEncodedToken } = useAuth();
+  const { encodedToken, setEncodedToken } = useAuth();
   const { fetchLoginData, fetchLoginAsGuest, setIsLoading } = useAPI();
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,24 +14,38 @@ export const Login = () => {
   const loginHandler = async () => {
     try {
       setIsLoading(true);
+      // if (encodedToken) {
       if (loginData.email.length && loginData.password.length) {
-        toast.success("Logged In", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
-        const { foundUser, encodedToken } = await fetchLoginData({
-          email: loginData.email,
-          password: loginData.password,
-        });
-        setEncodedToken(encodedToken);
+        if (encodedToken) {
+          toast.success("Logged In", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
 
-        navigate(location?.state?.from?.pathname);
-        updateWishlist();
-        updateCart();
+          const { foundUser, encodedToken } = await fetchLoginData({
+            email: loginData.email,
+            password: loginData.password,
+          });
+          setEncodedToken(encodedToken);
+
+          navigate(location?.state?.from?.pathname);
+          updateWishlist();
+          updateCart();
+        } else {
+          toast.error("Wrong Password Or Email.", {
+            position: toast.POSITION.BOTTOM_RIGHT,
+          });
+        }
       } else {
         toast.warn("Please Fill All Fields", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
+      // }
+      //  else {
+      //   toast.error("User Not Found.", {
+      //     position: toast.POSITION.BOTTOM_RIGHT,
+      //   });
+      // }
     } catch (err) {
       console.log(err);
     } finally {

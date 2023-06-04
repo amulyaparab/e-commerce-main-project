@@ -29,18 +29,6 @@ export const products = [
   // },
 
   {
-    _id: uuid(),
-    name: "Hydrating Moisturizer",
-    description:
-      "A lightweight and hydrating moisturizer that nourishes and softens the skin.",
-    price: 290,
-    rating: 4.5,
-    category: "Skin Care",
-    brand: "CeraVe",
-    image:
-      "https://images.unsplash.com/photo-1605204768985-81bad5fd9d79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  },
-  {
     _id: "best-seller-1",
     name: "Brightening Serum",
     description:
@@ -54,6 +42,18 @@ export const products = [
   },
   {
     _id: uuid(),
+    name: "Eucalyptus Mint Bath Bomb",
+    description:
+      "An invigorating bath bomb infused with the refreshing scents of eucalyptus and mint. Provides a revitalizing and uplifting bathing experience.",
+    price: 799,
+    rating: 4.5,
+    category: "Bath & Body",
+    brand: "Fresh Breeze",
+    image:
+      "https://images.pexels.com/photos/6683020/pexels-photo-6683020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    _id: uuid(),
     name: "Rose Water Toner",
     description:
       "A refreshing toner enriched with rose water tos balance the skin's pH and provide a boost of hydration.",
@@ -64,19 +64,19 @@ export const products = [
     image:
       "https://images.unsplash.com/photo-1573575155376-b5010099301b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
-
   {
-    _id: uuid(),
-    name: "Jade Roller",
+    _id: "best-seller-2",
+    name: "Soothing Lemon Bath Bomb",
     description:
-      "A cooling facial roller made from jade that helps to reduce puffiness and promote lymphatic drainage.",
-    price: 240,
-    rating: 4.4,
-    category: "Skin Care",
-    brand: "Rose Quartz Beauty",
+      "A calming and relaxing bath bomb infused with the soothing scent of lemon. Helps to unwind and promote a peaceful sleep.",
+    price: 999,
+    rating: 5.0,
+    category: "Bath & Body",
+    brand: "Relaxation Spa",
     image:
-      "https://plus.unsplash.com/premium_photo-1677283511670-693a546c484a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fHNraW5jYXJlfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      "https://images.pexels.com/photos/6620946/pexels-photo-6620946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
+
   {
     _id: uuid(),
     name: "Exfoliating Scrub",
@@ -127,28 +127,30 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Refreshing Facial Spray",
+    name: "Soothing Shampoo",
     description:
-      "A refreshing facial mist that hydrates and revitalizes the skin throughout the day. Can be used as a makeup setting spray.",
-    price: 390,
-    rating: 4.7,
-    category: "Skin Care",
-    brand: "Mario Badescu",
+      "Gently cleanses and moisturizes dry and damaged hair. Leaves hair soft, smooth, and manageable.",
+    price: 1299,
+    rating: 4.5,
+    category: "Hair Care",
+    brand: "Silk & Shine",
     image:
-      "https://images.unsplash.com/photo-1605612715345-21def7e08753?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=865&q=80",
+      "https://images.unsplash.com/photo-1535927853242-fa2bde74fb7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
   },
+
   {
     _id: uuid(),
-    name: "Hydrating Body Yogurt",
+    name: "Handmade Mud Pot Set",
     description:
-      "A lightweight and fast-absorbing body yogurt that deeply hydrates and nourishes the skin.",
-    price: 500,
-    rating: 4.6,
-    category: "Skin Care",
-    brand: "The Body Shop",
+      "Set of handcrafted mud pots in various sizes for a rustic touch.",
+    price: 420,
+    rating: 4.5,
+    category: "Home Decor",
+    brand: "Earthly Delights",
     image:
-      "https://images.unsplash.com/photo-1552256029-4e3aa83bbe2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+      "https://images.unsplash.com/photo-1613989999710-4d305027df02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
   },
+
   {
     _id: uuid(),
     name: "Moisturizing Body Milk",
@@ -344,6 +346,18 @@ export const products = [
   },
   {
     _id: uuid(),
+    name: "LED Fairy Lights",
+    description:
+      "String of warm white LED lights for creating a magical ambiance.",
+    price: 290,
+    rating: 4.2,
+    category: "Home Decor",
+    brand: "Twinkle Glow",
+    image:
+      "https://images.unsplash.com/photo-1544515137-646173abc5b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    _id: uuid(),
     name: "Detoxifying Body Clay",
     description:
       "A purifying body clay that helps to detoxify the skin by drawing out impurities and excess oil. Leaves the skin feeling refreshed and revitalized.",
@@ -366,30 +380,7 @@ export const products = [
     image:
       "https://images.pexels.com/photos/7175332/pexels-photo-7175332.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
-  {
-    _id: "best-seller-2",
-    name: "Soothing Lemon Bath Bomb",
-    description:
-      "A calming and relaxing bath bomb infused with the soothing scent of lemon. Helps to unwind and promote a peaceful sleep.",
-    price: 999,
-    rating: 5.0,
-    category: "Bath & Body",
-    brand: "Relaxation Spa",
-    image:
-      "https://images.pexels.com/photos/6620946/pexels-photo-6620946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
-  {
-    _id: uuid(),
-    name: "Eucalyptus Mint Bath Bomb",
-    description:
-      "An invigorating bath bomb infused with the refreshing scents of eucalyptus and mint. Provides a revitalizing and uplifting bathing experience.",
-    price: 799,
-    rating: 4.5,
-    category: "Bath & Body",
-    brand: "Fresh Breeze",
-    image:
-      "https://images.pexels.com/photos/6683020/pexels-photo-6683020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
+
   {
     _id: uuid(),
     name: "Tropical Paradise Bath Bomb",
@@ -546,18 +537,7 @@ export const products = [
     image:
       "https://images.unsplash.com/photo-1564742191034-961da6c0e088?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
   },
-  {
-    _id: uuid(),
-    name: "Repairing Conditioner",
-    description:
-      "Nourishes and repairs damaged hair, leaving it silky and strong. Detangles and adds shine.",
-    price: 1199,
-    rating: 4.2,
-    category: "Hair Care",
-    brand: "Revive & Restore",
-    image:
-      "https://images.pexels.com/photos/4465121/pexels-photo-4465121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  },
+
   {
     _id: uuid(),
     name: "Intensive Repair Hair Mask",
@@ -680,16 +660,17 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Soothing Shampoo",
+    name: "Hydrating Body Yogurt",
     description:
-      "Gently cleanses and moisturizes dry and damaged hair. Leaves hair soft, smooth, and manageable.",
-    price: 1299,
-    rating: 4.5,
-    category: "Hair Care",
-    brand: "Silk & Shine",
+      "A lightweight and fast-absorbing body yogurt that deeply hydrates and nourishes the skin.",
+    price: 500,
+    rating: 4.6,
+    category: "Skin Care",
+    brand: "The Body Shop",
     image:
-      "https://images.unsplash.com/photo-1535927853242-fa2bde74fb7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+      "https://images.unsplash.com/photo-1552256029-4e3aa83bbe2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
   },
+
   {
     _id: uuid(),
     name: "Repairing Shampoo",
@@ -762,18 +743,7 @@ export const products = [
     image:
       "https://images.pexels.com/photos/15172848/pexels-photo-15172848.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
-  {
-    _id: uuid(),
-    name: "LED Fairy Lights",
-    description:
-      "String of warm white LED lights for creating a magical ambiance.",
-    price: 290,
-    rating: 4.2,
-    category: "Home Decor",
-    brand: "Twinkle Glow",
-    image:
-      "https://images.unsplash.com/photo-1544515137-646173abc5b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-  },
+
   {
     _id: uuid(),
     name: "Rustic Wooden Wall Shelf",
@@ -788,6 +758,18 @@ export const products = [
   },
   {
     _id: uuid(),
+    name: "Repairing Conditioner",
+    description:
+      "Nourishes and repairs damaged hair, leaving it silky and strong. Detangles and adds shine.",
+    price: 1199,
+    rating: 4.2,
+    category: "Hair Care",
+    brand: "Revive & Restore",
+    image:
+      "https://images.pexels.com/photos/4465121/pexels-photo-4465121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    _id: uuid(),
     name: "Ceramic Plant Pot",
     description: "Minimalist ceramic pot for indoor plants.",
     price: 320,
@@ -796,6 +778,18 @@ export const products = [
     brand: "Green Thumb",
     image:
       "https://images.unsplash.com/photo-1677761640321-b80251be00ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Hydrating Moisturizer",
+    description:
+      "A lightweight and hydrating moisturizer that nourishes and softens the skin.",
+    price: 290,
+    rating: 4.5,
+    category: "Skin Care",
+    brand: "CeraVe",
+    image:
+      "https://images.unsplash.com/photo-1605204768985-81bad5fd9d79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
   },
   {
     _id: uuid(),
@@ -858,16 +852,17 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Handmade Mud Pot Set",
+    name: "Refreshing Facial Spray",
     description:
-      "Set of handcrafted mud pots in various sizes for a rustic touch.",
-    price: 420,
-    rating: 4.5,
-    category: "Home Decor",
-    brand: "Earthly Delights",
+      "A refreshing facial mist that hydrates and revitalizes the skin throughout the day. Can be used as a makeup setting spray.",
+    price: 390,
+    rating: 4.7,
+    category: "Skin Care",
+    brand: "Mario Badescu",
     image:
-      "https://images.unsplash.com/photo-1613989999710-4d305027df02?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+      "https://images.unsplash.com/photo-1605612715345-21def7e08753?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=865&q=80",
   },
+
   {
     _id: uuid(),
     name: "Mud Jewelry Plate",
@@ -891,6 +886,18 @@ export const products = [
     brand: "Zen Harmony",
     image:
       "https://images.unsplash.com/photo-1603905179139-db12ab535ca9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=737&q=80",
+  },
+  {
+    _id: uuid(),
+    name: "Jade Roller",
+    description:
+      "A cooling facial roller made from jade that helps to reduce puffiness and promote lymphatic drainage.",
+    price: 240,
+    rating: 4.4,
+    category: "Skin Care",
+    brand: "Rose Quartz Beauty",
+    image:
+      "https://plus.unsplash.com/premium_photo-1677283511670-693a546c484a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nzl8fHNraW5jYXJlfGVufDB8MXwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   },
   {
     _id: uuid(),
