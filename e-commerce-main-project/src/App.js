@@ -1,14 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-
 import Mockman from "mockman-js";
-
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useProducts } from "./Contexts/ProductsProvider";
 import { useAPI } from "./Contexts/APIProvider";
+
 import {
   Cart,
   Checkout,
@@ -25,32 +23,12 @@ import {
   Success,
   Wishlist,
 } from "./Pages";
+import { ErrorPage } from "./Pages/Error";
 
 function App() {
-  const { dispatch, setIsLoading } = useProducts();
-  const { fetchProducts, fetchCategories } = useAPI();
-  const fetchProductsAgain = async () => {
-    try {
-      setIsLoading(true);
-      const products1 = await fetchProducts();
-      dispatch({ type: "FETCH_PRODUCTS", payload: products1 });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  const fetchCategoriesAgain = async () => {
-    try {
-      setIsLoading(true);
-      const categories1 = await fetchCategories();
-      dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { fetchCategoriesAgain, fetchProductsAgain } = useProducts();
+  // const { fetchProducts, fetchCategories } = useAPI();
+
   useEffect(() => {
     fetchProductsAgain();
     fetchCategoriesAgain();
@@ -108,6 +86,7 @@ function App() {
             </RequiresAuth>
           }
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
 
       <Footer />

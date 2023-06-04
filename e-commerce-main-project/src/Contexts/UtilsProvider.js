@@ -20,6 +20,7 @@ export const UtilsProvider = ({ children }) => {
     deleteFromWishlist,
     deleteFromCart,
     decreaseCartQuantity,
+    setIsLoading,
   } = useAPI();
   const [modal, setModal] = useState(false);
 
@@ -40,22 +41,36 @@ export const UtilsProvider = ({ children }) => {
     localStorage.getItem("userEncodedToken");
 
   const updateCart = async () => {
-    const unfilteredCart = await fetchCart();
-    const cart = unfilteredCart.cart?.filter(
-      (item) => item._id !== undefined || item._id !== null
-    );
-    dispatch({
-      type: "FETCH_CART",
-      payload: cart,
-    });
+    try {
+      setIsLoading(true);
+      const unfilteredCart = await fetchCart();
+      const cart = unfilteredCart.cart?.filter(
+        (item) => item._id !== undefined || item._id !== null
+      );
+      dispatch({
+        type: "FETCH_CART",
+        payload: cart,
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const updateWishlist = async () => {
-    const wishlist = await fetchWishlist();
-    dispatch({
-      type: "FETCH_WISHLIST",
-      payload: wishlist,
-    });
+    try {
+      setIsLoading(true);
+      const wishlist = await fetchWishlist();
+      dispatch({
+        type: "FETCH_WISHLIST",
+        payload: wishlist,
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
   const { testUser, newUser } = useAuth();
   const handleAddToCart = async (item) => {

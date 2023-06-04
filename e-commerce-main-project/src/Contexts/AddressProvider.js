@@ -5,31 +5,19 @@ const AddressContext = createContext();
 export const AddressProvider = ({ children }) => {
   const [selectedAddress, setSelectedAddress] = useState("123");
   const [arrOfAddresses, setArrOfAddresses] = useState([
-    {
-      name: "Amulya Parab",
-      id: "123",
-      address: "221B Baker Street",
-      mobileNumber: "123456789",
-      pincode: "NW1 6XE",
-      city: "London",
-      state: "UK",
-      country: "United Kingdom",
-    },
+    // {
+    //   name: "Amulya Parab",
+    //   id: "123",
+    //   address: "221B Baker Street",
+    //   mobileNumber: "123456789",
+    //   pincode: "NW1 6XE",
+    //   city: "London",
+    //   state: "UK",
+    //   country: "United Kingdom",
+    // },
   ]);
-  const [showAddressForm, setShowAddressForm] = useState({
-    show: false,
-    formDetails: {
-      id: uuid(),
-      name: "fds",
-      address: "sfsd",
-      mobileNumber: "43",
-      pincode: "543",
-      city: "gfd",
-      state: "fdg",
-      country: "fdg",
-    },
-  });
-  const [addressToBeEdited, setAddressToBeEdited] = useState(null);
+  const [showAddressForm, setShowAddressForm] = useState(false);
+
   const [address, setAddress] = useState({
     name: "",
     id: "",
@@ -40,10 +28,8 @@ export const AddressProvider = ({ children }) => {
     state: "",
     country: "",
   });
-  console.log(address.name, "sdas");
-  const addAddressHandler = () => {
-    console.log(address.name);
 
+  const addAddressHandler = () => {
     const conditions =
       address.name.length &&
       address.mobileNumber.length &&
@@ -57,8 +43,9 @@ export const AddressProvider = ({ children }) => {
           position: toast.POSITION.BOTTOM_RIGHT,
         }) &&
         setArrOfAddresses(() => {
-          console.log(addressToBeEdited, "edit");
-
+          console.log(
+            arrOfAddresses.find((arrItem) => arrItem.id === address.id)
+          );
           if (arrOfAddresses.find((arrItem) => arrItem.id === address.id)) {
             console.log("hjerererererer");
             return arrOfAddresses?.map((arrItem) =>
@@ -84,7 +71,8 @@ export const AddressProvider = ({ children }) => {
     });
   };
   const editAddress = () => {
-    setShowAddressForm({ ...showAddressForm, show: true });
+    console.log(address, "a", arrOfAddresses, "b");
+    setShowAddressForm(true);
   };
   const randomAddressAdder = () => {
     const randomAddress = {

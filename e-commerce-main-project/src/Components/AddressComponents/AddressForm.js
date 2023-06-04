@@ -25,9 +25,7 @@ export const AddressForm = () => {
     <div className="address-overlay">
       <div className="login address-form">
         <i
-          onClick={() =>
-            setShowAddressForm({ ...showAddressForm, show: false })
-          }
+          onClick={() => setShowAddressForm(false)}
           class="fa-solid fa-xmark wishlist-heart remove"
         ></i>
         <h1>Add Address</h1>

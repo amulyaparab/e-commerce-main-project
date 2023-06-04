@@ -4,13 +4,15 @@ import { Filters } from "../../Components/Products/Filters";
 import { ProductListing } from "../../Components/Products/ProductListing";
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { useAPI } from "../../Contexts/APIProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Products = () => {
   const { showFilters } = useProducts();
-  const { fetchCart } = useAPI();
+  const { updateWishlist, updateCart } = useUtils();
 
   useEffect(() => {
-    fetchCart();
+    updateCart();
+    updateWishlist();
   }, []);
   return (
     <>

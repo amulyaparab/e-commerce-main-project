@@ -903,7 +903,7 @@ input[type="checkbox"] {
   right: 0;
   inset: 0;
   width: 300px;
-  height: 300px;
+  height: 380px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -927,6 +927,7 @@ input[type="checkbox"] {
   width: 100%;
   padding: 0.5rem 1rem;
   margin-left: 0px;
+  margin-bottom: 0.7rem;
 }
 .login input {
   border: #d3d3d3 solid 2px;
@@ -1011,6 +1012,9 @@ input[type="checkbox"] {
 }
 .empty-wishlist img {
   height: 45vh;
+}
+.wishlistCard {
+  margin-bottom: 3rem;
 }
 
 /* Profile */
@@ -1283,4 +1287,21 @@ input[type="checkbox"] {
   font-size: 150px;
   margin-top: 2rem;
   margin-bottom: 26vh;
+}
+.error-page {
+  text-align: center;
+  height: 80vh;
+}
+.error-page img {
+  width: 700px;
+  height: 620px;
+  margin: auto;
+  margin-top: -40px;
+}
+.error-page h1 {
+  margin-top: -70px;
+  margin-bottom: 10px;
+}
+.error-page small {
+  color: #666666;
 }

@@ -1,6 +1,6 @@
-import { useProducts } from "../Contexts/ProductsProvider";
+import { useAPI } from "../Pages";
 export const Loading = () => {
-  const { isLoading } = useProducts();
+  const { isLoading } = useAPI();
   return (
     <>
       {isLoading && (

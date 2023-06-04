@@ -11,7 +11,7 @@ export const WishlistListing = () => {
     <>
       {state?.wishlist?.map((item) => {
         return (
-          <div className="productCard" key={item._id}>
+          <div className="productCard wishlistCard" key={item._id}>
             <i
               class="fa-solid fa-xmark wishlist-heart"
               onClick={() => removefromWishlistHandler(item._id)}

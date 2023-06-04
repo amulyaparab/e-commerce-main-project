@@ -25,7 +25,7 @@ export const ProductsProvider = ({ children }) => {
     fetchCategories,
     fetchWishlist,
   } = useAPI();
-  const [isLoading, setIsLoading] = useState(true);
+  const { isLoading, setIsLoading } = useAPI();
   const fetchData = async () => {
     try {
       setIsLoading(true);
@@ -53,6 +53,76 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
+  // const fetchDataAgain = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const categories1 = await fetchCategories();
+  //     const products = await fetchProducts();
+  //     const cartUnfiltered = await fetchCart();
+  //     const cart = cartUnfiltered.cart.filter(
+  //       (item) => item._id !== undefined || item._id !== null
+  //     );
+  //     // const cart = cartUnfiltered.shift();
+  //     const wishlist = await fetchWishlist();
+  //     const wishlistNew = wishlist.shift();
+  //     const categories = await fetchCategories();
+  //     dispatch({
+  //       type: "FETCH_AGAIN",
+  //       payloadProd: products,
+  //       payloadCart: cart,
+  //       payloadWishlist: wishlist,
+  //       payloadCategory: categories,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  const fetchProductsAgain = async () => {
+    try {
+      setIsLoading(true);
+      const products1 = await fetchProducts();
+      dispatch({ type: "FETCH_PRODUCTS", payload: products1 });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  // const fetchCategoriesAgain = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const categories1 = await fetchCategories();
+  //     dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
+  //   } catch (err) {
+  //     console.log(err);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  const fetchSingleProdAgain = async () => {
+    try {
+      setIsLoading(true);
+      const categories1 = await fetchCategories();
+      dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const fetchCategoriesAgain = async () => {
+    try {
+      setIsLoading(true);
+      const categories1 = await fetchCategories();
+      dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const initialState = {
     prodData: [],
     cart: [],
@@ -152,6 +222,8 @@ export const ProductsProvider = ({ children }) => {
         notificationContent,
         setNotificationContent,
         fetchData,
+        fetchProductsAgain,
+        fetchCategoriesAgain,
       }}
     >
       {children}

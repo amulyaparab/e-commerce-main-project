@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useAuth } from "./AuthProvider";
 
 const APIContext = createContext();
@@ -6,8 +6,27 @@ const APIContext = createContext();
 export const APIProvider = ({ children }) => {
   const TOKEN = localStorage.getItem("encodedTokenTest");
   const { encodedToken, setEncodedToken } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
+  const fetchLoginData = async ({ email, password }) => {
+    const creds = {
+      email,
+      password,
+    };
 
-  const fetchLoginData = async () => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify(creds),
+    };
+    const loginRes = await fetch("/api/auth/login", options);
+    const loginResponse = await loginRes.json();
+    console.log(loginResponse, "user");
+    localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
+    // localStorage.setItem("Id", loginResponse.foundUser.id);
+
+    return loginResponse;
+  };
+
+  const fetchLoginAsGuest = async () => {
     const creds = {
       email: "adarshbalika@gmail.com",
       password: "adarshbalika",
@@ -18,7 +37,7 @@ export const APIProvider = ({ children }) => {
     };
     const loginRes = await fetch("/api/auth/login", options);
     const loginResponse = await loginRes.json();
-    console.log(loginResponse.foundUser.id);
+    console.log(loginResponse, "guets");
     localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
     // localStorage.setItem("Id", loginResponse.foundUser.id);
 
@@ -32,16 +51,6 @@ export const APIProvider = ({ children }) => {
       firstName,
       lastName,
     };
-    console.log(
-      "email",
-      email,
-      "pas",
-      password,
-      "f",
-      firstName,
-      "lk",
-      lastName
-    );
 
     const options = {
       method: "POST",
@@ -49,7 +58,7 @@ export const APIProvider = ({ children }) => {
     };
     const signUpRes = await fetch("/api/auth/signup", options);
     const { createdUser, encodedToken } = await signUpRes.json();
-    console.log(createdUser);
+    console.log({ createdUser, encodedToken });
     localStorage.setItem("encodedTokenTest", encodedToken);
     return encodedToken;
   };
@@ -66,7 +75,7 @@ export const APIProvider = ({ children }) => {
     return product;
   };
   const fetchCart = async () => {
-    console.log(encodedToken, "encodedd");
+    console.log("cart api call func takes place wtf");
     const options = {
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
       headers: {
@@ -75,6 +84,7 @@ export const APIProvider = ({ children }) => {
     };
     const cartRes = await fetch("/api/user/cart", options);
     const cart = await cartRes.json();
+    console.log(cart, "carrrrrtt");
     return cart;
   };
 
@@ -82,7 +92,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
       body: JSON.stringify({ product }),
     };
     const cartRes = await fetch("/api/user/cart", options);
@@ -94,7 +104,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "DELETE",
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
     };
     const deleteFromCartRes = await fetch(`/api/user/cart/${prodId}`, options);
     const { cart } = await deleteFromCartRes.json();
@@ -110,7 +120,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
       body: JSON.stringify(bodyIncrementCount),
     };
     const increaseCartQuantityRes = await fetch(
@@ -129,7 +139,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
       body: JSON.stringify(bodyDecrementCount),
     };
     const decreaseCartQuantityRes = await fetch(
@@ -143,7 +153,7 @@ export const APIProvider = ({ children }) => {
   const fetchWishlist = async () => {
     const options = {
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
     };
     const wishlistRes = await fetch("/api/user/wishlist", options);
     const { wishlist } = await wishlistRes.json();
@@ -153,7 +163,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
       body: JSON.stringify({ product }),
     };
     const wishlistRes = await fetch("/api/user/wishlist", options);
@@ -165,7 +175,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "DELETE",
       // headers: { authorization: localStorage.getItem("encodedTokenTest") },
-      headers: { authorization: encodedToken },
+      headers: { authorization: TOKEN },
     };
     const deleteFromWishlistRes = await fetch(
       `/api/user/wishlist/${prodId}`,
@@ -198,6 +208,9 @@ export const APIProvider = ({ children }) => {
         fetchCart,
         fetchCategories,
         fetchWishlist,
+        fetchLoginAsGuest,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}

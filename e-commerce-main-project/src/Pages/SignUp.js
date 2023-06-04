@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAPI } from "../Contexts/APIProvider";
 import { useAuth } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
+import { useUtils } from "../Contexts/UtilsProvider";
 export const SignUp = () => {
   const { newUser, setNewUser, setEncodedToken } = useAuth();
 
@@ -16,6 +17,7 @@ export const SignUp = () => {
   //   signedIn: false,
   // });
 
+  // const { updateWishlist } = useUtils();
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
@@ -33,7 +35,7 @@ export const SignUp = () => {
       newUser?.confirmPassword === newUser.password
     ) {
       const authToken = await fetchSignUpData({ ...newUser });
-      console.log(authToken, "auth");
+      // console.log(authToken, "auth");
 
       if (authToken) {
         toast.success("Signed In.", {

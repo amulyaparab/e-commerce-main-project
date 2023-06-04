@@ -18,7 +18,7 @@ export const AddressesMapped = () => {
   return (
     <>
       {" "}
-      {/* <div>
+      <div>
         <label>
           <input
             type="radio"
@@ -33,7 +33,7 @@ export const AddressesMapped = () => {
         <p>221B Baker Street, London, NW1 6XE, United Kingdom. </p>
         <p>Mobile Number: 123456789</p>
         <hr />
-      </div> */}
+      </div>
       {arrOfAddresses?.map((item) => {
         const {
           id,
@@ -86,14 +86,14 @@ export const AddressesMapped = () => {
             state: "",
             country: "",
           });
-          setShowAddressForm({ ...showAddressForm, show: true });
+          setShowAddressForm(true);
         }}
       >
         {" "}
         <i class="fa-solid fa-plus"></i>
         <span>Add Address</span>
       </button>
-      {showAddressForm?.show && <AddressForm />}
+      {showAddressForm && <AddressForm />}
     </>
   );
 };

@@ -2,9 +2,14 @@ import { useProducts } from "../../Contexts/ProductsProvider";
 
 import { EmptyWishlist } from "../../Components/Wishlist/EmptyWishlist";
 import { WishlistListing } from "../../Components/Wishlist/WishlistListing";
+import { useEffect } from "react";
+import { useUtils } from "../../Contexts/UtilsProvider";
 export const Wishlist = () => {
   const { state } = useProducts();
-
+  const { updateWishlist } = useUtils();
+  useEffect(() => {
+    updateWishlist();
+  }, []);
   return (
     <>
       <h1 className="header-heading">

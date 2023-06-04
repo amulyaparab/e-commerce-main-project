@@ -1,3 +1,5 @@
+import { ErrorPage } from "./Error";
+
 export { useAPI } from "../Contexts/APIProvider";
 export { useAddress } from "../Contexts/AddressProvider";
 export { useAuth } from "../Contexts/AuthProvider";
