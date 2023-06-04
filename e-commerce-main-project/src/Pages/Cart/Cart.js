@@ -15,6 +15,24 @@ export const Cart = () => {
     increaseQtyHandler,
     decreaseQtyHandler,
   } = useContext(UtilsContext);
+  // const isItemPresent = (prodId) =>state?.cart?.find((item) => item._id === prodId)
+  const checkDuplicateItems = (cart) => {
+    const ids = new Set();
+
+    for (let item of cart) {
+      if (ids.has(item.id)) {
+        return true; // Duplicate item found
+      } else {
+        ids.add(item.id);
+      }
+    }
+
+    return false; // No duplicate items found
+  };
+
+  // Usage
+  const hasDuplicateItems = checkDuplicateItems(state?.cart);
+  console.log(hasDuplicateItems);
 
   return (
     <>

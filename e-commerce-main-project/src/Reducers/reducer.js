@@ -14,7 +14,10 @@ export const reducer = (state, action) => {
         ...state,
         cart: action.payload,
       };
-
+    case "FETCH_PRODUCTS":
+      return { ...state, filteredData: action.payload };
+    case "FETCH_CATEGORIES":
+      return { ...state, categories: action.payload };
     case "CLEAR_FILTERS":
       return {
         ...state,

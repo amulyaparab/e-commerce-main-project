@@ -5,7 +5,13 @@ import { Carousel } from "./Components/Carousel";
 import { Categories } from "./Components/Categories";
 import { BestSellers } from "./Components/BestSellers";
 import { PreFooter } from "./Components/PreFooter";
+import { useContext, useEffect } from "react";
+import { APIContext } from "../../Contexts/APIProvider";
 export const Home = () => {
+  const { fetchProducts } = useContext(APIContext);
+  useEffect(() => {
+    fetchProducts();
+  }, []);
   return (
     <>
       <div className="flex">

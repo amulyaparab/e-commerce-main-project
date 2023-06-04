@@ -15,17 +15,18 @@ export const AddressesMapped = () => {
     deleteAddress,
     editAddress,
   } = useContext(AddressContext);
-  // console.log(address, "meow");
+  // console.log(selectedAddress, "meow");
   return (
     <>
       {" "}
-      <div>
+      {/* <div>
         <label>
           <input
             type="radio"
             name="address"
+            value={"123"}
             onChange={(event) => {
-              setSelectedAddress(event.target.checked);
+              setSelectedAddress(event.target.value);
             }}
           />
           Amulya Parab{" "}
@@ -33,7 +34,7 @@ export const AddressesMapped = () => {
         <p>221B Baker Street, London, NW1 6XE, United Kingdom. </p>
         <p>Mobile Number: 123456789</p>
         <hr />
-      </div>
+      </div> */}
       {arrOfAddresses?.map((item) => {
         const {
           id,
@@ -51,8 +52,10 @@ export const AddressesMapped = () => {
               <input
                 type="radio"
                 name="address"
+                value={item.id}
+                checked={selectedAddress === item.id}
                 onChange={(event) => {
-                  setSelectedAddress(event.target.checked);
+                  setSelectedAddress(event.target.value);
                 }}
               />
               {name}

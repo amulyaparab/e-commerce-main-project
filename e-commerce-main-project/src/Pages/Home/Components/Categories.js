@@ -14,6 +14,7 @@ export const Categories = () => {
 
   return (
     <section className="categories">
+      {console.log(state?.categories)}
       <div className="heading">
         <h1>Categories</h1>
       </div>

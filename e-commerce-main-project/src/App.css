@@ -396,7 +396,7 @@ body {
   margin: 1rem;
   position: sticky;
   top: 50px;
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 .filters input {
   cursor: pointer;
@@ -739,6 +739,9 @@ input[type="checkbox"] {
   padding: 0px;
   display: flex;
   box-shadow: 0 0 10px 1px #d3d3d3;
+}
+.cartCard .product-name {
+  line-height: 1rem;
 }
 .cartCard .cartSlide {
   display: flex;
@@ -1267,4 +1270,17 @@ input[type="checkbox"] {
 .address-icon {
   font-size: 16px;
   cursor: pointer;
+}
+.order-height {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+}
+.order-height i {
+  color: #11611a;
+  font-size: 150px;
+  margin-top: 2rem;
+  margin-bottom: 26vh;
 }

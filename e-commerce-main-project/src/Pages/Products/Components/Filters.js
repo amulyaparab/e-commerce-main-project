@@ -24,6 +24,7 @@ export const Filters = () => {
   const handleClearFilters = () => {
     dispatch({ type: "CLEAR_FILTERS" });
   };
+
   return (
     <>
       {showFilters ? (

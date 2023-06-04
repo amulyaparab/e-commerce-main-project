@@ -2,11 +2,12 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Mockman from "mockman-js";
-import { Home } from "./Pages/Home/Home";
+
+// import { Home } from "./Pages/Home/Home";
 import { Products } from "./Pages/Products/Products";
-import { Cart } from "./Pages/Cart/Cart";
+// import { Cart } from "./Pages/Cart/Cart";
 import { SingleProduct } from "./Pages/SingleProduct";
-import { Wishlist } from "./Pages/Wishlist/Wishlist";
+// import { Wishlist } from "./Pages/Wishlist/Wishlist";
 import { Header } from "./Components/Header";
 import { Footer } from "./Components/Footer";
 import { Login } from "./Pages/Login";
@@ -15,27 +16,58 @@ import { Profile } from "./Pages/Profile";
 import { Checkout } from "./Pages/Checkout/Checkout";
 import { SignUp } from "./Pages/SignUp";
 import { Loading } from "./Pages/Home/Components/Loading";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Success } from "./Pages/Success";
+import { ProductsContext } from "./Contexts/ProductsProvider";
+import { APIContext } from "./Contexts/APIProvider";
+import { Cart, Home, Wishlist } from "./Pages";
+import { UtilsContext } from "./Contexts/UtilsProvider";
+
 function App() {
-  const fetchLoginData = async () => {
-    const creds = {
-      email: "adarshbalika@gmail.com",
-      password: "adarshbalika",
-    };
-    const options = {
-      method: "POST",
-      body: JSON.stringify(creds),
-    };
-    const loginRes = await fetch("/api/auth/login", options);
-    const loginResponse = await loginRes.json();
-    localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
-    return loginResponse;
+  // const fetchLoginData = async () => {
+  //   const creds = {
+  //     email: "adarshbalika@gmail.com",
+  //     password: "adarshbalika",
+  //   };
+  //   const options = {
+  //     method: "POST",
+  //     body: JSON.stringify(creds),
+  //   };
+  //   const loginRes = await fetch("/api/auth/login", options);
+  //   const loginResponse = await loginRes.json();
+  //   localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
+  //   return loginResponse;
+  // };
+  const { dispatch, setIsLoading } = useContext(ProductsContext);
+  const { fetchProducts, fetchCart, fetchWishlist, fetchCategories } =
+    useContext(APIContext);
+  const fetchProductsAgain = async () => {
+    try {
+      setIsLoading(true);
+      const products1 = await fetchProducts();
+      dispatch({ type: "FETCH_PRODUCTS", payload: products1 });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const fetchCategoriesAgain = async () => {
+    try {
+      setIsLoading(true);
+      const categories1 = await fetchCategories();
+      dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
   useEffect(() => {
-    fetchLoginData();
+    fetchProductsAgain();
+    fetchCategoriesAgain();
   }, []);
 
   return (

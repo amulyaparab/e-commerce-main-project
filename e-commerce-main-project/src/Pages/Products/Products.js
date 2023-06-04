@@ -14,7 +14,13 @@ export const Products = () => {
   }, []);
   return (
     <>
-      <h1 className="header-heading products-heading">Products</h1>
+      <h1
+        className={`${
+          showFilters ? "header-heading" : "header-heading products-heading"
+        }`}
+      >
+        Products
+      </h1>
       <NotificationModal
         text={"Added To Cart"}
         icon={

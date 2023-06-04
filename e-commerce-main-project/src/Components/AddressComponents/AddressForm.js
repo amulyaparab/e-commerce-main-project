@@ -109,34 +109,19 @@ export const AddressForm = () => {
           </div>
         </div>
         <div className="address-btns">
-          <div>
-            <button
-              className="add-to-cart address-btn"
-              onClick={randomAddressAdder}
-            >
-              Dummy Values
-            </button>
-            <button
-              className="add-to-cart address-btn"
-              onClick={addAddressHandler}
-            >
-              Reset
-            </button>
-          </div>
-          <div>
-            <button
-              className="add-to-cart address-btn"
-              onClick={addAddressHandler}
-            >
-              Save
-            </button>
-            <button
-              className="add-to-cart address-btn"
-              onClick={addAddressHandler}
-            >
-              Submit
-            </button>
-          </div>
+          <button
+            className="add-to-cart address-btn"
+            onClick={randomAddressAdder}
+          >
+            Dummy Values
+          </button>
+
+          <button
+            className="add-to-cart address-btn"
+            onClick={addAddressHandler}
+          >
+            Save
+          </button>
         </div>
       </div>
     </div>

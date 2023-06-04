@@ -11,6 +11,7 @@ export const UtilsProvider = ({ children }) => {
     useContext(ProductsContext);
   const navigate = useNavigate();
   const location = useLocation();
+
   const {
     postToCart,
     increaseCartQuantity,
@@ -60,10 +61,8 @@ export const UtilsProvider = ({ children }) => {
   const { testUser, newUser } = useContext(AuthContext);
   const handleAddToCart = async (item) => {
     try {
-      if (
-        (isEncodedTokenPresent && testUser) ||
-        (newUser.signedIn && isEncodedTokenPresent)
-      ) {
+      setNotificationActive(true);
+      if (isEncodedTokenPresent) {
         setNotificationActive(true);
         toast.success("Added To Cart", {
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -93,12 +92,8 @@ export const UtilsProvider = ({ children }) => {
 
   const addToWishlistHandler = async (item) => {
     try {
-      if (
-        (isEncodedTokenPresent && testUser) ||
-        (newUser.signedIn && isEncodedTokenPresent)
-      ) {
-        setNotificationActive(true);
-
+      setNotificationActive(true);
+      if (isEncodedTokenPresent) {
         if (isItemInWishlist(item)) {
           await deleteFromWishlist(item._id);
           toast.error("Removed From Wishlist", {
@@ -126,10 +121,10 @@ export const UtilsProvider = ({ children }) => {
 
   const removefromWishlistHandler = async (itemId) => {
     try {
+      setNotificationActive(true);
       toast.error("Removed From Wishlist", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-      setNotificationActive(true);
       await deleteFromWishlist(itemId);
       updateWishlist();
     } catch (err) {
@@ -140,10 +135,10 @@ export const UtilsProvider = ({ children }) => {
   };
   const moveToCartHandler = async (item) => {
     try {
+      setNotificationActive(true);
       toast.info("Moved To Cart", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-      setNotificationActive(true);
 
       isItemInCart(item)
         ? await increaseCartQuantity(item._id)
@@ -161,7 +156,7 @@ export const UtilsProvider = ({ children }) => {
     try {
       console.log(modal);
       setModal(false);
-      // setNotificationActive(true);
+      setNotificationActive(true);
       toast.error("Removed From Cart", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
@@ -170,7 +165,7 @@ export const UtilsProvider = ({ children }) => {
     } catch (err) {
       console.log(err);
     } finally {
-      // setNotificationActive(false);
+      setNotificationActive(false);
     }
   };
   const increaseQtyHandler = async (itemId) => {
@@ -186,7 +181,10 @@ export const UtilsProvider = ({ children }) => {
       if (item?.qty > 1) {
         await decreaseCartQuantity(item._id);
       } else {
-        setModal(true);
+        await deleteFromCart(item._id);
+        toast.error("Removed From Cart", {
+          position: toast.POSITION.BOTTOM_RIGHT,
+        });
       }
       updateCart();
     } catch (err) {
@@ -229,6 +227,8 @@ export const UtilsProvider = ({ children }) => {
         isItemInCart,
         isItemInWishlist,
         isEncodedTokenPresent,
+        updateCart,
+        updateWishlist,
       }}
     >
       {children}

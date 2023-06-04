@@ -130,7 +130,7 @@ export const ProductsProvider = ({ children }) => {
   const [showCouponModal, setShowCouponModal] = useState(false);
   useEffect(() => {
     fetchData();
-
+    console.log(state, "here");
     // fetchCart();
   }, []);
   return (
@@ -151,6 +151,7 @@ export const ProductsProvider = ({ children }) => {
         originalAmount,
         notificationContent,
         setNotificationContent,
+        fetchData,
       }}
     >
       {children}
