@@ -4,7 +4,7 @@ import cartImage from "../../Images/cart.svg";
 import { TotalCard } from "../../Components/Cart/TotalCard";
 import { Coupon } from "../../Components/Cart/Coupon";
 import { useUtils } from "../../Contexts/UtilsProvider";
-import { useAPI } from "../../Contexts/APIProvider";
+
 import { useEffect } from "react";
 
 export const Cart = () => {
@@ -15,27 +15,18 @@ export const Cart = () => {
     increaseQtyHandler,
     decreaseQtyHandler,
   } = useUtils();
-  const { dispatch } = useProducts();
+
   const { updateCart } = useUtils();
   useEffect(() => {
-    // dispatch({
-    //   type: "CLEAR_CART",
-    // });
     updateCart();
   }, []);
   return (
     <>
       <h1 className="header-heading">
-        Cart {state?.cart?.length === 0 ? null : `(${state?.cart?.length})`}
+        Cart {state?.cart?.length ? `(${state?.cart?.length})` : null}
       </h1>
       <Coupon />
-      {state?.cart?.length === 0 ? (
-        <div className="empty">
-          <img src={cartImage} className="empty-img" alt="Empty cart." />
-          <h2>Your cart looks rather lonely.</h2>
-          <p>Add some items to show some love.</p>
-        </div>
-      ) : (
+      {state?.cart?.length ? (
         <div className="gridCart">
           <section className="products cart">
             {state?.cart?.map((item) => (
@@ -75,6 +66,12 @@ export const Cart = () => {
             ))}
           </section>
           <TotalCard />
+        </div>
+      ) : (
+        <div className="empty">
+          <img src={cartImage} className="empty-img" alt="Empty cart." />
+          <h2>Your cart looks rather lonely.</h2>
+          <p>Add some items to show some love.</p>
         </div>
       )}
     </>

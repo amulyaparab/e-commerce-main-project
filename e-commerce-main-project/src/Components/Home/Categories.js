@@ -1,7 +1,6 @@
 import bathAndBody from "../../Images/bath-category1.jpg";
 import oliveCandle from "../../Images/oliveCandle.jpg";
 import skinCare from "../../Images/3.jpg";
-import a4 from "../../Images/4.jpg";
 import hair from "../../Images/hairCategory.jpg";
 
 import { useProducts } from "../../Contexts/ProductsProvider";

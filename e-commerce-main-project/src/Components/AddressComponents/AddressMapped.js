@@ -14,26 +14,9 @@ export const AddressesMapped = () => {
     deleteAddress,
     editAddress,
   } = useAddress();
-  // console.log(selectedAddress, "meow");
+
   return (
     <>
-      {" "}
-      <div>
-        <label>
-          <input
-            type="radio"
-            name="address"
-            value={"123"}
-            onChange={(event) => {
-              setSelectedAddress(event.target.value);
-            }}
-          />
-          Amulya Parab{" "}
-        </label>
-        <p>221B Baker Street, London, NW1 6XE, United Kingdom. </p>
-        <p>Mobile Number: 123456789</p>
-        <hr />
-      </div>
       {arrOfAddresses?.map((item) => {
         const {
           id,

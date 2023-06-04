@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useProducts } from "../Contexts/ProductsProvider";
 import { useUtils } from "../Contexts/UtilsProvider";
-import { useAuth } from "../Contexts/AuthProvider";
 
 export const Header = () => {
   const { state, dispatch } = useProducts();
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { isEncodedTokenPresent } = useUtils();
-  const { testUser, newUser } = useAuth();
+
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth > 800) {
@@ -22,11 +21,9 @@ export const Header = () => {
     };
   }, []);
   const conditionForWishlistIcons =
-    (state.wishlist?.length >= 1 && isEncodedTokenPresent && testUser) ||
-    (state.wishlist?.length >= 1 && isEncodedTokenPresent && newUser.signedIn);
+    state.wishlist?.length >= 1 && isEncodedTokenPresent;
   const conditionForCartIcons =
-    (state.cart?.length >= 1 && isEncodedTokenPresent && testUser) ||
-    (state.cart?.length >= 1 && isEncodedTokenPresent && newUser.signedIn);
+    state.cart?.length >= 1 && isEncodedTokenPresent;
   return (
     <nav className="navbar">
       <NavLink to="/">
@@ -48,6 +45,7 @@ export const Header = () => {
             <input
               placeholder="Search"
               className="search"
+              value={state.search}
               onChange={(event) => {
                 dispatch({ type: "SEARCH_BAR", payload: event.target.value });
                 navigate("/products");

@@ -1028,7 +1028,7 @@ input[type="checkbox"] {
   margin-bottom: 3rem;
 }
 .bottom-space {
-  margin-bottom: 35vh;
+  margin-bottom: 47vh;
 }
 .profile-tab {
   display: flex;
@@ -1304,4 +1304,15 @@ input[type="checkbox"] {
 }
 .error-page small {
   color: #666666;
+}
+.disabled-button {
+  border-radius: 5px;
+  padding: 0.5rem 3.5rem;
+  font-size: medium;
+  cursor: not-allowed;
+}
+.no-checkout {
+  text-align: center;
+  margin-top: 5rem;
+  margin-bottom: 41vh;
 }

@@ -19,8 +19,6 @@ export const AddressForm = () => {
     }
   }, []);
 
-  // console.log(address, "address");
-
   return (
     <div className="address-overlay">
       <div className="login address-form">

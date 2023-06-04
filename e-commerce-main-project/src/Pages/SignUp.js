@@ -3,52 +3,49 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAPI } from "../Contexts/APIProvider";
 import { useAuth } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
-import { useUtils } from "../Contexts/UtilsProvider";
+
 export const SignUp = () => {
   const { newUser, setNewUser, setEncodedToken } = useAuth();
 
   const { fetchSignUpData } = useAPI();
-  // const [newUser, setNewUser] = useState({
-  //   email: "",
-  //   password: "",
-  //   confirmPassword: "",
-  //   firstName: "",
-  //   lastName: "",
-  //   signedIn: false,
-  // });
 
-  // const { updateWishlist } = useUtils();
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
+
   const signUpHandler = async () => {
     if (
-      newUser?.email?.length !== 0 &&
-      newUser?.password?.length !== 0 &&
-      newUser?.confirmPassword?.length !== 0 &&
-      newUser?.firstName?.length !== 0 &&
-      newUser?.lastName?.length !== 0 &&
-      newUser?.confirmPassword === newUser.password
+      newUser.email.length &&
+      newUser.password.length &&
+      newUser.confirmPassword.length &&
+      newUser.firstName.length &&
+      newUser.lastName.length &&
+      newUser.confirmPassword === newUser.password
     ) {
       const authToken = await fetchSignUpData({ ...newUser });
-      // console.log(authToken, "auth");
-
+      console.log("authToken", authToken);
       if (authToken) {
         toast.success("Signed In.", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
+
         setNewUser({ ...newUser, signedIn: true });
         setEncodedToken(authToken);
         navigate(location?.state?.from?.pathname);
       }
+    } else if (newUser.confirmPassword !== newUser.password) {
+      toast.warn("The passwords do not match.", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    } else {
+      toast.warn("Please Fill All Fields", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
-
-  const token = localStorage.getItem("userEncodedToken");
 
   return (
     <>

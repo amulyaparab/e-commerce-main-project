@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { useUtils } from "../Contexts/UtilsProvider";
 export const Login = () => {
-  // const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const { setTestUser, testUser, setEncodedToken } = useAuth();
+  const { setEncodedToken } = useAuth();
   const { fetchLoginData, fetchLoginAsGuest, setIsLoading } = useAPI();
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ export const Login = () => {
           password: loginData.password,
         });
         setEncodedToken(encodedToken);
-        setTestUser(foundUser);
+
         navigate(location?.state?.from?.pathname);
         updateWishlist();
         updateCart();
@@ -48,7 +47,7 @@ export const Login = () => {
       });
       const { foundUser, encodedToken } = await fetchLoginAsGuest();
       setEncodedToken(encodedToken);
-      setTestUser(foundUser);
+
       console.log(foundUser, "sabdhjasg");
       navigate(location?.state?.from?.pathname);
     } catch (err) {
@@ -71,7 +70,7 @@ export const Login = () => {
                 onChange={(e) =>
                   setLoginData({ ...loginData, email: e.target.value })
                 }
-                placeholder={testUser ? testUser?.email : "test@gmail.com"}
+                placeholder={"test@gmail.com"}
               />
             </label>
           </div>
@@ -83,7 +82,7 @@ export const Login = () => {
                 onChange={(e) =>
                   setLoginData({ ...loginData, password: e.target.value })
                 }
-                placeholder={testUser ? testUser?.password : "*******"}
+                placeholder={"*******"}
               />
             </label>
           </div>

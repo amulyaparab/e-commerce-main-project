@@ -1,29 +1,25 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
-
 import { EmptyWishlist } from "../../Components/Wishlist/EmptyWishlist";
 import { WishlistListing } from "../../Components/Wishlist/WishlistListing";
 import { useEffect } from "react";
 import { useUtils } from "../../Contexts/UtilsProvider";
+
 export const Wishlist = () => {
   const { state } = useProducts();
   const { updateWishlist } = useUtils();
+
   useEffect(() => {
     updateWishlist();
   }, []);
+
   return (
     <>
       <h1 className="header-heading">
         Wishlist{" "}
-        {(state?.wishlist?.length ?? null) === 0
-          ? null
-          : `(${state?.wishlist?.length})`}
+        {state?.wishlist?.length ? `(${state?.wishlist?.length})` : null}
       </h1>
       <section className="products">
-        {state?.wishlist?.length === 0 ? (
-          <EmptyWishlist />
-        ) : (
-          <WishlistListing />
-        )}
+        {state?.wishlist?.length ? <WishlistListing /> : <EmptyWishlist />}
       </section>
     </>
   );

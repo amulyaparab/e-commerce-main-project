@@ -5,26 +5,13 @@ import {
   useReducer,
   useState,
 } from "react";
-import { APIContext, useAPI } from "./APIProvider";
+import { useAPI } from "./APIProvider";
 import { reducer } from "../Reducers/reducer";
 
 const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const {
-    fetchLoginData,
-    fetchSignUpData,
-    fetchProducts,
-    fetchSingleProduct,
-    postToCart,
-    deleteFromCart,
-    postToWishlist,
-    deleteFromWishlist,
-    updateCartQuantity,
-    fetchCart,
-    fetchCategories,
-    fetchWishlist,
-  } = useAPI();
+  const { fetchProducts, fetchCart, fetchCategories, fetchWishlist } = useAPI();
   const { isLoading, setIsLoading } = useAPI();
   const fetchData = async () => {
     try {
@@ -32,7 +19,7 @@ export const ProductsProvider = ({ children }) => {
 
       const products = await fetchProducts();
       const cartUnfiltered = await fetchCart();
-      const cart = cartUnfiltered.cart.filter(
+      const cart = cartUnfiltered.cart?.filter(
         (item) => item._id !== undefined || item._id !== null
       );
       // const cart = cartUnfiltered.shift();
@@ -53,32 +40,6 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  // const fetchDataAgain = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const categories1 = await fetchCategories();
-  //     const products = await fetchProducts();
-  //     const cartUnfiltered = await fetchCart();
-  //     const cart = cartUnfiltered.cart.filter(
-  //       (item) => item._id !== undefined || item._id !== null
-  //     );
-  //     // const cart = cartUnfiltered.shift();
-  //     const wishlist = await fetchWishlist();
-  //     const wishlistNew = wishlist.shift();
-  //     const categories = await fetchCategories();
-  //     dispatch({
-  //       type: "FETCH_AGAIN",
-  //       payloadProd: products,
-  //       payloadCart: cart,
-  //       payloadWishlist: wishlist,
-  //       payloadCategory: categories,
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
   const fetchProductsAgain = async () => {
     try {
       setIsLoading(true);
@@ -90,28 +51,7 @@ export const ProductsProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
-  // const fetchCategoriesAgain = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     const categories1 = await fetchCategories();
-  //     dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
-  //   } catch (err) {
-  //     console.log(err);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-  const fetchSingleProdAgain = async () => {
-    try {
-      setIsLoading(true);
-      const categories1 = await fetchCategories();
-      dispatch({ type: "FETCH_CATEGORIES", payload: categories1 });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
   const fetchCategoriesAgain = async () => {
     try {
       setIsLoading(true);
@@ -142,7 +82,7 @@ export const ProductsProvider = ({ children }) => {
     loading: false,
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  // ["Bath & Body", "Skin Care", "Hair Care", "Home Decor"]
+
   const [notificationActive, setNotificationActive] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
   const originalAmount = state?.cart?.reduce(
@@ -153,11 +93,11 @@ export const ProductsProvider = ({ children }) => {
     state?.totalDiscount === 1
       ? originalAmount
       : originalAmount - (state?.totalDiscount / 100) * originalAmount;
-  // 10÷100×680
+
   const priceData =
     state.price === 0
       ? state.filteredData
-      : state.filteredData.filter((item) => item.price >= state.price);
+      : state.filteredData?.filter((item) => item.price >= state.price);
 
   const ratingData =
     state.rating === 0
@@ -181,27 +121,11 @@ export const ProductsProvider = ({ children }) => {
     content: "",
     icon: "",
   });
-  // console.log({ state });
 
-  // const fetchUpdatedCart = async () => {
-  //   const unfilteredCart = await fetchCart();
-  //   const cart = unfilteredCart.cart.filter(
-  //     (item) => item._id !== undefined || item._id !== null
-  //   );
-  //   console.log(cart);
-  //   dispatch({
-  //     type: "FETCH_CART",
-  //     payload: cart,
-  //   });
-  // };
-  // useEffect(() => {
-  //   fetchUpdatedCart();
-  // }, []);
   const [showCouponModal, setShowCouponModal] = useState(false);
   useEffect(() => {
     fetchData();
     console.log(state, "here");
-    // fetchCart();
   }, []);
   return (
     <ProductsContext.Provider

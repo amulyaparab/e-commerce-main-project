@@ -5,16 +5,16 @@ const AddressContext = createContext();
 export const AddressProvider = ({ children }) => {
   const [selectedAddress, setSelectedAddress] = useState("123");
   const [arrOfAddresses, setArrOfAddresses] = useState([
-    // {
-    //   name: "Amulya Parab",
-    //   id: "123",
-    //   address: "221B Baker Street",
-    //   mobileNumber: "123456789",
-    //   pincode: "NW1 6XE",
-    //   city: "London",
-    //   state: "UK",
-    //   country: "United Kingdom",
-    // },
+    {
+      name: "Amulya Parab",
+      id: "123",
+      address: "221B Baker Street",
+      mobileNumber: "123456789",
+      pincode: "NW1 6XE",
+      city: "London",
+      state: "UK",
+      country: "United Kingdom",
+    },
   ]);
   const [showAddressForm, setShowAddressForm] = useState(false);
 
@@ -64,16 +64,18 @@ export const AddressProvider = ({ children }) => {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
     setArrOfAddresses(arrOfAddresses.filter((prod) => prod.id !== item.id));
+    setSelectedAddress((prev) => (prev === item.id ? null : prev));
   };
   const placeOrderHandler = () => {
     toast.success("Order Placed!", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
   };
-  const editAddress = () => {
-    console.log(address, "a", arrOfAddresses, "b");
+  const editAddress = (item) => {
+    setAddress(item);
     setShowAddressForm(true);
   };
+  console.log({ address });
   const randomAddressAdder = () => {
     const randomAddress = {
       name: "Joe Goldberg",
@@ -86,7 +88,6 @@ export const AddressProvider = ({ children }) => {
       country: "India",
     };
     setAddress(randomAddress);
-    // setArrOfAddresses({ ...arrOfAddresses, randomAddress });
   };
   return (
     <AddressContext.Provider

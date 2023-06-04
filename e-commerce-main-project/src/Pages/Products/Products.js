@@ -3,7 +3,6 @@ import { NotificationModal } from "../../Components/NotificationModal";
 import { Filters } from "../../Components/Products/Filters";
 import { ProductListing } from "../../Components/Products/ProductListing";
 import { useProducts } from "../../Contexts/ProductsProvider";
-import { useAPI } from "../../Contexts/APIProvider";
 import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Products = () => {

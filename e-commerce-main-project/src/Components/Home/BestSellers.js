@@ -9,7 +9,6 @@ export const BestSellers = () => {
     <section className="categories">
       <div className="heading">
         <h1>Best Sellers</h1>
-        {/* <img src={logo} /> */}
       </div>
       <div className="category-photos">
         <NavLink to="/api/products/best-seller-2" className="photos">

@@ -1,12 +1,17 @@
-// import { useState } from "react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 import { AddressesMapped } from "../Components/AddressComponents/AddressMapped";
 import { useAddress } from "../Contexts/AddressProvider";
+import { useProducts } from "../Contexts/ProductsProvider";
+
 export const Profile = () => {
-  const { testUser, setTestUser } = useAuth();
+  const user = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
+
+  console.log("user", user?.firstName);
+  const { dispatch } = useProducts();
   const { arrOfAddresses } = useAddress();
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,10 +19,12 @@ export const Profile = () => {
     toast.error("Logged Out.", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
-    localStorage.removeItem("userEncodedToken");
+    localStorage.removeItem("user");
     localStorage.removeItem("encodedTokenTest");
     navigate("/login", { state: { from: location } });
-    // setTestUser(null);
+
+    dispatch({ type: "CLEAR_CART" });
+    dispatch({ type: "CLEAR_WISHLIST" });
   };
   const [showProfile, setShowProfile] = useState(true);
   return (
@@ -35,6 +42,7 @@ export const Profile = () => {
             >
               Profile
             </div>
+
             <div
               onClick={() => setShowProfile(!showProfile)}
               className={`${showProfile ? "" : "active-profile"}`}
@@ -45,15 +53,15 @@ export const Profile = () => {
           {showProfile ? (
             <div className="userProfile">
               <h1>Profile</h1>
-              <h3>Profile Details</h3>
+              <h2>Profile Details</h2>
+
               <p>
-                <strong>Full Name:</strong> {testUser?.firstName}{" "}
-                {testUser?.lastName}
+                <strong>Full Name:</strong> {user?.firstName} {user?.lastName}
               </p>
               <p>
-                <strong>Email:</strong> {testUser?.email}
+                <strong>Email:</strong> {user?.email}
               </p>
-              <h3>Account Settings</h3>
+
               <button className="add-to-cart" onClick={logoutHandler}>
                 Logout
               </button>

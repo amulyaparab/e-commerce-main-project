@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useAPI } from "./APIProvider";
 import { useProducts } from "./ProductsProvider";
-import { useAuth } from "./AuthProvider";
+
 import { useLocation, useNavigate } from "react-router-dom";
 const UtilsContext = createContext();
 
@@ -42,7 +42,6 @@ export const UtilsProvider = ({ children }) => {
 
   const updateCart = async () => {
     try {
-      setIsLoading(true);
       const unfilteredCart = await fetchCart();
       const cart = unfilteredCart.cart?.filter(
         (item) => item._id !== undefined || item._id !== null
@@ -53,14 +52,11 @@ export const UtilsProvider = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const updateWishlist = async () => {
     try {
-      setIsLoading(true);
       const wishlist = await fetchWishlist();
       dispatch({
         type: "FETCH_WISHLIST",
@@ -68,11 +64,9 @@ export const UtilsProvider = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
-    } finally {
-      setIsLoading(false);
     }
   };
-  const { testUser, newUser } = useAuth();
+
   const handleAddToCart = async (item) => {
     try {
       setNotificationActive(true);
@@ -103,7 +97,7 @@ export const UtilsProvider = ({ children }) => {
       setNotificationActive(false);
     }
   };
-
+  const clearCartAndWishlist = () => {};
   const addToWishlistHandler = async (item) => {
     try {
       setNotificationActive(true);

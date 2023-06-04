@@ -23,7 +23,7 @@ export const SummaryCard = () => {
   const { state, totalAmount, originalAmount } = useProducts();
   const { selectedAddress, arrOfAddresses } = useAddress();
   const { deleteFromCart } = useAPI();
-
+  console.log("selected Address", selectedAddress);
   const navigate = useNavigate();
   const findSelectedAddress = arrOfAddresses.find(
     (address) => address.id === selectedAddress
@@ -104,9 +104,23 @@ export const SummaryCard = () => {
         </div>
         <h1 className="price-details">Deliver To</h1>
         <div>{findSelectedAddress?.name}</div>
-        <p>{`${findSelectedAddress?.address}, ${findSelectedAddress?.city}, ${findSelectedAddress?.state}, ${findSelectedAddress?.pincode}`}</p>
-        <p>Mobile Number: {findSelectedAddress?.mobileNumber}</p>
-        <button className="add-to-cart place-order" onClick={displayRazorpay}>
+        <p>
+          {selectedAddress
+            ? `${findSelectedAddress?.address}, ${findSelectedAddress?.city}, ${findSelectedAddress?.state}, ${findSelectedAddress?.pincode}`
+            : "Please Select An Address"}
+        </p>
+        <p>
+          {selectedAddress
+            ? `Mobile Number : ${findSelectedAddress?.mobileNumber}`
+            : ""}
+        </p>
+        <button
+          className={
+            selectedAddress ? "add-to-cart place-order" : "disabled-button"
+          }
+          onClick={displayRazorpay}
+          disabled={!selectedAddress}
+        >
           Place Order
         </button>
       </section>

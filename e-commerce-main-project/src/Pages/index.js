@@ -1,5 +1,4 @@
-import { ErrorPage } from "./Error";
-
+export { ErrorPage } from "./Error";
 export { useAPI } from "../Contexts/APIProvider";
 export { useAddress } from "../Contexts/AddressProvider";
 export { useAuth } from "../Contexts/AuthProvider";
@@ -20,6 +19,3 @@ export { SingleProduct } from "./SingleProduct";
 export { Success } from "./Success";
 export { Wishlist } from "./Wishlist/Wishlist";
 export { Home } from "./Home/Home";
-
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";

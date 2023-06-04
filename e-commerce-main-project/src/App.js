@@ -5,11 +5,11 @@ import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useProducts } from "./Contexts/ProductsProvider";
-import { useAPI } from "./Contexts/APIProvider";
 
 import {
   Cart,
   Checkout,
+  ErrorPage,
   Footer,
   Header,
   Home,
@@ -23,11 +23,9 @@ import {
   Success,
   Wishlist,
 } from "./Pages";
-import { ErrorPage } from "./Pages/Error";
 
 function App() {
   const { fetchCategoriesAgain, fetchProductsAgain } = useProducts();
-  // const { fetchProducts, fetchCategories } = useAPI();
 
   useEffect(() => {
     fetchProductsAgain();
