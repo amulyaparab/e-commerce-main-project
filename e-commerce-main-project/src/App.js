@@ -3,46 +3,32 @@ import "./App.css";
 
 import Mockman from "mockman-js";
 
-// import { Home } from "./Pages/Home/Home";
-import { Products } from "./Pages/Products/Products";
-// import { Cart } from "./Pages/Cart/Cart";
-import { SingleProduct } from "./Pages/SingleProduct";
-// import { Wishlist } from "./Pages/Wishlist/Wishlist";
-import { Header } from "./Components/Header";
-import { Footer } from "./Components/Footer";
-import { Login } from "./Pages/Login";
-import { RequiresAuth } from "./Components/RequiresAuth";
-import { Profile } from "./Pages/Profile";
-import { Checkout } from "./Pages/Checkout/Checkout";
-import { SignUp } from "./Pages/SignUp";
-import { Loading } from "./Pages/Home/Components/Loading";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Success } from "./Pages/Success";
-import { ProductsContext } from "./Contexts/ProductsProvider";
-import { APIContext } from "./Contexts/APIProvider";
-import { Cart, Home, Wishlist } from "./Pages";
-import { UtilsContext } from "./Contexts/UtilsProvider";
+
+import { useProducts } from "./Contexts/ProductsProvider";
+import { useAPI } from "./Contexts/APIProvider";
+import {
+  Cart,
+  Checkout,
+  Footer,
+  Header,
+  Home,
+  Loading,
+  Login,
+  Products,
+  Profile,
+  RequiresAuth,
+  SignUp,
+  SingleProduct,
+  Success,
+  Wishlist,
+} from "./Pages";
 
 function App() {
-  // const fetchLoginData = async () => {
-  //   const creds = {
-  //     email: "adarshbalika@gmail.com",
-  //     password: "adarshbalika",
-  //   };
-  //   const options = {
-  //     method: "POST",
-  //     body: JSON.stringify(creds),
-  //   };
-  //   const loginRes = await fetch("/api/auth/login", options);
-  //   const loginResponse = await loginRes.json();
-  //   localStorage.setItem("encodedTokenTest", loginResponse.encodedToken);
-  //   return loginResponse;
-  // };
-  const { dispatch, setIsLoading } = useContext(ProductsContext);
-  const { fetchProducts, fetchCart, fetchWishlist, fetchCategories } =
-    useContext(APIContext);
+  const { dispatch, setIsLoading } = useProducts();
+  const { fetchProducts, fetchCategories } = useAPI();
   const fetchProductsAgain = async () => {
     try {
       setIsLoading(true);

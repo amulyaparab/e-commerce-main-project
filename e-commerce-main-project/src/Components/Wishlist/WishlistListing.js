@@ -1,13 +1,11 @@
-import { useContext } from "react";
-import { ProductCard } from "../../Products/Components/ProductCard";
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
-import { UtilsContext } from "../../../Contexts/UtilsProvider";
+import { ProductCard } from "../ProductCard";
+import { useProducts } from "../../Contexts/ProductsProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const WishlistListing = () => {
-  const { state } = useContext(ProductsContext);
+  const { state } = useProducts();
 
-  const { removefromWishlistHandler, moveToCartHandler } =
-    useContext(UtilsContext);
+  const { removefromWishlistHandler, moveToCartHandler } = useUtils();
 
   return (
     <>

@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
-import { APIContext } from "../../../Contexts/APIProvider";
+import { useEffect } from "react";
+import { useProducts } from "../../Contexts/ProductsProvider";
+import { useAPI } from "../../Contexts/APIProvider";
 
 export const Filters = () => {
-  const { state, dispatch, setShowFilters, showFilters } =
-    useContext(ProductsContext);
+  const { state, dispatch, setShowFilters, showFilters } = useProducts();
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -19,7 +18,7 @@ export const Filters = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-  const { fetchProducts } = useContext(APIContext);
+  const { fetchProducts } = useAPI();
 
   const handleClearFilters = () => {
     dispatch({ type: "CLEAR_FILTERS" });

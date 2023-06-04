@@ -9,16 +9,14 @@ import { AuthProvider } from "./Contexts/AuthProvider";
 import { APIProvider } from "./Contexts/APIProvider";
 import { UtilsProvider } from "./Contexts/UtilsProvider";
 import { AddressProvider } from "./Contexts/AddressProvider";
-// import { CartAndWishlistProvider } from "./Contexts/CartAndWishlistProvider";
 
-// Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <APIProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <APIProvider>
           <ProductsProvider>
             <UtilsProvider>
               <AddressProvider>
@@ -26,8 +24,8 @@ ReactDOM.render(
               </AddressProvider>
             </UtilsProvider>
           </ProductsProvider>
-        </AuthProvider>
-      </APIProvider>
+        </APIProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

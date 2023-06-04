@@ -1,20 +1,19 @@
-import { useContext } from "react";
-
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
-import { ProductCard } from "./ProductCard";
+import { useProducts } from "../../Contexts/ProductsProvider";
+import { ProductCard } from "../ProductCard";
 import { NavLink } from "react-router-dom";
 
-import { UtilsContext } from "../../../Contexts/UtilsProvider";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const ProductListing = () => {
-  const { filteredData } = useContext(ProductsContext);
+  const { filteredData } = useProducts();
 
   const {
     handleAddToCart,
     addToWishlistHandler,
     isItemInCart,
     isItemInWishlist,
-  } = useContext(UtilsContext);
+    isEncodedTokenPresent,
+  } = useUtils();
 
   return (
     <section className="products">
@@ -27,13 +26,16 @@ export const ProductListing = () => {
               <i
                 className="fa-solid fa-heart wishlist-heart "
                 style={{
-                  color: isItemInWishlist(item) ? "#BA3C3C" : "#2f2e41",
+                  color:
+                    isItemInWishlist(item) && isEncodedTokenPresent
+                      ? "#BA3C3C"
+                      : "#2f2e41",
                 }}
                 onClick={() => addToWishlistHandler(item)}
               ></i>
               <ProductCard item={item} />
 
-              {isItemInCart(item) ? (
+              {isItemInCart(item) && isEncodedTokenPresent ? (
                 <NavLink to="/cart">
                   <button className="add-to-cart">Go To Cart</button>
                 </NavLink>

@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import { ProductsContext } from "../Contexts/ProductsProvider";
+import { useProducts } from "../Contexts/ProductsProvider";
 
 export const NotificationModal = () => {
-  const { notificationActive } = useContext(ProductsContext);
+  const { notificationActive } = useProducts();
 
   return (
     <>

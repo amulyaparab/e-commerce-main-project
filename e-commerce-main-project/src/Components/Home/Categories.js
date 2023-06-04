@@ -1,14 +1,14 @@
-import bathAndBody from "../../../Images/bath-category1.jpg";
-import oliveCandle from "../../../Images/oliveCandle.jpg";
-import skinCare from "../../../Images/3.jpg";
-import a4 from "../../../Images/4.jpg";
-import hair from "../../../Images/hairCategory.jpg";
-import { useContext } from "react";
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
+import bathAndBody from "../../Images/bath-category1.jpg";
+import oliveCandle from "../../Images/oliveCandle.jpg";
+import skinCare from "../../Images/3.jpg";
+import a4 from "../../Images/4.jpg";
+import hair from "../../Images/hairCategory.jpg";
+
+import { useProducts } from "../../Contexts/ProductsProvider";
 import { NavLink } from "react-router-dom";
 
 export const Categories = () => {
-  const { state, dispatch } = useContext(ProductsContext);
+  const { state, dispatch } = useProducts();
 
   const images = [bathAndBody, skinCare, hair, oliveCandle];
 

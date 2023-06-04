@@ -1,4 +1,4 @@
-import wishlistImage from "../../../Images/wishlist.svg";
+import wishlistImage from "../../Images/wishlist.svg";
 export const EmptyWishlist = () => {
   return (
     <div className="empty empty-wishlist">

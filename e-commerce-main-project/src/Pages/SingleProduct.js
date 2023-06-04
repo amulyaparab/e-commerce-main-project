@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { ProductsContext } from "../Contexts/ProductsProvider";
+import { useProducts } from "../Contexts/ProductsProvider";
 
-import { UtilsContext } from "../Contexts/UtilsProvider";
+import { useUtils } from "../Contexts/UtilsProvider";
 export const SingleProduct = () => {
   const { prodId } = useParams();
-  const { state } = useContext(ProductsContext);
+  const { state } = useProducts();
 
   const singleProduct = state?.prodData?.find((prod) => prod._id === prodId);
 
@@ -14,7 +13,7 @@ export const SingleProduct = () => {
     addToWishlistHandler,
     isItemInCart,
     isItemInWishlist,
-  } = useContext(UtilsContext);
+  } = useUtils();
 
   return (
     <div className="background">

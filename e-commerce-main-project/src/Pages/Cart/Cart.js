@@ -1,38 +1,18 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../Contexts/ProductsProvider";
-import { ProductCard } from "../Products/Components/ProductCard";
+import { useProducts } from "../../Contexts/ProductsProvider";
+import { ProductCard } from "../../Components/ProductCard";
 import cartImage from "../../Images/cart.svg";
-import { TotalCard } from "./Components/TotalCard";
-import { Coupon } from "./Components/Coupon";
-import { UtilsContext } from "../../Contexts/UtilsProvider";
+import { TotalCard } from "../../Components/Cart/TotalCard";
+import { Coupon } from "../../Components/Cart/Coupon";
+import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const Cart = () => {
-  const { state } = useContext(ProductsContext);
-
+  const { state } = useProducts();
   const {
     moveToWishlistHandler,
     removefromCartHandler,
     increaseQtyHandler,
     decreaseQtyHandler,
-  } = useContext(UtilsContext);
-  // const isItemPresent = (prodId) =>state?.cart?.find((item) => item._id === prodId)
-  const checkDuplicateItems = (cart) => {
-    const ids = new Set();
-
-    for (let item of cart) {
-      if (ids.has(item.id)) {
-        return true; // Duplicate item found
-      } else {
-        ids.add(item.id);
-      }
-    }
-
-    return false; // No duplicate items found
-  };
-
-  // Usage
-  const hasDuplicateItems = checkDuplicateItems(state?.cart);
-  console.log(hasDuplicateItems);
+  } = useUtils();
 
   return (
     <>
@@ -85,7 +65,6 @@ export const Cart = () => {
               </div>
             ))}
           </section>
-
           <TotalCard />
         </div>
       )}

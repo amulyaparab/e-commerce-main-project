@@ -1,7 +1,6 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
+import { useProducts } from "../Contexts/ProductsProvider";
 export const Loading = () => {
-  const { isLoading } = useContext(ProductsContext);
+  const { isLoading } = useProducts();
   return (
     <>
       {isLoading && (

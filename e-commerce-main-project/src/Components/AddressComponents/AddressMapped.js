@@ -1,6 +1,5 @@
-import { useContext } from "react";
 import { AddressForm } from "./AddressForm";
-import { AddressContext } from "../../Contexts/AddressProvider";
+import { useAddress } from "../../Contexts/AddressProvider";
 
 export const AddressesMapped = () => {
   const {
@@ -14,7 +13,7 @@ export const AddressesMapped = () => {
     setAddress,
     deleteAddress,
     editAddress,
-  } = useContext(AddressContext);
+  } = useAddress();
   // console.log(selectedAddress, "meow");
   return (
     <>

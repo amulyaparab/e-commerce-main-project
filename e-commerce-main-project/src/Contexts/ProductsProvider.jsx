@@ -5,10 +5,10 @@ import {
   useReducer,
   useState,
 } from "react";
-import { APIContext } from "./APIProvider";
+import { APIContext, useAPI } from "./APIProvider";
 import { reducer } from "../Reducers/reducer";
 
-export const ProductsContext = createContext();
+const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
   const {
@@ -24,7 +24,7 @@ export const ProductsProvider = ({ children }) => {
     fetchCart,
     fetchCategories,
     fetchWishlist,
-  } = useContext(APIContext);
+  } = useAPI();
   const [isLoading, setIsLoading] = useState(true);
   const fetchData = async () => {
     try {
@@ -158,3 +158,4 @@ export const ProductsProvider = ({ children }) => {
     </ProductsContext.Provider>
   );
 };
+export const useProducts = () => useContext(ProductsContext);

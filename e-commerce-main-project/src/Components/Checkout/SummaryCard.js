@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
-import { AddressContext } from "../../../Contexts/AddressProvider";
+import { useProducts } from "../../Contexts/ProductsProvider";
+import { useAddress } from "../../Contexts/AddressProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { APIContext } from "../../../Contexts/APIProvider";
+import { useAPI } from "../../Contexts/APIProvider";
 const loadScript = (url) => {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
@@ -21,9 +20,9 @@ const loadScript = (url) => {
   });
 };
 export const SummaryCard = () => {
-  const { state, totalAmount, originalAmount } = useContext(ProductsContext);
-  const { selectedAddress, arrOfAddresses } = useContext(AddressContext);
-  const { deleteFromCart } = useContext(APIContext);
+  const { state, totalAmount, originalAmount } = useProducts();
+  const { selectedAddress, arrOfAddresses } = useAddress();
+  const { deleteFromCart } = useAPI();
 
   const navigate = useNavigate();
   const findSelectedAddress = arrOfAddresses.find(

@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { useAuth } from "../Contexts/AuthProvider";
 
 export const RequiresAuth = ({ children }) => {
-  const { testUser, newUser } = useContext(AuthContext);
+  const { testUser, newUser } = useAuth();
   const location = useLocation();
   const isEncodedTokenPresent =
     localStorage.getItem("encodedTokenTest") ||

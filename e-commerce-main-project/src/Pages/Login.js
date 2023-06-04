@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { useAuth } from "../Contexts/AuthProvider";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { APIContext } from "../Contexts/APIProvider";
+import { useAPI } from "../Contexts/APIProvider";
 import { toast } from "react-toastify";
 export const Login = () => {
   // const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-  const { testUser, setTestUser } = useContext(AuthContext);
-  const { fetchLoginData } = useContext(APIContext);
+  const { setTestUser, testUser, setEncodedToken } = useAuth();
+  const { fetchLoginData } = useAPI();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,19 +13,19 @@ export const Login = () => {
     toast.success("Logged In", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
-    setTestUser({
-      email: "adarshbalika@gmail.com",
-      password: "adarshbalika",
-    });
     const { foundUser, encodedToken } = await fetchLoginData();
-    console.log(
-      localStorage.getItem("encodedTokenTest") === encodedToken,
-      location
-    );
+    // dispatch({
+    //   type: "TEST_USER",
+    //   userPayload: { ...foundUser, password: "adarshbalika" },
+    //   tokenPayload: encodedToken,
+    // });
+    setEncodedToken(encodedToken);
+    setTestUser(foundUser);
+    console.log(foundUser, "sabdhjasg");
 
     navigate(location?.state?.from?.pathname);
   };
-  console.log(location);
+  // console.log(location);
   return (
     <div className="login-page">
       {/* {localStorage.getItem("encodedTokenTest") && <Navigate to="/wishlist" />} */}
@@ -51,9 +50,11 @@ export const Login = () => {
               />
             </label>
           </div>
+
           <button className="add-to-cart login-btn" onClick={loginHandler}>
             Login as a Guest
           </button>
+
           <NavLink
             className="form-navigator"
             to="/signUp"

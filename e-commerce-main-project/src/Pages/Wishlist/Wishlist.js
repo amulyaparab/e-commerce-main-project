@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../Contexts/ProductsProvider";
-import { EmptyWishlist } from "./Components/EmptyWishlist";
-import { WishlistListing } from "./Components/WishlistListing";
+import { useProducts } from "../../Contexts/ProductsProvider";
 
+import { EmptyWishlist } from "../../Components/Wishlist/EmptyWishlist";
+import { WishlistListing } from "../../Components/Wishlist/WishlistListing";
 export const Wishlist = () => {
-  const { state } = useContext(ProductsContext);
+  const { state } = useProducts();
 
   return (
     <>

@@ -1,7 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
-export const AddressContext = createContext();
+const AddressContext = createContext();
 export const AddressProvider = ({ children }) => {
   const [selectedAddress, setSelectedAddress] = useState("123");
   const [arrOfAddresses, setArrOfAddresses] = useState([
@@ -122,3 +122,4 @@ export const AddressProvider = ({ children }) => {
     </AddressContext.Provider>
   );
 };
+export const useAddress = () => useContext(AddressContext);

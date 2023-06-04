@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ProductsContext } from "../Contexts/ProductsProvider";
-import { UtilsContext } from "../Contexts/UtilsProvider";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { useProducts } from "../Contexts/ProductsProvider";
+import { useUtils } from "../Contexts/UtilsProvider";
+import { useAuth } from "../Contexts/AuthProvider";
 
 export const Header = () => {
-  const { state, dispatch } = useContext(ProductsContext);
+  const { state, dispatch } = useProducts();
   const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const { isEncodedTokenPresent } = useContext(UtilsContext);
-  const { testUser, newUser } = useContext(AuthContext);
+  const { isEncodedTokenPresent } = useUtils();
+  const { testUser, newUser } = useAuth();
   useEffect(() => {
     const handleWindowResize = () => {
       if (window.innerWidth > 800) {

@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { APIContext } from "../../../Contexts/APIProvider";
+import { useNavigate } from "react-router-dom";
+import { useAPI } from "../Contexts/APIProvider";
 
 export const ProductCard = ({ item }) => {
-  const { fetchSingleProduct } = useContext(APIContext);
+  const { fetchSingleProduct } = useAPI();
   const navigate = useNavigate();
   const singleProductHandler = async (itemId) => {
     const item = await fetchSingleProduct(itemId);

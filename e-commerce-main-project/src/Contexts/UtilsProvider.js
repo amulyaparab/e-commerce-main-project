@@ -1,14 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { APIContext } from "./APIProvider";
-import { ProductsContext } from "./ProductsProvider";
-import { AuthContext } from "./AuthProvider";
+import { useAPI } from "./APIProvider";
+import { useProducts } from "./ProductsProvider";
+import { useAuth } from "./AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
-export const UtilsContext = createContext();
+const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
-  const { state, dispatch, setNotificationActive } =
-    useContext(ProductsContext);
+  const { state, dispatch, setNotificationActive } = useProducts();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,7 +20,7 @@ export const UtilsProvider = ({ children }) => {
     deleteFromWishlist,
     deleteFromCart,
     decreaseCartQuantity,
-  } = useContext(APIContext);
+  } = useAPI();
   const [modal, setModal] = useState(false);
 
   const isItemInCart = (item) => {
@@ -58,7 +57,7 @@ export const UtilsProvider = ({ children }) => {
       payload: wishlist,
     });
   };
-  const { testUser, newUser } = useContext(AuthContext);
+  const { testUser, newUser } = useAuth();
   const handleAddToCart = async (item) => {
     try {
       setNotificationActive(true);
@@ -235,3 +234,4 @@ export const UtilsProvider = ({ children }) => {
     </UtilsContext.Provider>
   );
 };
+export const useUtils = () => useContext(UtilsContext);

@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../../Contexts/ProductsProvider";
+import { useProducts } from "../../Contexts/ProductsProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 export const TotalCard = () => {
@@ -10,7 +9,7 @@ export const TotalCard = () => {
     setShowCouponModal,
     originalAmount,
     dispatch,
-  } = useContext(ProductsContext);
+  } = useProducts();
   const navigate = useNavigate();
 
   return (

@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
-import { AddressContext } from "../../Contexts/AddressProvider";
+import { useEffect } from "react";
+import { useAddress } from "../../Contexts/AddressProvider";
 import { v4 as uuid } from "uuid";
 export const AddressForm = () => {
   const {
@@ -9,7 +9,7 @@ export const AddressForm = () => {
     setAddress,
     showAddressForm,
     randomAddressAdder,
-  } = useContext(AddressContext);
+  } = useAddress();
 
   useEffect(() => {
     if (address.id) {
@@ -19,7 +19,7 @@ export const AddressForm = () => {
     }
   }, []);
 
-  console.log(address, "address");
+  // console.log(address, "address");
 
   return (
     <div className="address-overlay">

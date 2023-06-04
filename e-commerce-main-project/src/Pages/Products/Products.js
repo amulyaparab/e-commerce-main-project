@@ -1,14 +1,14 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { NotificationModal } from "../../Components/NotificationModal";
-import { Filters } from "./Components/Filters";
-import { ProductListing } from "./Components/ProductListing";
-import { ProductsContext } from "../../Contexts/ProductsProvider";
-import { APIContext } from "../../Contexts/APIProvider";
+import { Filters } from "../../Components/Products/Filters";
+import { ProductListing } from "../../Components/Products/ProductListing";
+import { useProducts } from "../../Contexts/ProductsProvider";
+import { useAPI } from "../../Contexts/APIProvider";
 
 export const Products = () => {
-  const { showFilters } = useContext(ProductsContext);
-  const { fetchCart } = useContext(APIContext);
-  // console.log(state.cart);
+  const { showFilters } = useProducts();
+  const { fetchCart } = useAPI();
+
   useEffect(() => {
     fetchCart();
   }, []);

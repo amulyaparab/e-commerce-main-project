@@ -1,13 +1,13 @@
 // import { useState } from "react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { useAuth } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 import { AddressesMapped } from "../Components/AddressComponents/AddressMapped";
-import { AddressContext } from "../Contexts/AddressProvider";
+import { useAddress } from "../Contexts/AddressProvider";
 export const Profile = () => {
-  const { setTestUser } = useContext(AuthContext);
-  const { arrOfAddresses } = useContext(AddressContext);
+  const { testUser, setTestUser } = useAuth();
+  const { arrOfAddresses } = useAddress();
   const navigate = useNavigate();
   const location = useLocation();
   const logoutHandler = () => {
@@ -17,7 +17,7 @@ export const Profile = () => {
     localStorage.removeItem("userEncodedToken");
     localStorage.removeItem("encodedTokenTest");
     navigate("/login", { state: { from: location } });
-    setTestUser(null);
+    // setTestUser(null);
   };
   const [showProfile, setShowProfile] = useState(true);
   return (
@@ -46,8 +46,13 @@ export const Profile = () => {
             <div className="userProfile">
               <h1>Profile</h1>
               <h3>Profile Details</h3>
-              <p>Full Name </p>
-              <p>Email</p>
+              <p>
+                <strong>Full Name:</strong> {testUser?.firstName}{" "}
+                {testUser?.lastName}
+              </p>
+              <p>
+                <strong>Email:</strong> {testUser?.email}
+              </p>
               <h3>Account Settings</h3>
               <button className="add-to-cart" onClick={logoutHandler}>
                 Logout

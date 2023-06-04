@@ -1,12 +1,12 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { APIContext } from "../Contexts/APIProvider";
-import { AuthContext } from "../Contexts/AuthProvider";
+import { useAPI } from "../Contexts/APIProvider";
+import { useAuth } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
 export const SignUp = () => {
-  const { newUser = {}, setNewUser = () => {} } = useContext(AuthContext);
+  const { newUser, setNewUser, setEncodedToken } = useAuth();
 
-  const { fetchSignUpData } = useContext(APIContext);
+  const { fetchSignUpData } = useAPI();
   // const [newUser, setNewUser] = useState({
   //   email: "",
   //   password: "",
@@ -22,7 +22,7 @@ export const SignUp = () => {
   });
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const signUpHandler = async () => {
     if (
       newUser?.email?.length !== 0 &&
@@ -33,11 +33,14 @@ export const SignUp = () => {
       newUser?.confirmPassword === newUser.password
     ) {
       const authToken = await fetchSignUpData({ ...newUser });
+      console.log(authToken, "auth");
+
       if (authToken) {
         toast.success("Signed In.", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
         setNewUser({ ...newUser, signedIn: true });
+        setEncodedToken(authToken);
         navigate(location?.state?.from?.pathname);
       }
     }

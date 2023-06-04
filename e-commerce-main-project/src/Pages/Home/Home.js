@@ -1,17 +1,11 @@
 import Nature from "../../Images/nature.png";
 import love from "../../Images/love.png";
+import { Carousel } from "../../Components/Home/Carousel";
+import { Categories } from "../../Components/Home/Categories";
+import { BestSellers } from "../../Components/Home/BestSellers";
+import { PreFooter } from "../../Components/Home/PreFooter";
 
-import { Carousel } from "./Components/Carousel";
-import { Categories } from "./Components/Categories";
-import { BestSellers } from "./Components/BestSellers";
-import { PreFooter } from "./Components/PreFooter";
-import { useContext, useEffect } from "react";
-import { APIContext } from "../../Contexts/APIProvider";
 export const Home = () => {
-  const { fetchProducts } = useContext(APIContext);
-  useEffect(() => {
-    fetchProducts();
-  }, []);
   return (
     <>
       <div className="flex">
