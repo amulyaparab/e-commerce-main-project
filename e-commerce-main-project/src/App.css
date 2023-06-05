@@ -823,13 +823,13 @@ input[type="checkbox"] {
 .totalCard {
   box-shadow: 0 0 10px 1px #d3d3d3;
   background-color: #ffffff;
-  margin: 3.8rem 2rem 2rem 0;
+  margin: 1rem 0 0;
 }
 
 .totalCard {
   display: flex;
   flex-direction: column;
-  /* padding: 2rem; */
+  padding: 2rem;
 }
 .total-card-flex {
   display: flex;
