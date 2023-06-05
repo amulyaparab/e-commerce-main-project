@@ -25,10 +25,9 @@ export const Categories = () => {
               <div
                 value={category.category}
                 onClick={(event) => {
-                  console.log(event.target.alt);
                   dispatch({
                     type: "PRODUCT_CATEGORY",
-                    payload: event.target.alt,
+                    payload: category.category,
                     categoryType: "Main-Categories",
                   });
                 }}

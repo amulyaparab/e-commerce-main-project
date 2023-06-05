@@ -401,9 +401,13 @@ body {
 .filters input {
   cursor: pointer;
 }
+.filters h1 {
+  margin-bottom: 5px;
+}
 .filters h3 {
-  /* font-size: large; */
+  font-size: medium;
   color: #89a17e;
+  margin-bottom: 0;
 }
 .filter-heading {
   margin-top: 2rem;
@@ -559,7 +563,7 @@ input[type="checkbox"] {
   color: #89a17e;
 }
 .header-heading {
-  font-size: 45px;
+  font-size: 40px;
   text-align: center;
   margin: 3rem 0 2rem;
 }
@@ -677,7 +681,7 @@ input[type="checkbox"] {
   .single-product {
     height: 300px;
     width: 95%;
-    margin-bottom: 17rem;
+    margin-bottom: 19rem;
   }
   .single-product-info {
     padding: 0.3rem 1rem;
@@ -892,6 +896,9 @@ input[type="checkbox"] {
     margin: auto;
     margin-top: 3rem;
     margin-bottom: 3rem;
+  }
+  .cartCard .cartSlide .price {
+    margin-top: -10px;
   }
 }
 /* Login and Sign up */
