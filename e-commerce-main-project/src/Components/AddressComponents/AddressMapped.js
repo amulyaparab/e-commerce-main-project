@@ -6,10 +6,8 @@ export const AddressesMapped = () => {
     selectedAddress,
     setSelectedAddress,
     arrOfAddresses,
-    setArrOfAddresses,
     showAddressForm,
     setShowAddressForm,
-    address,
     setAddress,
     deleteAddress,
     editAddress,
@@ -29,7 +27,7 @@ export const AddressesMapped = () => {
           country,
         } = item;
         return (
-          <div className="addreses-map">
+          <div key={id} className="addreses-map">
             <label>
               <input
                 type="radio"
@@ -50,7 +48,7 @@ export const AddressesMapped = () => {
               className="fa-solid fa-trash address-delete address-icon"
               onClick={() => deleteAddress(item)}
             ></i>
-            <p>{`${address}, ${city}, ${state}, ${pincode}`}</p>
+            <p>{`${address}, ${city}, ${state}, ${pincode}, ${country}`}</p>
             <p>Mobile Number: {mobileNumber}</p>
             <hr />
           </div>

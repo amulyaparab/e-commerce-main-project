@@ -4,6 +4,7 @@ import { useAPI } from "../Contexts/APIProvider";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { useUtils } from "../Contexts/UtilsProvider";
+
 export const Login = () => {
   const { encodedToken, setEncodedToken } = useAuth();
   const { fetchLoginData, fetchLoginAsGuest, setIsLoading } = useAPI();
@@ -11,17 +12,18 @@ export const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const { updateWishlist, updateCart } = useUtils();
+
   const loginHandler = async () => {
     try {
       setIsLoading(true);
-      // if (encodedToken) {
+
       if (loginData.email.length && loginData.password.length) {
         if (encodedToken) {
           toast.success("Logged In", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
 
-          const { foundUser, encodedToken } = await fetchLoginData({
+          const { encodedToken } = await fetchLoginData({
             email: loginData.email,
             password: loginData.password,
           });
@@ -40,12 +42,6 @@ export const Login = () => {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
       }
-      // }
-      //  else {
-      //   toast.error("User Not Found.", {
-      //     position: toast.POSITION.BOTTOM_RIGHT,
-      //   });
-      // }
     } catch (err) {
       console.log(err);
     } finally {
@@ -59,7 +55,7 @@ export const Login = () => {
       toast.success("Logged In", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-      const { foundUser, encodedToken } = await fetchLoginAsGuest();
+      const { encodedToken } = await fetchLoginAsGuest();
       setEncodedToken(encodedToken);
 
       navigate(location?.state?.from?.pathname);

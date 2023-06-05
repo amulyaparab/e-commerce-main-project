@@ -6,6 +6,7 @@ import { useUtils } from "../Contexts/UtilsProvider";
 export const Header = () => {
   const { state, dispatch } = useProducts();
   const navigate = useNavigate();
+
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { isEncodedTokenPresent } = useUtils();
 
@@ -20,10 +21,13 @@ export const Header = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
   const conditionForWishlistIcons =
     state.wishlist?.length >= 1 && isEncodedTokenPresent;
+
   const conditionForCartIcons =
     state.cart?.length >= 1 && isEncodedTokenPresent;
+
   return (
     <nav className="navbar">
       <NavLink to="/">

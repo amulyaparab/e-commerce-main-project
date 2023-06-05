@@ -4,7 +4,6 @@ import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const WishlistListing = () => {
   const { state } = useProducts();
-
   const { removefromWishlistHandler, moveToCartHandler } = useUtils();
 
   return (

@@ -4,9 +4,7 @@ import cartImage from "../../Images/cart.svg";
 import { TotalCard } from "../../Components/Cart/TotalCard";
 import { Coupon } from "../../Components/Cart/Coupon";
 import { useUtils } from "../../Contexts/UtilsProvider";
-
 import { useEffect } from "react";
-import { useAPI } from "../../Contexts/APIProvider";
 
 export const Cart = () => {
   const { state } = useProducts();
@@ -18,7 +16,7 @@ export const Cart = () => {
   } = useUtils();
 
   const { updateCart } = useUtils();
-  const { token } = useAPI();
+
   useEffect(() => {
     updateCart();
   }, []);

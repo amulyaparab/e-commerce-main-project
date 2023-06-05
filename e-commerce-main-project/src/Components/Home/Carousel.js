@@ -11,7 +11,9 @@ export const Carousel = () => {
     { id: 3, url: Hair, title: "Hair Care" },
     { id: 4, url: HomeDecor, title: "Home" },
   ];
+
   const [selectedSlide, setSelectedSlide] = useState(1);
+
   return (
     <section className="carousel">
       <div className="carousel-slide">

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import { Filters } from "../../Components/Products/Filters";
 import { ProductListing } from "../../Components/Products/ProductListing";
 import { useProducts } from "../../Contexts/ProductsProvider";

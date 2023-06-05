@@ -1,6 +1,5 @@
 import { SummaryCard } from "../../Components/Checkout/SummaryCard";
 import { AddressesMapped } from "../../Components/AddressComponents/AddressMapped";
-
 import { useProducts } from "../../Contexts/ProductsProvider";
 
 export const Checkout = () => {

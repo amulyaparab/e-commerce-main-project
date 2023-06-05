@@ -1,6 +1,7 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 export const TotalCard = () => {
   const {
     state,
@@ -18,7 +19,6 @@ export const TotalCard = () => {
         <div className="total-card-flex">
           <i className="fa-solid fa-tag tag"></i>
           <p>Have a Coupon?</p>
-
           <button
             className="apply"
             onClick={() => setShowCouponModal(!showCouponModal)}

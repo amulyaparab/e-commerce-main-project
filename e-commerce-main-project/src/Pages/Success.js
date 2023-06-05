@@ -1,4 +1,5 @@
 import Confetti from "react-confetti";
+
 export const Success = () => {
   return (
     <>

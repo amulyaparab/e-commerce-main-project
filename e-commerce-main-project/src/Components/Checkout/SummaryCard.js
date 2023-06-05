@@ -3,6 +3,7 @@ import { useAddress } from "../../Contexts/AddressProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAPI } from "../../Contexts/APIProvider";
+
 const loadScript = (url) => {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
@@ -19,15 +20,18 @@ const loadScript = (url) => {
     document.body.appendChild(script);
   });
 };
+
 export const SummaryCard = () => {
   const { state, totalAmount, originalAmount } = useProducts();
   const { selectedAddress, arrOfAddresses } = useAddress();
   const { deleteFromCart } = useAPI();
 
   const navigate = useNavigate();
+
   const findSelectedAddress = arrOfAddresses.find(
     (address) => address.id === selectedAddress
   );
+
   const displayRazorpay = async () => {
     if (selectedAddress) {
       const response = await loadScript(
@@ -65,6 +69,7 @@ export const SummaryCard = () => {
       });
     }
   };
+
   return (
     <>
       <h1 className="header-heading">Order Summary</h1>

@@ -1,7 +1,9 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { toast } from "react-toastify";
+
 export const Coupon = () => {
   const { dispatch, showCouponModal, setShowCouponModal } = useProducts();
+
   return (
     <>
       {showCouponModal && (

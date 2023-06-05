@@ -55,7 +55,6 @@ export const APIProvider = ({ children }) => {
     };
     const signUpRes = await fetch("/api/auth/signup", options);
     const { createdUser, encodedToken } = await signUpRes.json();
-    console.log({ createdUser, encodedToken });
     localStorage.setItem("encodedTokenTest", encodedToken);
     localStorage.setItem("user", JSON.stringify(createdUser));
     return encodedToken;
@@ -80,7 +79,6 @@ export const APIProvider = ({ children }) => {
     };
     const cartRes = await fetch("/api/user/cart", options);
     const cart = await cartRes.json();
-    console.log(cart, "carrrrrtt");
     return cart;
   };
 

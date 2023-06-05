@@ -121,8 +121,6 @@ body {
 }
 .carousel-slide img {
   width: 100%;
-  /* height: 50vh; */
-  /* margin-top: 0.5rem; */
 }
 .carousel-btn {
   position: absolute;
@@ -983,37 +981,7 @@ input[type="checkbox"] {
   inset: 0;
   z-index: 2;
 }
-.modal-overlay {
-  /* background-color: rgba(0, 0, 0, 0.3); */
-}
-/* .modal-content {
-  background-color: #ffffff;
-  box-shadow: 0 0 5px 1px #d3d3d3;
-  border-radius: 10px;
-  width: 200px;
-  position: fixed;
-  right: 20px;
-  bottom: 70px;
-  z-index: 10;
-  padding: 0.7rem 1rem;
-  font-weight: bold;
-  font-size: larger;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-/* .Toastify__progress-bar {
-  background-color: blue; 
-}
-.toast-message {
-  color: #1c1b2c;
-  font-weight: bold;
-} */
-/* .modal-content .icon {
-  font-size: 30px;
-  margin-right: 1rem;
-} */
+
 .sign-up {
   height: 65vh;
   bottom: 4.5rem;
@@ -1066,13 +1034,7 @@ input[type="checkbox"] {
   padding: 1rem 0rem;
   margin-top: -3rem;
 }
-.first-tab {
-  /* margin-left: -2rem; */
-  margin-left: -3rem;
-}
-.tab {
-  /* margin-top: -2rem; */
-}
+
 .active-profile {
   background-color: #89a17e;
   color: white;
@@ -1081,7 +1043,6 @@ input[type="checkbox"] {
 .userProfile {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
 }
 .userProfile h1 {
@@ -1093,7 +1054,6 @@ input[type="checkbox"] {
   height: 100%;
   width: 100%;
   background-color: rgba(142, 161, 204, 0.4);
-  /* opacity: 0.4; */
   z-index: 10;
   overflow-y: hidden;
 }
@@ -1148,7 +1108,6 @@ input[type="checkbox"] {
   margin-left: 1rem;
 }
 .address-form {
-  /* width: 550px; */
   height: max-content;
   top: 20%;
 }
@@ -1165,15 +1124,7 @@ input[type="checkbox"] {
   margin-left: 0;
   margin: 0rem 0 1rem;
 }
-/* .address-overlay {
-  height: 100vh;
-  width: 100vh;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 5;
-  margin: -20rem;
-  padding: 10rem;
-} */
+
 .checkout-card {
   background-color: #ffffff;
   box-shadow: 0 0 10px 1px #d3d3d3;
@@ -1340,7 +1291,6 @@ input[type="checkbox"] {
 }
 .products-not-found h1 {
   text-align: center;
-  /* position: absolute; */
   font-size: 30px;
   color: #999999;
   opacity: 0.8;

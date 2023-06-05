@@ -2,8 +2,8 @@ import bestHome from "../../Images/best-home.jpg";
 import bestBath from "../../Images/best-bath.jpg";
 import bestHair from "../../Images/best-hair.jpg";
 import bestSkin from "../../Images/best-skin.jpg";
-
 import { NavLink } from "react-router-dom";
+
 export const BestSellers = () => {
   return (
     <section className="categories">
