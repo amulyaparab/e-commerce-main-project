@@ -1,9 +1,11 @@
 # Ascend. 
 E-commerce website made with ReactJS.
+
 Website URL: https://e-commerce-main-project.vercel.app/
 
 # Demo video
 
+https://github.com/amulyaparab/e-commerce-main-project/assets/86553695/bac1c853-ed22-4eb2-b448-9d2bbdbbb4a6
 
 # Features
 * Landing Page
@@ -45,14 +47,6 @@ Website URL: https://e-commerce-main-project.vercel.app/
 * Vanilla CSS 
 * Font Awesome Icons
 * Razorpay Payment Gateway
-
-# Screenshot
-* 1. Home Page
-* 2. Product Listing Page
-* 3. Cart Page
-* 4. Wishlist Page
-* 5. Single Product Page
-* 6. Checkout Page
 
 # How to run locally
 ```
