@@ -83,7 +83,7 @@ export const UtilsProvider = ({ children }) => {
 
         setTimeout(() => {
           setDisableBtn(false);
-        }, 1000);
+        }, 500);
         updateCart();
       } else {
         navigate("/login", { state: { from: location } });
@@ -117,7 +117,7 @@ export const UtilsProvider = ({ children }) => {
         }
         setTimeout(() => {
           setDisableBtn(false);
-        }, 1000);
+        }, 500);
         updateWishlist();
       } else {
         navigate("/login", { state: { from: location } });
