@@ -17,7 +17,7 @@ export const APIProvider = ({ children }) => {
     };
     const loginRes = await fetch("/api/auth/login", options);
     const loginResponse = await loginRes.json();
-    console.log(loginResponse, "user");
+
     localStorage.setItem("encodedTokenTest", loginResponse.encodedToken || "");
     localStorage.setItem("user", JSON.stringify(loginResponse.foundUser) || {});
     return loginResponse;
@@ -34,7 +34,7 @@ export const APIProvider = ({ children }) => {
     };
     const loginRes = await fetch("/api/auth/login", options);
     const loginResponse = await loginRes.json();
-    console.log(loginResponse, "guets");
+
     localStorage.setItem("encodedTokenTest", loginResponse.encodedToken || "");
     localStorage.setItem("user", JSON.stringify(loginResponse.foundUser) || {});
 

@@ -23,7 +23,7 @@ export const SummaryCard = () => {
   const { state, totalAmount, originalAmount } = useProducts();
   const { selectedAddress, arrOfAddresses } = useAddress();
   const { deleteFromCart } = useAPI();
-  console.log("selected Address", selectedAddress);
+
   const navigate = useNavigate();
   const findSelectedAddress = arrOfAddresses.find(
     (address) => address.id === selectedAddress

@@ -1335,17 +1335,18 @@ input[type="checkbox"] {
 }
 .products-not-found {
   position: relative;
+  margin: 0 0 3rem;
 }
 .products-not-found h1 {
   text-align: center;
   /* position: absolute; */
-  font-size: 40px;
+  font-size: 30px;
   color: #999999;
   opacity: 0.8;
 }
 .products-not-found img {
-  width: 1000px;
-  height: 550px;
+  width: 600px;
+  height: 500px;
   margin-top: 3rem;
   opacity: 0.8;
 }

@@ -12,7 +12,7 @@ export const Coupon = () => {
                 onClick={() => {
                   setShowCouponModal(false);
                 }}
-                class="fa-solid fa-xmark wishlist-heart remove"
+                className="fa-solid fa-xmark wishlist-heart remove"
               ></i>
               <h2>Apply Coupon</h2>
 

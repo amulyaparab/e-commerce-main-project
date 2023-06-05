@@ -16,7 +16,7 @@ export const Carousel = () => {
     <section className="carousel">
       <div className="carousel-slide">
         {slides.map(({ url, title, id }) =>
-          id === selectedSlide ? <img src={url} alt={title} /> : null
+          id === selectedSlide ? <img src={url} alt={title} key={id} /> : null
         )}
       </div>
       <button

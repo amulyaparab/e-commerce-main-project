@@ -13,7 +13,7 @@ export const WishlistListing = () => {
         return (
           <div className="productCard wishlistCard" key={item._id}>
             <i
-              class="fa-solid fa-xmark wishlist-heart"
+              className="fa-solid fa-xmark wishlist-heart"
               onClick={() => removefromWishlistHandler(item._id)}
             ></i>
             <div>

@@ -62,7 +62,6 @@ export const Login = () => {
       const { foundUser, encodedToken } = await fetchLoginAsGuest();
       setEncodedToken(encodedToken);
 
-      console.log(foundUser, "sabdhjasg");
       navigate(location?.state?.from?.pathname);
     } catch (err) {
       console.log(err);

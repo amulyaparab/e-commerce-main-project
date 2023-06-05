@@ -16,7 +16,7 @@ export const TotalCard = () => {
     <section>
       <div className="totalCard">
         <div className="total-card-flex">
-          <i class="fa-solid fa-tag tag"></i>
+          <i className="fa-solid fa-tag tag"></i>
           <p>Have a Coupon?</p>
 
           <button
@@ -48,7 +48,7 @@ export const TotalCard = () => {
               </p>
               <i
                 style={{ cursor: "pointer", color: "#BA3C3C" }}
-                class="fa-solid fa-xmark"
+                className="fa-solid fa-xmark"
                 onClick={() => {
                   dispatch({ type: "NO_COUPON" });
                   toast.error("Coupon Removed", {

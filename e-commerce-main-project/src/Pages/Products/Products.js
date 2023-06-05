@@ -25,7 +25,10 @@ export const Products = () => {
       <NotificationModal
         text={"Added To Cart"}
         icon={
-          <i class="fa-solid fa-circle-check" style={{ color: "#90c190" }}></i>
+          <i
+            className="fa-solid fa-circle-check"
+            style={{ color: "#90c190" }}
+          ></i>
         }
       />
       <div className={`${showFilters ? "grid-products" : "lined-products"}`}>

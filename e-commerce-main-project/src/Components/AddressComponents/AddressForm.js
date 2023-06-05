@@ -24,7 +24,7 @@ export const AddressForm = () => {
       <div className="login address-form">
         <i
           onClick={() => setShowAddressForm(false)}
-          class="fa-solid fa-xmark wishlist-heart remove"
+          className="fa-solid fa-xmark wishlist-heart remove"
         ></i>
         <h1>Add Address</h1>
         <label>

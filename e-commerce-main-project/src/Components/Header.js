@@ -31,7 +31,7 @@ export const Header = () => {
       </NavLink>
       <div className={` toggle-icon ${isCollapsed ? "collapsed" : ""}`}>
         <i
-          class="fa-solid fa-bars "
+          className="fa-solid fa-bars "
           onClick={() => setIsCollapsed(!isCollapsed)}
         ></i>
       </div>
@@ -76,7 +76,7 @@ export const Header = () => {
               </small>
             </NavLink>
             <NavLink to="/profile">
-              <i class="fa-solid fa-user"></i>
+              <i className="fa-solid fa-user"></i>
             </NavLink>
           </div>
         </div>

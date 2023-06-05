@@ -42,7 +42,6 @@ export const UtilsProvider = ({ children }) => {
 
   const updateCart = async () => {
     try {
-      console.log("hi");
       const unfilteredCart = await fetchCart();
       const cart = unfilteredCart.cart?.filter(
         (item) => item._id !== undefined || item._id !== null
@@ -81,10 +80,8 @@ export const UtilsProvider = ({ children }) => {
         });
 
         if (isItemInCart(item)) {
-          console.log("cart");
           return state.cart;
         } else {
-          console.log(" not in cart");
           await postToCart(item);
         }
 
@@ -166,7 +163,6 @@ export const UtilsProvider = ({ children }) => {
   };
   const removefromCartHandler = async (item) => {
     try {
-      console.log(modal);
       setModal(false);
       setNotificationActive(true);
       toast.error("Removed From Cart", {

@@ -13,7 +13,6 @@ export const Categories = () => {
 
   return (
     <section className="categories">
-      {console.log(state?.categories)}
       <div className="heading">
         <h1>Categories</h1>
       </div>
@@ -24,7 +23,7 @@ export const Categories = () => {
             <NavLink to="/products" className="photos" key={category._id}>
               <div
                 value={category.category}
-                onClick={(event) => {
+                onClick={() => {
                   dispatch({
                     type: "PRODUCT_CATEGORY",
                     payload: category.category,

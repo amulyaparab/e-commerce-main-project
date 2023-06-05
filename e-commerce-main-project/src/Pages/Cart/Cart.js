@@ -35,7 +35,7 @@ export const Cart = () => {
               <div className="productCard cartCard">
                 <i
                   onClick={() => removefromCartHandler(item)}
-                  class="fa-solid fa-xmark wishlist-heart remove"
+                  className="fa-solid fa-xmark wishlist-heart remove"
                 ></i>
 
                 <ProductCard item={item} />

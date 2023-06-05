@@ -114,7 +114,7 @@ export const Filters = () => {
         </section>
       ) : (
         <button className="filter-btn" onClick={() => setShowFilters(true)}>
-          <i class="fa-solid fa-filter"></i>
+          <i className="fa-solid fa-filter"></i>
         </button>
       )}
     </>

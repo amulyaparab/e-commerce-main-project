@@ -17,7 +17,7 @@ export const ProductCard = ({ item }) => {
           onClick={() => singleProductHandler(item?._id)}
         />
         <div className="product-rating">
-          <i class="fa-solid fa-star"></i>
+          <i className="fa-solid fa-star"></i>
           <p>{item?.rating}</p>
         </div>
       </div>

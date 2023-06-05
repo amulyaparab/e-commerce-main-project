@@ -25,12 +25,12 @@ export const SingleProduct = () => {
         />
         <div className="single-product-info">
           <p className="single-prod-rating">
-            {singleProduct?.rating} <i class="fa-solid fa-star"></i>
+            {singleProduct?.rating} <i className="fa-solid fa-star"></i>
           </p>
           <h1>{singleProduct?.name}</h1>
 
           <i
-            class="fa-solid fa-heart single-prod-heart"
+            className="fa-solid fa-heart single-prod-heart"
             style={{
               color: isItemInWishlist(singleProduct) ? "#BA3C3C" : "#2f2e41",
             }}

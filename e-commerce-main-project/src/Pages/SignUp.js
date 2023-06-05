@@ -28,7 +28,7 @@ export const SignUp = () => {
         newUser.confirmPassword === newUser.password
       ) {
         const authToken = await fetchSignUpData({ ...newUser });
-        console.log("authToken", authToken);
+
         if (authToken) {
           toast.success("Signed In.", {
             position: toast.POSITION.BOTTOM_RIGHT,
@@ -108,14 +108,14 @@ export const SignUp = () => {
                   onClick={() =>
                     setShowPassword({ ...showPassword, password: false })
                   }
-                  class="fa-solid fa-eye"
+                  className="fa-solid fa-eye"
                 ></i>
               ) : (
                 <i
                   onClick={() =>
                     setShowPassword({ ...showPassword, password: true })
                   }
-                  class="fa-solid fa-eye-slash"
+                  className="fa-solid fa-eye-slash"
                 ></i>
               )}
             </div>
@@ -141,7 +141,7 @@ export const SignUp = () => {
                         confirmPassword: false,
                       })
                     }
-                    class="fa-solid fa-eye"
+                    className="fa-solid fa-eye"
                   ></i>
                 ) : (
                   <i
@@ -151,7 +151,7 @@ export const SignUp = () => {
                         confirmPassword: true,
                       })
                     }
-                    class="fa-solid fa-eye-slash"
+                    className="fa-solid fa-eye-slash"
                   ></i>
                 )}
               </label>

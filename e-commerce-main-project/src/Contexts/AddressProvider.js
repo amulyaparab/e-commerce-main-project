@@ -43,11 +43,7 @@ export const AddressProvider = ({ children }) => {
           position: toast.POSITION.BOTTOM_RIGHT,
         }) &&
         setArrOfAddresses(() => {
-          console.log(
-            arrOfAddresses.find((arrItem) => arrItem.id === address.id)
-          );
           if (arrOfAddresses.find((arrItem) => arrItem.id === address.id)) {
-            console.log("hjerererererer");
             return arrOfAddresses?.map((arrItem) =>
               arrItem.id === address.id ? address : arrItem
             );
@@ -75,7 +71,7 @@ export const AddressProvider = ({ children }) => {
     setAddress(item);
     setShowAddressForm(true);
   };
-  console.log({ address });
+
   const randomAddressAdder = () => {
     const randomAddress = {
       name: "Joe Goldberg",

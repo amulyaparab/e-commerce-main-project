@@ -5,7 +5,7 @@ export const Success = () => {
       <div className="order-height">
         <h1 className="header-heading">Order Placed Successfully!</h1>
         <Confetti />
-        <i class="fa-solid fa-circle-check"></i>
+        <i className="fa-solid fa-circle-check"></i>
       </div>
     </>
   );

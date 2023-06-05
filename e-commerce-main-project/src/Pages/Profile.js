@@ -10,9 +10,9 @@ export const Profile = () => {
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : {};
-  console.log(user, "user");
+
   const { setIsLoading } = useAPI();
-  console.log("user", user?.firstName);
+
   const { dispatch } = useProducts();
   const { arrOfAddresses } = useAddress();
   const navigate = useNavigate();
