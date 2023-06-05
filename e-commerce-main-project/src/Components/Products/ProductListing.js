@@ -41,7 +41,9 @@ export const ProductListing = () => {
 
               {isItemInCart(item) && isEncodedTokenPresent ? (
                 <NavLink to="/cart">
-                  <button className="add-to-cart">Go To Cart</button>
+                  <button className="add-to-cart go-to-cart-prods">
+                    Go To Cart
+                  </button>
                 </NavLink>
               ) : (
                 <button

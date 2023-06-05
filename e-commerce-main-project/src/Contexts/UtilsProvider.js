@@ -42,6 +42,7 @@ export const UtilsProvider = ({ children }) => {
 
   const updateCart = async () => {
     try {
+      console.log("hi");
       const unfilteredCart = await fetchCart();
       const cart = unfilteredCart.cart?.filter(
         (item) => item._id !== undefined || item._id !== null
@@ -57,6 +58,7 @@ export const UtilsProvider = ({ children }) => {
 
   const updateWishlist = async () => {
     try {
+      // setIsLoading(true);
       const wishlist = await fetchWishlist();
       dispatch({
         type: "FETCH_WISHLIST",
@@ -64,6 +66,8 @@ export const UtilsProvider = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      // setIsLoading(false);
     }
   };
 
@@ -97,7 +101,7 @@ export const UtilsProvider = ({ children }) => {
       setNotificationActive(false);
     }
   };
-  const clearCartAndWishlist = () => {};
+
   const addToWishlistHandler = async (item) => {
     try {
       setNotificationActive(true);

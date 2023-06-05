@@ -480,6 +480,7 @@ input[type="checkbox"] {
   position: relative;
   margin-top: 0.2rem;
 }
+
 .productCard {
   background-color: #ffffff;
   position: relative;
@@ -576,6 +577,9 @@ input[type="checkbox"] {
   color: #ffffff;
   font-size: 20px;
   padding: 0.5rem 0.5rem;
+}
+.go-to-cart-prods {
+  width: 213px;
 }
 @media screen and (max-width: 800px) {
   .grid-products {
@@ -825,7 +829,7 @@ input[type="checkbox"] {
 .totalCard {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 .total-card-flex {
   display: flex;

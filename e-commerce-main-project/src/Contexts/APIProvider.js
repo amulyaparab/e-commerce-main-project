@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
-  const TOKEN = localStorage.getItem("encodedTokenTest");
+  const token = localStorage.getItem("encodedTokenTest");
 
   const [isLoading, setIsLoading] = useState(true);
   const fetchLoginData = async ({ email, password }) => {
@@ -11,7 +11,6 @@ export const APIProvider = ({ children }) => {
       email,
       password,
     };
-
     const options = {
       method: "POST",
       body: JSON.stringify(creds),
@@ -74,10 +73,9 @@ export const APIProvider = ({ children }) => {
     return product;
   };
   const fetchCart = async () => {
-    console.log("cart api call func takes place wtf");
     const options = {
       headers: {
-        authorization: TOKEN,
+        authorization: token,
       },
     };
     const cartRes = await fetch("/api/user/cart", options);
@@ -90,7 +88,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
 
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
       body: JSON.stringify({ product }),
     };
     const cartRes = await fetch("/api/user/cart", options);
@@ -102,7 +100,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "DELETE",
 
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
     };
     const deleteFromCartRes = await fetch(`/api/user/cart/${prodId}`, options);
     const { cart } = await deleteFromCartRes.json();
@@ -118,7 +116,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
 
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
       body: JSON.stringify(bodyIncrementCount),
     };
     const increaseCartQuantityRes = await fetch(
@@ -137,7 +135,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
 
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
       body: JSON.stringify(bodyDecrementCount),
     };
     const decreaseCartQuantityRes = await fetch(
@@ -150,7 +148,7 @@ export const APIProvider = ({ children }) => {
 
   const fetchWishlist = async () => {
     const options = {
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
     };
     const wishlistRes = await fetch("/api/user/wishlist", options);
     const { wishlist } = await wishlistRes.json();
@@ -160,7 +158,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "POST",
 
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
       body: JSON.stringify({ product }),
     };
     const wishlistRes = await fetch("/api/user/wishlist", options);
@@ -172,7 +170,7 @@ export const APIProvider = ({ children }) => {
     const options = {
       method: "DELETE",
 
-      headers: { authorization: TOKEN },
+      headers: { authorization: token },
     };
     const deleteFromWishlistRes = await fetch(
       `/api/user/wishlist/${prodId}`,
@@ -208,6 +206,7 @@ export const APIProvider = ({ children }) => {
         fetchLoginAsGuest,
         isLoading,
         setIsLoading,
+        token,
       }}
     >
       {children}
