@@ -13,6 +13,8 @@ export const SingleProduct = () => {
     addToWishlistHandler,
     isItemInCart,
     isItemInWishlist,
+    disableBtn,
+    isEncodedTokenPresent,
   } = useUtils();
 
   return (
@@ -30,10 +32,11 @@ export const SingleProduct = () => {
           <h1>{singleProduct?.name}</h1>
 
           <i
-            className="fa-solid fa-heart single-prod-heart"
-            style={{
-              color: isItemInWishlist(singleProduct) ? "#BA3C3C" : "#2f2e41",
-            }}
+            className={`fa-solid fa-heart single-prod-heart ${
+              isItemInWishlist(singleProduct) && isEncodedTokenPresent
+                ? "colorRed"
+                : "colorPrimary"
+            }  ${disableBtn ? "disabled" : ""}`}
             onClick={() => addToWishlistHandler(singleProduct)}
           ></i>
           <small className="brand">{singleProduct?.brand}</small>
@@ -49,6 +52,7 @@ export const SingleProduct = () => {
             <button
               className="add-to-cart"
               onClick={() => handleAddToCart(singleProduct)}
+              disabled={disableBtn}
             >
               Add To Cart
             </button>

@@ -23,7 +23,7 @@ export const UtilsProvider = ({ children }) => {
     setIsLoading,
   } = useAPI();
   const [modal, setModal] = useState(false);
-
+  const [disableBtn, setDisableBtn] = useState(false);
   const isItemInCart = (item) => {
     const isItemInCart = state.cart?.includes(
       state.cart.find((prod) => prod._id === item._id)
@@ -78,13 +78,12 @@ export const UtilsProvider = ({ children }) => {
         toast.success("Added To Cart", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
+        setDisableBtn(true);
+        await postToCart(item);
 
-        if (isItemInCart(item)) {
-          return state.cart;
-        } else {
-          await postToCart(item);
-        }
-
+        setTimeout(() => {
+          setDisableBtn(false);
+        }, 1000);
         updateCart();
       } else {
         navigate("/login", { state: { from: location } });
@@ -103,6 +102,7 @@ export const UtilsProvider = ({ children }) => {
     try {
       setNotificationActive(true);
       if (isEncodedTokenPresent) {
+        setDisableBtn(true);
         if (isItemInWishlist(item)) {
           await deleteFromWishlist(item._id);
           toast.error("Removed From Wishlist", {
@@ -110,10 +110,14 @@ export const UtilsProvider = ({ children }) => {
           });
         } else {
           await postToWishlist(item);
+
           toast.success("Added To Wishlist", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
         }
+        setTimeout(() => {
+          setDisableBtn(false);
+        }, 1000);
         updateWishlist();
       } else {
         navigate("/login", { state: { from: location } });
@@ -237,6 +241,8 @@ export const UtilsProvider = ({ children }) => {
         isEncodedTokenPresent,
         updateCart,
         updateWishlist,
+        disableBtn,
+        setDisableBtn,
       }}
     >
       {children}

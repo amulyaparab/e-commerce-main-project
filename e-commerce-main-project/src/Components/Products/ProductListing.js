@@ -14,6 +14,7 @@ export const ProductListing = () => {
     isItemInCart,
     isItemInWishlist,
     isEncodedTokenPresent,
+    disableBtn,
   } = useUtils();
   const { isLoading } = useAPI();
   return (
@@ -28,13 +29,12 @@ export const ProductListing = () => {
           return (
             <div className="productCard" key={item._id}>
               <i
-                className="fa-solid fa-heart wishlist-heart "
-                style={{
-                  color:
-                    isItemInWishlist(item) && isEncodedTokenPresent
-                      ? "#BA3C3C"
-                      : "#2f2e41",
-                }}
+                className={`fa-solid fa-heart wishlist-heart
+                ${
+                  isItemInWishlist(item) && isEncodedTokenPresent
+                    ? "colorRed"
+                    : "colorPrimary"
+                }  ${disableBtn ? "disabled" : ""}`}
                 onClick={() => addToWishlistHandler(item)}
               ></i>
               <ProductCard item={item} />
@@ -49,6 +49,7 @@ export const ProductListing = () => {
                 <button
                   className="add-to-cart"
                   onClick={() => handleAddToCart(item)}
+                  disabled={disableBtn}
                 >
                   Add To Cart
                 </button>

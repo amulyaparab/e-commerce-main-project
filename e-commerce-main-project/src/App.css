@@ -1350,3 +1350,13 @@ input[type="checkbox"] {
   margin-top: 3rem;
   opacity: 0.8;
 }
+.disabled {
+  pointer-events: none;
+  cursor: pointer;
+}
+.colorRed {
+  color: #ba3c3c;
+}
+.colorPrimary {
+  color: #2f2e41;
+}

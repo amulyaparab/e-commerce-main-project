@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { NotificationModal } from "../../Components/NotificationModal";
+
 import { Filters } from "../../Components/Products/Filters";
 import { ProductListing } from "../../Components/Products/ProductListing";
 import { useProducts } from "../../Contexts/ProductsProvider";
@@ -22,15 +22,7 @@ export const Products = () => {
       >
         Products
       </h1>
-      <NotificationModal
-        text={"Added To Cart"}
-        icon={
-          <i
-            className="fa-solid fa-circle-check"
-            style={{ color: "#90c190" }}
-          ></i>
-        }
-      />
+
       <div className={`${showFilters ? "grid-products" : "lined-products"}`}>
         <Filters />
         <ProductListing />
