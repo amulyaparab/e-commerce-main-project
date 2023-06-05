@@ -1315,3 +1315,6 @@ input[type="checkbox"] {
   color: #ffffff;
   text-decoration: none;
 }
+.first-tab {
+  margin-left: -3rem;
+}
