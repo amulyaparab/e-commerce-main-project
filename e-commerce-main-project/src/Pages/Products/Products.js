@@ -12,6 +12,7 @@ export const Products = () => {
     updateCart();
     updateWishlist();
   }, []);
+
   return (
     <>
       <h1

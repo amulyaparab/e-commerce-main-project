@@ -6,15 +6,14 @@ import { toast } from "react-toastify";
 
 export const SignUp = () => {
   const { newUser, setNewUser, setEncodedToken } = useAuth();
-
   const { fetchSignUpData, setIsLoading } = useAPI();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const [showPassword, setShowPassword] = useState({
     password: false,
     confirmPassword: false,
   });
-  const navigate = useNavigate();
-  const location = useLocation();
 
   const signUpHandler = async () => {
     try {
@@ -28,12 +27,10 @@ export const SignUp = () => {
         newUser.confirmPassword === newUser.password
       ) {
         const authToken = await fetchSignUpData({ ...newUser });
-
         if (authToken) {
           toast.success("Signed In.", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
-
           setNewUser({ ...newUser, signedIn: true });
           setEncodedToken(authToken);
           navigate(location?.state?.from?.pathname);

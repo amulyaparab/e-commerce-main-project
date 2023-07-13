@@ -5,9 +5,6 @@ import { useUtils } from "../Contexts/UtilsProvider";
 export const SingleProduct = () => {
   const { prodId } = useParams();
   const { state } = useProducts();
-
-  const singleProduct = state?.prodData?.find((prod) => prod._id === prodId);
-
   const {
     handleAddToCart,
     addToWishlistHandler,
@@ -16,6 +13,8 @@ export const SingleProduct = () => {
     disableBtn,
     isEncodedTokenPresent,
   } = useUtils();
+
+  const singleProduct = state?.prodData?.find((prod) => prod._id === prodId);
 
   return (
     <div className="background">

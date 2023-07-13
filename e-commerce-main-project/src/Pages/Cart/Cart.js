@@ -13,13 +13,13 @@ export const Cart = () => {
     removefromCartHandler,
     increaseQtyHandler,
     decreaseQtyHandler,
+    updateCart,
   } = useUtils();
-
-  const { updateCart } = useUtils();
 
   useEffect(() => {
     updateCart();
   }, []);
+
   return (
     <>
       <h1 className="header-heading">

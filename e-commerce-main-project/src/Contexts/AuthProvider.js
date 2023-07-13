@@ -3,6 +3,7 @@ import { createContext, useContext, useState } from "react";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [encodedToken, setEncodedToken] = useState(null);
   const [newUser, setNewUser] = useState({
     signedIn: false,
     email: "",
@@ -11,7 +12,6 @@ export const AuthProvider = ({ children }) => {
     firstName: "",
     lastName: "",
   });
-  const [encodedToken, setEncodedToken] = useState(null);
 
   return (
     <AuthContext.Provider

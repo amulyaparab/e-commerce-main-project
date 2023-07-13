@@ -39,7 +39,6 @@ export const reducer = (state, action) => {
         price: "0",
         search: "",
       };
-
     case "FETCH_WISHLIST":
       return { ...state, wishlist: action.payload };
     case "APPLY_COUPON":
@@ -88,7 +87,6 @@ export const reducer = (state, action) => {
         filteredData: search,
         search: action.payload,
       };
-
     case "CLEAR":
       return { ...state, clear: true };
     case "10%_OFF":

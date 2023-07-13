@@ -6,7 +6,6 @@ import { useUtils } from "../Contexts/UtilsProvider";
 export const Header = () => {
   const { state, dispatch } = useProducts();
   const navigate = useNavigate();
-
   const [isCollapsed, setIsCollapsed] = useState(false);
   const { isEncodedTokenPresent } = useUtils();
 

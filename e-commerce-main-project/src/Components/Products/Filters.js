@@ -10,9 +10,7 @@ export const Filters = () => {
         setShowFilters(false);
       }
     };
-
     window.addEventListener("resize", handleWindowResize);
-
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };

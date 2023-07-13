@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 
 export const Categories = () => {
   const { state, dispatch } = useProducts();
-
   const images = [bathAndBody, skinCare, hair, oliveCandle];
 
   return (

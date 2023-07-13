@@ -13,10 +13,10 @@ const ProductsContext = createContext();
 export const ProductsProvider = ({ children }) => {
   const { fetchProducts, fetchCart, fetchCategories, fetchWishlist } = useAPI();
   const { isLoading, setIsLoading } = useAPI();
+
   const fetchData = async () => {
     try {
       setIsLoading(true);
-
       const products = await fetchProducts();
       const cartUnfiltered = await fetchCart();
       const cart = cartUnfiltered.cart?.filter(
@@ -63,6 +63,7 @@ export const ProductsProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+
   const initialState = {
     prodData: [],
     cart: [],
@@ -81,14 +82,16 @@ export const ProductsProvider = ({ children }) => {
     totalDiscount: 1,
     loading: false,
   };
-  const [state, dispatch] = useReducer(reducer, initialState);
 
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [notificationActive, setNotificationActive] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
+
   const originalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price * curr?.qty),
     0
   );
+
   const totalAmount =
     state?.totalDiscount === 1
       ? originalAmount
@@ -153,4 +156,5 @@ export const ProductsProvider = ({ children }) => {
     </ProductsContext.Provider>
   );
 };
+
 export const useProducts = () => useContext(ProductsContext);

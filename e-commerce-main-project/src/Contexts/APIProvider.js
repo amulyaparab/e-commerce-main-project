@@ -4,8 +4,8 @@ const APIContext = createContext();
 
 export const APIProvider = ({ children }) => {
   const token = localStorage.getItem("encodedTokenTest");
-
   const [isLoading, setIsLoading] = useState(true);
+
   const fetchLoginData = async ({ email, password }) => {
     const creds = {
       email,
@@ -17,7 +17,6 @@ export const APIProvider = ({ children }) => {
     };
     const loginRes = await fetch("/api/auth/login", options);
     const loginResponse = await loginRes.json();
-
     localStorage.setItem("encodedTokenTest", loginResponse.encodedToken || "");
     localStorage.setItem("user", JSON.stringify(loginResponse.foundUser) || {});
     return loginResponse;
@@ -48,7 +47,6 @@ export const APIProvider = ({ children }) => {
       firstName,
       lastName,
     };
-
     const options = {
       method: "POST",
       body: JSON.stringify(creds),
@@ -71,6 +69,7 @@ export const APIProvider = ({ children }) => {
     const { product } = await singleProdRes.json();
     return product;
   };
+
   const fetchCart = async () => {
     const options = {
       headers: {
@@ -85,7 +84,6 @@ export const APIProvider = ({ children }) => {
   const postToCart = async (product) => {
     const options = {
       method: "POST",
-
       headers: { authorization: token },
       body: JSON.stringify({ product }),
     };
@@ -97,7 +95,6 @@ export const APIProvider = ({ children }) => {
   const deleteFromCart = async (prodId) => {
     const options = {
       method: "DELETE",
-
       headers: { authorization: token },
     };
     const deleteFromCartRes = await fetch(`/api/user/cart/${prodId}`, options);
@@ -124,6 +121,7 @@ export const APIProvider = ({ children }) => {
     const { cart } = await increaseCartQuantityRes.json();
     return cart;
   };
+
   const decreaseCartQuantity = async (prodId) => {
     const bodyDecrementCount = {
       action: {
@@ -132,7 +130,6 @@ export const APIProvider = ({ children }) => {
     };
     const options = {
       method: "POST",
-
       headers: { authorization: token },
       body: JSON.stringify(bodyDecrementCount),
     };
@@ -152,10 +149,10 @@ export const APIProvider = ({ children }) => {
     const { wishlist } = await wishlistRes.json();
     return wishlist;
   };
+
   const postToWishlist = async (product) => {
     const options = {
       method: "POST",
-
       headers: { authorization: token },
       body: JSON.stringify({ product }),
     };
@@ -167,7 +164,6 @@ export const APIProvider = ({ children }) => {
   const deleteFromWishlist = async (prodId) => {
     const options = {
       method: "DELETE",
-
       headers: { authorization: token },
     };
     const deleteFromWishlistRes = await fetch(
@@ -177,6 +173,7 @@ export const APIProvider = ({ children }) => {
     const { wishlist } = await deleteFromWishlistRes.json();
     return wishlist;
   };
+
   const fetchCategories = async () => {
     const categoriesRes = await fetch("/api/categories");
     const { categories } = await categoriesRes.json();
@@ -211,4 +208,5 @@ export const APIProvider = ({ children }) => {
     </APIContext.Provider>
   );
 };
+
 export const useAPI = () => useContext(APIContext);

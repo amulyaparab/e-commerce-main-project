@@ -2,15 +2,14 @@ import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { useAPI } from "./APIProvider";
 import { useProducts } from "./ProductsProvider";
-
 import { useLocation, useNavigate } from "react-router-dom";
+
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
   const { state, dispatch } = useProducts();
   const navigate = useNavigate();
   const location = useLocation();
-
   const {
     postToCart,
     increaseCartQuantity,
@@ -21,20 +20,24 @@ export const UtilsProvider = ({ children }) => {
     deleteFromCart,
     decreaseCartQuantity,
   } = useAPI();
+
   const [modal, setModal] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
+
   const isItemInCart = (item) => {
     const isItemInCart = state.cart?.includes(
       state.cart.find((prod) => prod._id === item._id)
     );
     return isItemInCart;
   };
+
   const isItemInWishlist = (item) => {
     const isItemInWishlist = state.wishlist?.includes(
       state.wishlist.find((prod) => prod._id === item._id)
     );
     return isItemInWishlist;
   };
+
   const isEncodedTokenPresent =
     localStorage.getItem("encodedTokenTest") ||
     localStorage.getItem("userEncodedToken");
@@ -230,4 +233,5 @@ export const UtilsProvider = ({ children }) => {
     </UtilsContext.Provider>
   );
 };
+
 export const useUtils = () => useContext(UtilsContext);

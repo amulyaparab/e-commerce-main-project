@@ -16,7 +16,6 @@ export const Login = () => {
   const loginHandler = async () => {
     try {
       setIsLoading(true);
-
       if (loginData.email.length && loginData.password.length) {
         if (encodedToken) {
           toast.success("Logged In", {
@@ -104,7 +103,6 @@ export const Login = () => {
           >
             Login as a Guest
           </button>
-
           <NavLink
             className="form-navigator"
             to="/signUp"

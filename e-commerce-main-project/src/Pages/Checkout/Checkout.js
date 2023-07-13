@@ -4,6 +4,7 @@ import { useProducts } from "../../Contexts/ProductsProvider";
 
 export const Checkout = () => {
   const { state } = useProducts();
+
   return (
     <>
       <h1 className="header-heading">Address</h1>

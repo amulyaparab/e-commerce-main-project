@@ -12,11 +12,13 @@ export const Profile = () => {
     : {};
 
   const { setIsLoading } = useAPI();
-
   const { dispatch } = useProducts();
   const { arrOfAddresses } = useAddress();
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [showProfile, setShowProfile] = useState(true);
+
   const logoutHandler = () => {
     try {
       setIsLoading(true);
@@ -35,7 +37,6 @@ export const Profile = () => {
       setIsLoading(false);
     }
   };
-  const [showProfile, setShowProfile] = useState(true);
 
   return (
     <>

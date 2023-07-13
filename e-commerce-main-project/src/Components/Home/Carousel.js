@@ -5,14 +5,14 @@ import Hair from "../../Images/hair.png";
 import { useState } from "react";
 
 export const Carousel = () => {
+  const [selectedSlide, setSelectedSlide] = useState(1);
+
   const slides = [
     { id: 1, url: Bath, title: "Bath and Body" },
     { id: 2, url: Skin, title: "Skin Care" },
     { id: 3, url: Hair, title: "Hair Care" },
     { id: 4, url: HomeDecor, title: "Home" },
   ];
-
-  const [selectedSlide, setSelectedSlide] = useState(1);
 
   return (
     <section className="carousel">

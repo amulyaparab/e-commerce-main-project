@@ -25,7 +25,6 @@ export const SummaryCard = () => {
   const { state, totalAmount, originalAmount } = useProducts();
   const { selectedAddress, arrOfAddresses } = useAddress();
   const { deleteFromCart } = useAPI();
-
   const navigate = useNavigate();
 
   const findSelectedAddress = arrOfAddresses.find(
@@ -60,7 +59,6 @@ export const SummaryCard = () => {
           color: "#2f2e41",
         },
       };
-
       const paymentObject = new window.Razorpay(options);
       paymentObject.open();
     } else {

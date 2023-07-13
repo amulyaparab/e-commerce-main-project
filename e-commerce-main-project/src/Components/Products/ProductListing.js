@@ -7,7 +7,7 @@ import { useAPI } from "../../Contexts/APIProvider";
 
 export const ProductListing = () => {
   const { filteredData } = useProducts();
-
+  const { isLoading } = useAPI();
   const {
     handleAddToCart,
     addToWishlistHandler,
@@ -16,7 +16,7 @@ export const ProductListing = () => {
     isEncodedTokenPresent,
     disableBtn,
   } = useUtils();
-  const { isLoading } = useAPI();
+
   return (
     <section className="products">
       {filteredData?.length === 0 && !isLoading ? (

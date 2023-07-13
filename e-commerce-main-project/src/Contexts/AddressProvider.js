@@ -17,7 +17,6 @@ export const AddressProvider = ({ children }) => {
     },
   ]);
   const [showAddressForm, setShowAddressForm] = useState(false);
-
   const [address, setAddress] = useState({
     name: "",
     id: "",
@@ -85,6 +84,7 @@ export const AddressProvider = ({ children }) => {
     };
     setAddress(randomAddress);
   };
+
   return (
     <AddressContext.Provider
       value={{
@@ -107,4 +107,5 @@ export const AddressProvider = ({ children }) => {
     </AddressContext.Provider>
   );
 };
+
 export const useAddress = () => useContext(AddressContext);
