@@ -1,5 +1,5 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
-import { ProductCard } from "../ProductCard";
+import { ProductCard } from "./ProductCard";
 import { NavLink } from "react-router-dom";
 import notFound from "../../Images/notFound.svg";
 import { useUtils } from "../../Contexts/UtilsProvider";

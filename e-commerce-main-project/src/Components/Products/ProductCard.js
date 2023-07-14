@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useAPI } from "../Contexts/APIProvider";
+import { useAPI } from "../../Contexts/APIProvider";
 
 export const ProductCard = ({ item }) => {
   const { fetchSingleProduct } = useAPI();

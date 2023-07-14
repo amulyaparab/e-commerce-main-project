@@ -1,4 +1,4 @@
-import { useAPI } from "../Pages";
+import { useAPI } from "../../Pages";
 export const Loading = () => {
   const { isLoading } = useAPI();
 

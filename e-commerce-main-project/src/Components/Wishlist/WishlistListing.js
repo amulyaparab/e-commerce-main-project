@@ -1,4 +1,4 @@
-import { ProductCard } from "../ProductCard";
+import { ProductCard } from "../Products/ProductCard";
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { useUtils } from "../../Contexts/UtilsProvider";
 

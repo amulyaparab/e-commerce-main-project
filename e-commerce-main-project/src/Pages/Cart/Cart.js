@@ -1,5 +1,5 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
-import { ProductCard } from "../../Components/ProductCard";
+import { ProductCard } from "../../Components/Products/ProductCard";
 import cartImage from "../../Images/cart.svg";
 import { TotalCard } from "../../Components/Cart/TotalCard";
 import { Coupon } from "../../Components/Cart/Coupon";
