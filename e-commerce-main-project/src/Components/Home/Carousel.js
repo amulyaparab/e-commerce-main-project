@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { bath, hairSlider, homeDecor, skin } from "../../Images";
+import { bath, hairSlider, homeDecor, skin } from "../../Assests";
 
 export const Carousel = () => {
   const [selectedSlide, setSelectedSlide] = useState(1);

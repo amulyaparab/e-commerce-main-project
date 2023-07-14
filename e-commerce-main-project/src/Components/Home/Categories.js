@@ -1,6 +1,6 @@
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { NavLink } from "react-router-dom";
-import { bathAndBody, hair, oliveCandle, skinCare } from "../../Images";
+import { bathAndBody, hair, oliveCandle, skinCare } from "../../Assests";
 
 export const Categories = () => {
   const { state, dispatch } = useProducts();

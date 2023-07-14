@@ -1,5 +1,5 @@
 import { BestSellers, Carousel, Categories, PreFooter } from "../../Components";
-import { love, nature } from "../../Images";
+import { love, nature } from "../../Assests";
 
 export const Home = () => {
   return (

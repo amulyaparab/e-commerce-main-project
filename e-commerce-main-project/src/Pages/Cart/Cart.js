@@ -1,7 +1,7 @@
-import cartImage from "../../Images/cart.svg";
 import { useEffect } from "react";
 import { useProducts, useUtils } from "../../Contexts";
 import { Coupon, ProductCard, TotalCard } from "../../Components";
+import { cartImage } from "../../Assests";
 
 export const Cart = () => {
   const { state } = useProducts();
