@@ -20,7 +20,6 @@ export const Products = () => {
       >
         Products
       </h1>
-
       <div className={`${showFilters ? "grid-products" : "lined-products"}`}>
         <Filters />
         <ProductListing />

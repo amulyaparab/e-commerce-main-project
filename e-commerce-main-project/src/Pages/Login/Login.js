@@ -1,64 +1,10 @@
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { useState } from "react";
-import { useAPI, useAuth, useUtils } from "../../Contexts";
+import { NavLink, useLocation } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthProvider";
 
 export const Login = () => {
-  const { encodedToken, setEncodedToken } = useAuth();
-  const { fetchLoginData, fetchLoginAsGuest, setIsLoading } = useAPI();
+  const { setLoginData, loginData, loginHandler, loginAsGuestHandler } =
+    useAuth();
   const location = useLocation();
-  const navigate = useNavigate();
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
-  const { updateWishlist, updateCart } = useUtils();
-
-  const loginHandler = async () => {
-    try {
-      setIsLoading(true);
-      if (loginData.email.length && loginData.password.length) {
-        if (encodedToken) {
-          toast.success("Logged In", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
-          const { encodedToken } = await fetchLoginData({
-            email: loginData.email,
-            password: loginData.password,
-          });
-          setEncodedToken(encodedToken);
-          navigate(location?.state?.from?.pathname);
-          updateWishlist();
-          updateCart();
-        } else {
-          toast.error("Wrong Password Or Email.", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-          });
-        }
-      } else {
-        toast.warn("Please Fill All Fields", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const loginAsGuestHandler = async () => {
-    try {
-      setIsLoading(true);
-      toast.success("Logged In", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-      const { encodedToken } = await fetchLoginAsGuest();
-      setEncodedToken(encodedToken);
-      navigate(location?.state?.from?.pathname);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="login-page">

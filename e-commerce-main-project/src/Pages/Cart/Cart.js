@@ -32,9 +32,7 @@ export const Cart = () => {
                   onClick={() => removefromCartHandler(item)}
                   className="fa-solid fa-xmark wishlist-heart remove"
                 ></i>
-
                 <ProductCard item={item} />
-
                 <p className="cart-quantity">
                   Qty: {item?.qty >= 1 && item?.qty}
                 </p>
@@ -44,7 +42,6 @@ export const Cart = () => {
                   </button>
                   <button onClick={() => decreaseQtyHandler(item)}>-</button>
                 </div>
-
                 <div className="cart-card-btns">
                   <button
                     className="add-to-cart cart-card-btn"

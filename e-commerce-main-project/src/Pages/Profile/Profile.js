@@ -1,39 +1,15 @@
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { useAPI, useAddress, useProducts } from "../../Contexts";
+import { useAddress, useAuth } from "../../Contexts";
 import { AddressesMapped } from "../../Components";
 
 export const Profile = () => {
+  const { arrOfAddresses } = useAddress();
+  const { logoutHandler } = useAuth();
+  const [showProfile, setShowProfile] = useState(true);
+
   const user = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : {};
-
-  const { setIsLoading } = useAPI();
-  const { dispatch } = useProducts();
-  const { arrOfAddresses } = useAddress();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const [showProfile, setShowProfile] = useState(true);
-
-  const logoutHandler = () => {
-    try {
-      setIsLoading(true);
-      toast.error("Logged Out.", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-      localStorage.removeItem("user");
-      localStorage.removeItem("encodedTokenTest");
-      navigate("/login", { state: { from: location } });
-      dispatch({ type: "CLEAR_CART" });
-      dispatch({ type: "CLEAR_WISHLIST" });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <>
@@ -50,7 +26,6 @@ export const Profile = () => {
             >
               Profile
             </div>
-
             <div
               onClick={() => setShowProfile(!showProfile)}
               className={`${showProfile ? "" : "active-profile"}`}
@@ -62,14 +37,12 @@ export const Profile = () => {
             <div className="userProfile">
               <h1>Profile</h1>
               <h2>Profile Details</h2>
-
               <p>
                 <strong>Full Name:</strong> {user?.firstName} {user?.lastName}
               </p>
               <p>
                 <strong>Email:</strong> {user?.email}
               </p>
-
               <button className="add-to-cart" onClick={logoutHandler}>
                 Logout
               </button>

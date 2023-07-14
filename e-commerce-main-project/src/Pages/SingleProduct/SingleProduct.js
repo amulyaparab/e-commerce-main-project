@@ -28,7 +28,6 @@ export const SingleProduct = () => {
             {singleProduct?.rating} <i className="fa-solid fa-star"></i>
           </p>
           <h1>{singleProduct?.name}</h1>
-
           <i
             className={`fa-solid fa-heart single-prod-heart ${
               isItemInWishlist(singleProduct) && isEncodedTokenPresent
@@ -38,10 +37,8 @@ export const SingleProduct = () => {
             onClick={() => addToWishlistHandler(singleProduct)}
           ></i>
           <small className="brand">{singleProduct?.brand}</small>
-
           <h1 className="single-price">₹{singleProduct?.price}</h1>
           <p className="desc">{singleProduct?.description}</p>
-
           {isItemInCart(singleProduct) ? (
             <NavLink to="/cart">
               <button className="add-to-cart go-to-cart">Go To Cart</button>
