@@ -61,7 +61,6 @@ export const UtilsProvider = ({ children }) => {
 
   const updateWishlist = async () => {
     try {
-      // setIsLoading(true);
       const wishlist = await fetchWishlist();
       dispatch({
         type: "FETCH_WISHLIST",
@@ -69,8 +68,6 @@ export const UtilsProvider = ({ children }) => {
       });
     } catch (err) {
       console.log(err);
-    } finally {
-      // setIsLoading(false);
     }
   };
 
