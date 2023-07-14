@@ -1,8 +1,6 @@
-import { useProducts } from "../../Contexts/ProductsProvider";
-import { useAddress } from "../../Contexts/AddressProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAPI } from "../../Contexts/APIProvider";
+import { useAPI, useAddress, useProducts } from "../../Contexts";
 
 const loadScript = (url) => {
   return new Promise((resolve, reject) => {

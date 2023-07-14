@@ -1,9 +1,7 @@
-import { useAuth } from "../Contexts/AuthProvider";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAPI } from "../Contexts/APIProvider";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { useUtils } from "../Contexts/UtilsProvider";
+import { useAPI, useAuth, useUtils } from "../Contexts";
 
 export const Login = () => {
   const { encodedToken, setEncodedToken } = useAuth();

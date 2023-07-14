@@ -1,8 +1,7 @@
-import { useProducts } from "../../Contexts/ProductsProvider";
 import { EmptyWishlist } from "../../Components/Wishlist/EmptyWishlist";
 import { WishlistListing } from "../../Components/Wishlist/WishlistListing";
 import { useEffect } from "react";
-import { useUtils } from "../../Contexts/UtilsProvider";
+import { useProducts, useUtils } from "../../Contexts";
 
 export const Wishlist = () => {
   const { state } = useProducts();

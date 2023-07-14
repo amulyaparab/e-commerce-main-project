@@ -2,9 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AddressesMapped } from "../Components/AddressComponents/AddressMapped";
-import { useAddress } from "../Contexts/AddressProvider";
-import { useProducts } from "../Contexts/ProductsProvider";
-import { useAPI } from "../Contexts/APIProvider";
+import { useAPI, useAddress, useProducts } from "../Contexts";
 
 export const Profile = () => {
   const user = localStorage.getItem("user")

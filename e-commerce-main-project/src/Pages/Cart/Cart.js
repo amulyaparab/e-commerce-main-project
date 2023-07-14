@@ -1,10 +1,9 @@
-import { useProducts } from "../../Contexts/ProductsProvider";
 import { ProductCard } from "../../Components/Products/ProductCard";
 import cartImage from "../../Images/cart.svg";
 import { TotalCard } from "../../Components/Cart/TotalCard";
 import { Coupon } from "../../Components/Cart/Coupon";
-import { useUtils } from "../../Contexts/UtilsProvider";
 import { useEffect } from "react";
+import { useProducts, useUtils } from "../../Contexts";
 
 export const Cart = () => {
   const { state } = useProducts();

@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { Filters } from "../../Components/Products/Filters";
 import { ProductListing } from "../../Components/Products/ProductListing";
-import { useProducts } from "../../Contexts/ProductsProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
+import { useProducts, useUtils } from "../../Contexts";
 
 export const Products = () => {
   const { showFilters } = useProducts();

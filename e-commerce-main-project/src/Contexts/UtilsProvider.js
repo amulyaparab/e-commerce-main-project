@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { useAPI } from "./APIProvider";
-import { useProducts } from "./ProductsProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useProducts } from "./ProductsProvider";
+import { useAPI } from "./APIProvider";
 
 const UtilsContext = createContext();
 

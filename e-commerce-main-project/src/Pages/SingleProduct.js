@@ -1,6 +1,5 @@
 import { NavLink, useParams } from "react-router-dom";
-import { useProducts } from "../Contexts/ProductsProvider";
-import { useUtils } from "../Contexts/UtilsProvider";
+import { useProducts, useUtils } from "../Contexts";
 
 export const SingleProduct = () => {
   const { prodId } = useParams();

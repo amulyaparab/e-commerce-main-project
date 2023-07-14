@@ -11,8 +11,14 @@ import { reducer } from "../Reducers/reducer";
 const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const { fetchProducts, fetchCart, fetchCategories, fetchWishlist } = useAPI();
-  const { isLoading, setIsLoading } = useAPI();
+  const {
+    fetchProducts,
+    fetchCart,
+    fetchCategories,
+    fetchWishlist,
+    isLoading,
+    setIsLoading,
+  } = useAPI();
 
   const fetchData = async () => {
     try {

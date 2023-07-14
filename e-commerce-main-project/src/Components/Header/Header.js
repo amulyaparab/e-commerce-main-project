@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useProducts } from "../../Contexts/ProductsProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
+import { useProducts, useUtils } from "../../Contexts";
 
 export const Header = () => {
   const { state, dispatch } = useProducts();

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAPI } from "../Contexts/APIProvider";
-import { useAuth } from "../Contexts/AuthProvider";
 import { toast } from "react-toastify";
+import { useAPI, useAuth } from "../Contexts";
 
 export const SignUp = () => {
   const { newUser, setNewUser, setEncodedToken } = useAuth();

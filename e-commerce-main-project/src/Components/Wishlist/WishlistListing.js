@@ -1,6 +1,5 @@
+import { useProducts, useUtils } from "../../Contexts";
 import { ProductCard } from "../Products/ProductCard";
-import { useProducts } from "../../Contexts/ProductsProvider";
-import { useUtils } from "../../Contexts/UtilsProvider";
 
 export const WishlistListing = () => {
   const { state } = useProducts();

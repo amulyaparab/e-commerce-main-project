@@ -1,9 +1,7 @@
-import { useProducts } from "../../Contexts/ProductsProvider";
 import { ProductCard } from "./ProductCard";
 import { NavLink } from "react-router-dom";
 import notFound from "../../Images/notFound.svg";
-import { useUtils } from "../../Contexts/UtilsProvider";
-import { useAPI } from "../../Contexts/APIProvider";
+import { useAPI, useProducts, useUtils } from "../../Contexts";
 
 export const ProductListing = () => {
   const { filteredData } = useProducts();
