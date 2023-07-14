@@ -3,11 +3,12 @@ import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useProducts } from "./ProductsProvider";
 import { useAPI } from "./APIProvider";
+import { useAddress } from "./AddressProvider";
 
 const UtilsContext = createContext();
 
 export const UtilsProvider = ({ children }) => {
-  const { state, dispatch } = useProducts();
+  const { state, dispatch, totalAmount } = useProducts();
   const navigate = useNavigate();
   const location = useLocation();
   const {
@@ -21,6 +22,7 @@ export const UtilsProvider = ({ children }) => {
     decreaseCartQuantity,
   } = useAPI();
 
+  const { selectedAddress } = useAddress();
   const [modal, setModal] = useState(false);
   const [disableBtn, setDisableBtn] = useState(false);
 
@@ -80,7 +82,6 @@ export const UtilsProvider = ({ children }) => {
         });
         setDisableBtn(true);
         await postToCart(item);
-
         setTimeout(() => {
           setDisableBtn(false);
         }, 500);
@@ -143,7 +144,6 @@ export const UtilsProvider = ({ children }) => {
       toast.info("Moved To Cart", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-
       isItemInCart(item)
         ? await increaseCartQuantity(item._id)
         : await postToCart(item);
@@ -154,6 +154,7 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const removefromCartHandler = async (item) => {
     try {
       setModal(false);
@@ -167,6 +168,7 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const increaseQtyHandler = async (itemId) => {
     try {
       await increaseCartQuantity(itemId);
@@ -175,6 +177,7 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const decreaseQtyHandler = async (item) => {
     try {
       if (item?.qty > 1) {
@@ -190,6 +193,7 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
   const moveToWishlistHandler = async (item) => {
     try {
       setModal(false);
@@ -207,6 +211,58 @@ export const UtilsProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const loadScript = (url) => {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = url;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+  const displayRazorpay = async () => {
+    if (selectedAddress) {
+      const response = await loadScript(
+        "https://checkout.razorpay.com/v1/checkout.js"
+      );
+      if (!response) {
+        alert("Razorpay SDK failed to load, check you internet connection");
+        return;
+      }
+      const options = {
+        key: "rzp_test_EPBilmCRDIX4I1",
+        amount: Number(totalAmount) * 100,
+        currency: "INR",
+        name: "Ascend",
+        description: "Thank you for shopping with us",
+        handler: function () {
+          toast.success(`Payment of Rs. ${totalAmount} is Succesful`);
+          navigate("/success");
+          state.cart.map((item) => deleteFromCart(item._id));
+          setTimeout(() => {
+            navigate("/");
+            console.log("Success");
+          }, 5000);
+        },
+        theme: {
+          color: "#2f2e41",
+        },
+      };
+      const paymentObject = new window.Razorpay(options);
+      paymentObject.open();
+    } else {
+      toast.warn("Select Address", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
+  };
+
   return (
     <UtilsContext.Provider
       value={{
@@ -227,6 +283,7 @@ export const UtilsProvider = ({ children }) => {
         updateWishlist,
         disableBtn,
         setDisableBtn,
+        displayRazorpay,
       }}
     >
       {children}

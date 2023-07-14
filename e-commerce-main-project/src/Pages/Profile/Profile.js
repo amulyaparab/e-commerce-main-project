@@ -26,7 +26,6 @@ export const Profile = () => {
       localStorage.removeItem("user");
       localStorage.removeItem("encodedTokenTest");
       navigate("/login", { state: { from: location } });
-
       dispatch({ type: "CLEAR_CART" });
       dispatch({ type: "CLEAR_WISHLIST" });
     } catch (err) {

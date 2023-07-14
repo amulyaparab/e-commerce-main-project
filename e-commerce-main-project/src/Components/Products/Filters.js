@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { useProducts } from "../../Contexts/ProductsProvider";
 
 export const Filters = () => {
-  const { state, dispatch, setShowFilters, showFilters } = useProducts();
+  const { state, dispatch, setShowFilters, showFilters, handleClearFilters } =
+    useProducts();
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -15,10 +16,6 @@ export const Filters = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
-
-  const handleClearFilters = () => {
-    dispatch({ type: "CLEAR_FILTERS" });
-  };
 
   return (
     <>

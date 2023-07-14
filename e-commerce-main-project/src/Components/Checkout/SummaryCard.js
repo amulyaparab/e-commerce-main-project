@@ -1,70 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import { useAPI, useAddress, useProducts } from "../../Contexts";
-
-const loadScript = (url) => {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
-    script.src = url;
-
-    script.onload = () => {
-      resolve(true);
-    };
-
-    script.onerror = () => {
-      resolve(false);
-    };
-
-    document.body.appendChild(script);
-  });
-};
+import { useAddress, useProducts, useUtils } from "../../Contexts";
 
 export const SummaryCard = () => {
   const { state, totalAmount, originalAmount } = useProducts();
   const { selectedAddress, arrOfAddresses } = useAddress();
-  const { deleteFromCart } = useAPI();
-  const navigate = useNavigate();
+  const { displayRazorpay } = useUtils();
 
   const findSelectedAddress = arrOfAddresses.find(
     (address) => address.id === selectedAddress
   );
-
-  const displayRazorpay = async () => {
-    if (selectedAddress) {
-      const response = await loadScript(
-        "https://checkout.razorpay.com/v1/checkout.js"
-      );
-      if (!response) {
-        alert("Razorpay SDK failed to load, check you internet connection");
-        return;
-      }
-      const options = {
-        key: "rzp_test_EPBilmCRDIX4I1",
-        amount: Number(totalAmount) * 100,
-        currency: "INR",
-        name: "Ascend",
-        description: "Thank you for shopping with us",
-        handler: function () {
-          toast.success(`Payment of Rs. ${totalAmount} is Succesful`);
-          navigate("/success");
-          state.cart.map((item) => deleteFromCart(item._id));
-          setTimeout(() => {
-            navigate("/");
-            console.log("Success");
-          }, 5000);
-        },
-        theme: {
-          color: "#2f2e41",
-        },
-      };
-      const paymentObject = new window.Razorpay(options);
-      paymentObject.open();
-    } else {
-      toast.warn("Select Address", {
-        position: toast.POSITION.BOTTOM_RIGHT,
-      });
-    }
-  };
 
   return (
     <>

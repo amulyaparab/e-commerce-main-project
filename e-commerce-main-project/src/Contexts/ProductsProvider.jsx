@@ -92,6 +92,11 @@ export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [notificationActive, setNotificationActive] = useState(false);
   const [showFilters, setShowFilters] = useState(true);
+  const [showCouponModal, setShowCouponModal] = useState(false);
+  const [notificationContent, setNotificationContent] = useState({
+    content: "",
+    icon: "",
+  });
 
   const originalAmount = state?.cart?.reduce(
     (total, curr) => (total += curr?.price * curr?.qty),
@@ -126,15 +131,15 @@ export const ProductsProvider = ({ children }) => {
           state.sort === "Reset"
       )
     : categoryData;
-  const [notificationContent, setNotificationContent] = useState({
-    content: "",
-    icon: "",
-  });
 
-  const [showCouponModal, setShowCouponModal] = useState(false);
+  const handleClearFilters = () => {
+    dispatch({ type: "CLEAR_FILTERS" });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <ProductsContext.Provider
       value={{
@@ -156,6 +161,7 @@ export const ProductsProvider = ({ children }) => {
         fetchData,
         fetchProductsAgain,
         fetchCategoriesAgain,
+        handleClearFilters,
       }}
     >
       {children}

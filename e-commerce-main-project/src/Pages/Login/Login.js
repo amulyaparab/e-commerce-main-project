@@ -19,13 +19,11 @@ export const Login = () => {
           toast.success("Logged In", {
             position: toast.POSITION.BOTTOM_RIGHT,
           });
-
           const { encodedToken } = await fetchLoginData({
             email: loginData.email,
             password: loginData.password,
           });
           setEncodedToken(encodedToken);
-
           navigate(location?.state?.from?.pathname);
           updateWishlist();
           updateCart();
@@ -54,7 +52,6 @@ export const Login = () => {
       });
       const { encodedToken } = await fetchLoginAsGuest();
       setEncodedToken(encodedToken);
-
       navigate(location?.state?.from?.pathname);
     } catch (err) {
       console.log(err);

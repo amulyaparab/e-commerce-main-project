@@ -20,11 +20,11 @@ ReactDOM.render(
       <AuthProvider>
         <APIProvider>
           <ProductsProvider>
-            <UtilsProvider>
-              <AddressProvider>
+            <AddressProvider>
+              <UtilsProvider>
                 <App />
-              </AddressProvider>
-            </UtilsProvider>
+              </UtilsProvider>
+            </AddressProvider>
           </ProductsProvider>
         </APIProvider>
       </AuthProvider>
