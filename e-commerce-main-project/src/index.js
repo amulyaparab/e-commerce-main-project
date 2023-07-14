@@ -4,11 +4,13 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import { ProductsProvider } from "./Contexts/ProductsProvider";
-import { AuthProvider } from "./Contexts/AuthProvider";
-import { APIProvider } from "./Contexts/APIProvider";
-import { UtilsProvider } from "./Contexts/UtilsProvider";
-import { AddressProvider } from "./Contexts/AddressProvider";
+import {
+  APIProvider,
+  AddressProvider,
+  AuthProvider,
+  ProductsProvider,
+  UtilsProvider,
+} from "./Contexts";
 
 makeServer();
 

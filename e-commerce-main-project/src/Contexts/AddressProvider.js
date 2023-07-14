@@ -1,9 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { v4 as uuid } from "uuid";
+
 const AddressContext = createContext();
+
 export const AddressProvider = ({ children }) => {
   const [selectedAddress, setSelectedAddress] = useState("123");
+  const [showAddressForm, setShowAddressForm] = useState(false);
+
   const [arrOfAddresses, setArrOfAddresses] = useState([
     {
       name: "Amulya Parab",
@@ -16,7 +20,7 @@ export const AddressProvider = ({ children }) => {
       country: "United Kingdom",
     },
   ]);
-  const [showAddressForm, setShowAddressForm] = useState(false);
+
   const [address, setAddress] = useState({
     name: "",
     id: "",

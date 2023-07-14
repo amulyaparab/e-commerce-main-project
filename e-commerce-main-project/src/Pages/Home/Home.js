@@ -1,9 +1,6 @@
 import Nature from "../../Images/nature.png";
 import love from "../../Images/love.png";
-import { Carousel } from "../../Components/Home/Carousel";
-import { Categories } from "../../Components/Home/Categories";
-import { BestSellers } from "../../Components/Home/BestSellers";
-import { PreFooter } from "../../Components/Home/PreFooter";
+import { BestSellers, Carousel, Categories, PreFooter } from "../../Components";
 
 export const Home = () => {
   return (

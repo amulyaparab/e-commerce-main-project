@@ -1,3 +1,8 @@
+export { APIProvider } from "./APIProvider";
+export { AddressProvider } from "./AddressProvider";
+export { AuthProvider } from "./AuthProvider";
+export { ProductsProvider } from "./ProductsProvider";
+export { UtilsProvider } from "./UtilsProvider";
 export { useAPI } from "./APIProvider";
 export { useAddress } from "./AddressProvider";
 export { useAuth } from "./AuthProvider";
