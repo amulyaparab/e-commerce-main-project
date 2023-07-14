@@ -1,17 +1,14 @@
-import Bath from "../../Images/bath.png";
-import Skin from "../../Images/skin.png";
-import HomeDecor from "../../Images/homeDecor.png";
-import Hair from "../../Images/hair.png";
 import { useState } from "react";
+import { bath, hairSlider, homeDecor, skin } from "../../Images";
 
 export const Carousel = () => {
   const [selectedSlide, setSelectedSlide] = useState(1);
 
   const slides = [
-    { id: 1, url: Bath, title: "Bath and Body" },
-    { id: 2, url: Skin, title: "Skin Care" },
-    { id: 3, url: Hair, title: "Hair Care" },
-    { id: 4, url: HomeDecor, title: "Home" },
+    { id: 1, url: bath, title: "Bath and Body" },
+    { id: 2, url: skin, title: "Skin Care" },
+    { id: 3, url: hairSlider, title: "Hair Care" },
+    { id: 4, url: homeDecor, title: "Home" },
   ];
 
   return (

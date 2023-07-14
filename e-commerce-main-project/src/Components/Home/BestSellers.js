@@ -1,8 +1,5 @@
-import bestHome from "../../Images/best-home.jpg";
-import bestBath from "../../Images/best-bath.jpg";
-import bestHair from "../../Images/best-hair.jpg";
-import bestSkin from "../../Images/best-skin.jpg";
 import { NavLink } from "react-router-dom";
+import { bestBath, bestHair, bestHome, bestSkin } from "../../Images";
 
 export const BestSellers = () => {
   return (

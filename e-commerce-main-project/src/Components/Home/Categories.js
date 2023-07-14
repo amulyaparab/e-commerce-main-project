@@ -1,9 +1,6 @@
-import bathAndBody from "../../Images/bath-category1.jpg";
-import oliveCandle from "../../Images/oliveCandle.jpg";
-import skinCare from "../../Images/3.jpg";
-import hair from "../../Images/hairCategory.jpg";
 import { useProducts } from "../../Contexts/ProductsProvider";
 import { NavLink } from "react-router-dom";
+import { bathAndBody, hair, oliveCandle, skinCare } from "../../Images";
 
 export const Categories = () => {
   const { state, dispatch } = useProducts();

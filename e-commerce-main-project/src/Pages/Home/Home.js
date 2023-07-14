@@ -1,6 +1,5 @@
-import Nature from "../../Images/nature.png";
-import love from "../../Images/love.png";
 import { BestSellers, Carousel, Categories, PreFooter } from "../../Components";
+import { love, nature } from "../../Images";
 
 export const Home = () => {
   return (
@@ -20,7 +19,7 @@ export const Home = () => {
               world.
             </p>
           </div>
-          <img className="nature" src={Nature} alt="Naturally Made Products" />
+          <img className="nature" src={nature} alt="Naturally Made Products" />
         </section>
         <BestSellers />
         <section className="naturally-made">
